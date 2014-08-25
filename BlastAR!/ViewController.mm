@@ -1,0 +1,423 @@
+//
+//  ViewController.m
+//  BlastAR!
+//
+//  Created by Kirk Roerig on 8/22/14.
+//  Copyright (c) 2014 OPifex. All rights reserved.
+//
+
+#import <QuartzCore/QuartzCore.h>
+#import <CoreMotion/CoreMotion.h>
+#import "ViewController.h"
+#import "OPjective.h"
+#import "Background.h"
+#import "Scene/Starfield.h"
+#import "Scene/Crosshair.h"
+#import "Effects/SoundFactory.h"
+#import "Effects/Particles.h"
+#import "Enemy/Creep.h"
+#import "Drawable.h"
+#import "Singletons.h"
+
+
+enum GameState{
+    gameMainMenu,
+    gamePlaying,
+    gameOver
+};
+
+@interface ViewController () {
+
+}
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *tapToBegin;
+
+@property (strong, nonatomic) EAGLContext *context;
+@property (strong, nonatomic) CMMotionManager *motionManager;
+@property (strong, nonatomic) id <Drawable> crosshair;
+@property (strong, nonatomic) Background* background;
+@property (nonatomic) GLKQuaternion orientation;
+
+@property (nonatomic) NSMutableArray *scene;
+@property (nonatomic) NSMutableArray *enemies;
+@property (nonatomic) Creep* nearestEnemy;
+
+@property (nonatomic) float viewRedness;
+
+@property (strong, nonatomic) NSDate* lastTime;
+@property (nonatomic) Sound* pewPew;
+@property (nonatomic) Sound* spawn;
+@property (nonatomic) Sound* proximityWarning;
+
+@property (nonatomic) Particles* smoke;
+
+@property (nonatomic) float spawnInterval;
+@property (nonatomic) double spawnTimer;
+@property (nonatomic) float proximityTimer;
+
+@property (nonatomic) enum GameState gameState;
+
+
+- (void)setupGL;
+- (void)tearDownGL;
+
+@end
+
+@implementation ViewController
+
+- (NSDate*) lastTime{
+    if(!_lastTime){
+        _lastTime = [NSDate date];
+    }
+    
+    return _lastTime;
+}
+
+- (CMMotionManager*) motionManager
+{
+    if(!_motionManager){
+        _motionManager = [[CMMotionManager alloc] init];
+    }
+    
+    return _motionManager;
+}
+
+- (NSMutableArray*) enemies{
+    if(!_enemies){
+        _enemies = [[NSMutableArray alloc] init];
+    }
+    
+    return _enemies;
+}
+
+- (NSMutableArray*) scene{
+    if(!_scene){
+        _scene = [[NSMutableArray alloc] init];
+    }
+    
+    return _scene;
+}
+
+- (float) proximityInterval
+{
+    return 1.5f;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    
+    // setup the core motion stuffs
+    [self.motionManager startGyroUpdates];
+    self.motionManager.gyroUpdateInterval = 0.01;
+    self.orientation = GLKQuaternionIdentity;
+    
+    if (!self.context) {
+        NSLog(@"Failed to create ES context");
+    }
+    
+    GLKView *view = (GLKView *)self.view;
+    view.context = self.context;
+    view.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    
+    [self setupGL];
+    
+    self.crosshair = [[Crosshair alloc] init];
+    
+    self.pewPew = [SoundFactory createShoot];
+    self.spawn  = [SoundFactory createSpawn];
+    self.proximityWarning = [SoundFactory createProximity];
+    
+    self.smoke = [[Particles alloc] initWithCapacity:1000];
+    
+    
+    [self.scene addObject:_background = [[Background alloc] initWithGLKview:self andGLContext:self.context]];
+    [self.scene addObject:self.smoke];
+
+    
+    self.spawnTimer = self.spawnInterval = 5;
+    self.proximityTimer = [self proximityInterval];
+    self.viewRedness = 0;
+    
+    self.gameState = gameMainMenu;
+}
+
+- (void)dealloc
+{    
+    [self tearDownGL];
+    
+    if ([EAGLContext currentContext] == self.context) {
+        [EAGLContext setCurrentContext:nil];
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+
+    if ([self isViewLoaded] && ([[self view] window] == nil)) {
+        self.view = nil;
+        
+        [self tearDownGL];
+        
+        if ([EAGLContext currentContext] == self.context) {
+            [EAGLContext setCurrentContext:nil];
+        }
+        self.context = nil;
+    }
+
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)setupGL
+{
+    [EAGLContext setCurrentContext:self.context];
+    glEnable(GL_DEPTH_TEST);
+}
+
+- (void)tearDownGL
+{
+    [EAGLContext setCurrentContext:self.context];
+}
+
+#pragma mark - GLKView and GLKViewController delegate methods
+
+- (void) startGame
+{
+    [self.enemies removeAllObjects];
+    self.nearestEnemy = nil;
+    self.gameState = gamePlaying;
+    self.viewRedness = 0.0f;
+}
+
+GLKMatrix4 VP;
+vec3 YPR = {0};
+vec3 shootDir = {0};
+
+- (void)UpdateViewProjectionMatrix
+{
+    // create and update the view projection matrix
+    float aspect = AR_ASPECT_RATIO = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
+    static const GLKVector3 forward = { 0, 0, 1 };
+    static const GLKVector3 up      = { 0, 1, 0 };
+    
+    GLKQuaternion omega = GLKQuaternionMultiply(
+                                GLKQuaternionMakeWithAngleAndAxis(YPR[0], 0, 1, 0),
+                                GLKQuaternionMakeWithAngleAndAxis(-YPR[1], 1, 0, 0)
+                                );
+    omega = GLKQuaternionMultiply(
+                                omega,
+                                GLKQuaternionMakeWithAngleAndAxis(YPR[2], 0, 0, 1)
+                                );
+    
+    _orientation = GLKQuaternionMultiply(_orientation, omega);
+    
+//    _orientation = GLKQuaternionMultiply(
+//                                _orientation,
+//                                GLKQuaternionMakeWithAngleAndAxis(YPR[2], 0, 0, 1)
+//                                );
+//    
+    GLKVector3 adjForward = GLKQuaternionRotateVector3(_orientation, forward);
+    GLKVector3 adjUp = GLKQuaternionRotateVector3(_orientation, up);
+    
+    GLKVector3Normalize(adjForward);
+    GLKVector3Normalize(adjUp);
+    memcpy(shootDir, adjForward.v, sizeof(vec3));
+    
+    GLKMatrix4 viewMatrix = GLKMatrix4MakeLookAt(
+                                                 adjForward.x, adjForward.y, adjForward.z,
+                                                 0, 0, 0,
+                                                 adjUp.x, adjUp.y, adjUp.z//adjUp.x, adjUp.y, adjUp.z
+                                                 );
+    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(54.0f), aspect, 0.1f, 100.0f);
+    VP = GLKMatrix4Multiply(projectionMatrix, viewMatrix);
+}
+
+- (void)update
+{
+    double dt = 0;
+    
+    // use gyro data to do cool stuff
+    if(self.motionManager.gyroAvailable){
+        NSTimeInterval elapsed = dt = -[self.lastTime timeIntervalSinceNow];
+        CMGyroData* data = self.motionManager.gyroData;
+        float x = data.rotationRate.x;
+        float y = data.rotationRate.y;
+        float z = data.rotationRate.z;
+        GLKVector3 omega = { x * 2, y * 2, z * 2 };
+        //GLKVector3 temp = {0};
+        //omega = GLKQuaternionRotateVector3(self.orientation, omega);
+        
+//        NSLog(@"Yaw: %f Pitch: %f Roll: %f",
+//              YPR[2],
+//              YPR[0],
+//              YPR[1]
+//        );
+        
+        YPR[0] = omega.x * elapsed;
+        YPR[1] = omega.y * elapsed;
+        YPR[2] = omega.z * elapsed;
+        
+        _lastTime = [NSDate date];
+    }
+
+    [self UpdateViewProjectionMatrix];
+    [self.background setHue:(float*)VEC3_ONE];
+
+    switch (_gameState) {
+        case gamePlaying:
+            self.spawnTimer -= dt;
+            self.proximityTimer -= dt;
+            
+            if(self.spawnTimer <= 0.0){
+                [self.enemies addObject:[[Creep alloc] init]];
+                self.spawnTimer = (self.spawnInterval -= 0.1f);
+                
+                if(self.spawnInterval < 0.75f)
+                    self.spawnInterval = 0.75f;
+                
+                [self.spawn play];
+            }
+            
+            if(self.proximityTimer <= 0.0){
+                self.proximityTimer = [self proximityInterval];
+                if(_nearestEnemy != nil){
+                    float dist = vec3_dist((float*)VEC3_ZERO, _nearestEnemy.position.v);
+                    float pitch = 10.0f - dist;
+                    [self.proximityWarning setPitch:pitch];
+                    [self.proximityWarning play];
+                    
+                    if(dist < 0.75f){
+                        _gameState = gameOver;
+                    }
+                }
+            }
+            break;
+        case gameOver:
+            _viewRedness += (1.0f - _viewRedness) * dt / 2.0f;
+            vec3 hue = { 1.0f, 1.0f - _viewRedness, 1.0f - _viewRedness };
+            [self.background setHue:hue];
+            break;
+    }
+    
+    if(self.gameState == gamePlaying){
+        
+    }
+    
+    // update all the scene objects
+    for (id object in self.scene) {
+        if([object conformsToProtocol:@protocol(Updateable)]){
+                 [object updateWithTimeElapsed:dt];
+        }
+    }
+    
+    if(_gameState == gamePlaying){
+    // update the enemies
+    float closestDist = 1000;
+    for (id object in self.enemies) {
+        if([object conformsToProtocol:@protocol(Updateable)]){
+            Creep* creep = (Creep*)object;
+            
+            float d = vec3_dist((float*)VEC3_ZERO, creep.position.v);
+            if(d < closestDist){
+                closestDist = d;
+                _nearestEnemy = creep;
+            }
+            [object updateWithTimeElapsed:dt];
+        }
+    }
+    }
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    for (id object in _scene) {
+        if([object conformsToProtocol:@protocol(Drawable)]){
+            [object drawWithViewProjection:&VP];
+        }
+    }
+    
+    glEnable(GL_DEPTH_TEST);
+    for (id object in self.enemies) {
+        if([object conformsToProtocol:@protocol(Drawable)]){
+            [object drawWithViewProjection:&VP];
+        }
+    }
+    
+    if(self.gameState == gamePlaying){
+        [self.crosshair drawWithViewProjection:&VP];
+    }
+}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    
+    if(self.gameState == gameOver && _viewRedness < 0.95f)
+        return;
+    if(self.gameState != gamePlaying){
+        [self startGame];
+        return;
+    }
+    
+    NSLog(@"Pew!");
+    
+    ray3 projectile;
+    memcpy(&projectile.p, VEC3_ZERO, sizeof(vec3));
+    memcpy(&projectile.n, shootDir, sizeof(vec3));
+    
+    projectile.n[0] *= -1;
+    projectile.n[1] *= -1;
+    projectile.n[2] *= -1;
+    
+    NSMutableArray* killedEnemies = [[NSMutableArray alloc] init];
+    
+    // check to see what enemies, if any were shot and or killed
+    for (id object in self.enemies) {
+        if([object conformsToProtocol:@protocol(Shootable)]){
+            if([object fireAt:projectile]){
+                Creep* creep = (Creep*)object;
+                
+                struct ParticleVertex smoke[10];
+                
+                for(int i = 10; i--;){
+                    struct ParticleVertex p = {
+                        .position = { creep.position.x, creep.position.y, creep.position.z },
+                        .velocity = {RAND_F_NORM * RAND_F, RAND_F_NORM  * RAND_F, RAND_F_NORM * RAND_F},
+                        .color = { 0.6f, 0.6f, 0.6f, RAND_F },
+                        .size = 200.0f * (RAND_F + 1.0f),
+                        .life = 2 * (RAND_F + 1.0f)
+                    };
+                    memcpy(smoke + i, &p, sizeof(struct ParticleVertex));
+                }
+                [self.smoke spawnParticles:smoke ofCount:10];
+                
+                if(creep.HP <= 0){
+                    struct ParticleVertex smoke[10];
+                    
+                    for(int i = 3; i--;){
+                        struct ParticleVertex p = {
+                            .position = { creep.position.x, creep.position.y, creep.position.z },
+                            .velocity = {RAND_F_NORM * RAND_F, RAND_F_NORM  * RAND_F, RAND_F_NORM * RAND_F},
+                            .color = { 1.0f, RAND_F, 0.0f, RAND_F },
+                            .size = 400.0f * (RAND_F + 1.0f),
+                            .life = 1 * (RAND_F + 1.0f)
+                        };
+                        memcpy(smoke + i, &p, sizeof(struct ParticleVertex));
+                    }
+                    [killedEnemies addObject:object];
+                }
+            }
+        }
+    }
+    
+    // clean up
+    [self.enemies removeObjectsInArray:killedEnemies];
+    
+    [self.pewPew play];
+}
+@end

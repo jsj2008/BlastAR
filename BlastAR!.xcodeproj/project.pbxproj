@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0628185219A8ED5300703ACF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628185119A8ED5300703ACF /* CoreMotion.framework */; };
+		0628185719A90ACB00703ACF /* Starfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628185619A90ACB00703ACF /* Starfield.m */; };
+		0628185C19A90F3C00703ACF /* Starfield.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628185B19A90F3C00703ACF /* Starfield.vsh */; };
+		0628185E19A90F4D00703ACF /* Starfield.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628185D19A90F4D00703ACF /* Starfield.fsh */; };
+		0628186219A9150700703ACF /* Creep.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628186119A9150700703ACF /* Creep.m */; };
+		0628186519A9157200703ACF /* ShadedMesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628186419A9157200703ACF /* ShadedMesh.m */; };
+		0628186719A91B5100703ACF /* Creep.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628186619A91B5100703ACF /* Creep.fsh */; };
+		0628186A19A92CA500703ACF /* Creep.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628186919A92CA500703ACF /* Creep.vsh */; };
+		0628186F19A9549E00703ACF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628186E19A9549E00703ACF /* AVFoundation.framework */; };
+		0628187119A954D100703ACF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628187019A954D100703ACF /* AudioToolbox.framework */; };
+		0628187419A95B0B00703ACF /* Crosshair.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628187319A95B0B00703ACF /* Crosshair.m */; };
+		0628187819A95C6C00703ACF /* ScreenSpace.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628187719A95C6C00703ACF /* ScreenSpace.vsh */; };
+		0628187A19A95CB300703ACF /* CrossHair.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628187919A95CB300703ACF /* CrossHair.fsh */; };
+		0628187D19A95EDC00703ACF /* Singletons.c in Sources */ = {isa = PBXBuildFile; fileRef = 0628187C19A95EDC00703ACF /* Singletons.c */; };
+		0628188A19AA375300703ACF /* RosyWriterVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628188919AA375300703ACF /* RosyWriterVideoProcessor.m */; };
 		0666B87519A828A400760006 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B87419A828A400760006 /* Foundation.framework */; };
 		0666B87719A828A400760006 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B87619A828A400760006 /* CoreGraphics.framework */; };
 		0666B87919A828A400760006 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B87819A828A400760006 /* UIKit.framework */; };
@@ -17,15 +32,24 @@
 		0666B88919A828A400760006 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0666B88819A828A400760006 /* AppDelegate.m */; };
 		0666B88C19A828A400760006 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0666B88A19A828A400760006 /* Main_iPhone.storyboard */; };
 		0666B88F19A828A400760006 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0666B88D19A828A400760006 /* Main_iPad.storyboard */; };
-		0666B89119A828A400760006 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 0666B89019A828A400760006 /* Shader.fsh */; };
-		0666B89319A828A400760006 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0666B89219A828A400760006 /* Shader.vsh */; };
-		0666B89619A828A400760006 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0666B89519A828A400760006 /* ViewController.m */; };
+		0666B89119A828A400760006 /* room.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 0666B89019A828A400760006 /* room.fsh */; };
+		0666B89319A828A400760006 /* room.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0666B89219A828A400760006 /* room.vsh */; };
+		0666B89619A828A400760006 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0666B89519A828A400760006 /* ViewController.mm */; };
 		0666B89819A828A400760006 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0666B89719A828A400760006 /* Images.xcassets */; };
 		0666B89F19A828A400760006 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B89E19A828A400760006 /* XCTest.framework */; };
 		0666B8A019A828A400760006 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B87419A828A400760006 /* Foundation.framework */; };
 		0666B8A119A828A400760006 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B87819A828A400760006 /* UIKit.framework */; };
 		0666B8A919A828A400760006 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0666B8A719A828A400760006 /* InfoPlist.strings */; };
 		0666B8AB19A828A400760006 /* BlastAR_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0666B8AA19A828A400760006 /* BlastAR_Tests.m */; };
+		0676C5A119A8DE8C004DC90F /* libOPjective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0676C59E19A8DE34004DC90F /* libOPjective.a */; };
+		0676C5A519A8E090004DC90F /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 0676C5A419A8E090004DC90F /* Background.m */; };
+		06E8876719AA3C1F0049C7E1 /* FullscreenQuad.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8876619AA3C1F0049C7E1 /* FullscreenQuad.vsh */; };
+		06E8876B19AA3C970049C7E1 /* FullscreenQuad.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */; };
+		06E8876D19AA416E0049C7E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E8876C19AA416E0049C7E1 /* QuartzCore.framework */; };
+		06E8877119AA69BC0049C7E1 /* Particles.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E8877019AA69BC0049C7E1 /* Particles.m */; };
+		06E8877419AA6A050049C7E1 /* SoundFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E8877319AA6A050049C7E1 /* SoundFactory.m */; };
+		06E8877619AA88920049C7E1 /* Particles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8877519AA88910049C7E1 /* Particles.vsh */; };
+		06E8877819AA8A7A0049C7E1 /* Particles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8877719AA8A7A0049C7E1 /* Particles.fsh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +60,46 @@
 			remoteGlobalIDString = 0666B87019A828A400760006;
 			remoteInfo = "BlastAR!";
 		};
+		0676C59D19A8DE34004DC90F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0676C59819A8DE34004DC90F /* OPjective.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06ADC21B19A55D5300E9DD50;
+			remoteInfo = OPjective;
+		};
+		0676C59F19A8DE34004DC90F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0676C59819A8DE34004DC90F /* OPjective.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06ADC22B19A55D5300E9DD50;
+			remoteInfo = OPjectiveTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0628185119A8ED5300703ACF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		0628185519A90ACB00703ACF /* Starfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Starfield.h; path = Scene/Starfield.h; sourceTree = "<group>"; };
+		0628185619A90ACB00703ACF /* Starfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Starfield.m; path = Scene/Starfield.m; sourceTree = "<group>"; };
+		0628185B19A90F3C00703ACF /* Starfield.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Starfield.vsh; path = Shaders/Starfield.vsh; sourceTree = "<group>"; };
+		0628185D19A90F4D00703ACF /* Starfield.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Starfield.fsh; sourceTree = "<group>"; };
+		0628186019A9150700703ACF /* Creep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Creep.h; path = Enemy/Creep.h; sourceTree = "<group>"; };
+		0628186119A9150700703ACF /* Creep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Creep.m; path = Enemy/Creep.m; sourceTree = "<group>"; };
+		0628186319A9157200703ACF /* ShadedMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadedMesh.h; sourceTree = "<group>"; };
+		0628186419A9157200703ACF /* ShadedMesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadedMesh.m; sourceTree = "<group>"; };
+		0628186619A91B5100703ACF /* Creep.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Creep.fsh; sourceTree = "<group>"; };
+		0628186819A91B9D00703ACF /* Updateable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Updateable.h; sourceTree = "<group>"; };
+		0628186919A92CA500703ACF /* Creep.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Creep.vsh; path = Shaders/Creep.vsh; sourceTree = "<group>"; };
+		0628186B19A93B8800703ACF /* Shootable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shootable.h; sourceTree = "<group>"; };
+		0628186E19A9549E00703ACF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		0628187019A954D100703ACF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0628187219A95B0B00703ACF /* Crosshair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Crosshair.h; path = Scene/Crosshair.h; sourceTree = "<group>"; };
+		0628187319A95B0B00703ACF /* Crosshair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Crosshair.m; path = Scene/Crosshair.m; sourceTree = "<group>"; };
+		0628187719A95C6C00703ACF /* ScreenSpace.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = ScreenSpace.vsh; path = Shaders/ScreenSpace.vsh; sourceTree = "<group>"; };
+		0628187919A95CB300703ACF /* CrossHair.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = CrossHair.fsh; path = Shaders/CrossHair.fsh; sourceTree = "<group>"; };
+		0628187B19A95EAD00703ACF /* Singletons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singletons.h; sourceTree = "<group>"; };
+		0628187C19A95EDC00703ACF /* Singletons.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Singletons.c; sourceTree = "<group>"; };
+		0628188819AA375300703ACF /* RosyWriterVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterVideoProcessor.h; sourceTree = "<group>"; };
+		0628188919AA375300703ACF /* RosyWriterVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterVideoProcessor.m; sourceTree = "<group>"; };
 		0666B87119A828A400760006 /* BlastAR!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlastAR!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0666B87419A828A400760006 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0666B87619A828A400760006 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,16 +114,29 @@
 		0666B88819A828A400760006 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0666B88B19A828A400760006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0666B88E19A828A400760006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		0666B89019A828A400760006 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
-		0666B89219A828A400760006 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
+		0666B89019A828A400760006 /* room.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = room.fsh; path = Shaders/room.fsh; sourceTree = "<group>"; };
+		0666B89219A828A400760006 /* room.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = room.vsh; path = Shaders/room.vsh; sourceTree = "<group>"; };
 		0666B89419A828A400760006 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0666B89519A828A400760006 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0666B89519A828A400760006 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		0666B89719A828A400760006 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0666B89D19A828A400760006 /* BlastAR!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BlastAR!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0666B89E19A828A400760006 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0666B8A619A828A400760006 /* BlastAR!Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BlastAR!Tests-Info.plist"; sourceTree = "<group>"; };
 		0666B8A819A828A400760006 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0666B8AA19A828A400760006 /* BlastAR_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlastAR_Tests.m; sourceTree = "<group>"; };
+		0676C59819A8DE34004DC90F /* OPjective.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OPjective.xcodeproj; path = ../../OPjective/OPjective.xcodeproj; sourceTree = "<group>"; };
+		0676C5A319A8E090004DC90F /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = Scene/Background.h; sourceTree = "<group>"; };
+		0676C5A419A8E090004DC90F /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = Scene/Background.m; sourceTree = "<group>"; };
+		0676C5A619A8E217004DC90F /* Drawable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
+		06E8876619AA3C1F0049C7E1 /* FullscreenQuad.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = FullscreenQuad.vsh; path = Shaders/FullscreenQuad.vsh; sourceTree = "<group>"; };
+		06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = FullscreenQuad.fsh; path = Shaders/FullscreenQuad.fsh; sourceTree = "<group>"; };
+		06E8876C19AA416E0049C7E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		06E8876F19AA69BC0049C7E1 /* Particles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Particles.h; path = Effects/Particles.h; sourceTree = "<group>"; };
+		06E8877019AA69BC0049C7E1 /* Particles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Particles.m; path = Effects/Particles.m; sourceTree = "<group>"; };
+		06E8877219AA6A050049C7E1 /* SoundFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundFactory.h; path = Effects/SoundFactory.h; sourceTree = "<group>"; };
+		06E8877319AA6A050049C7E1 /* SoundFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundFactory.m; path = Effects/SoundFactory.m; sourceTree = "<group>"; };
+		06E8877519AA88910049C7E1 /* Particles.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Particles.vsh; path = Shaders/Particles.vsh; sourceTree = "<group>"; };
+		06E8877719AA8A7A0049C7E1 /* Particles.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Particles.fsh; path = Shaders/Particles.fsh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +144,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E8876D19AA416E0049C7E1 /* QuartzCore.framework in Frameworks */,
+				0628187119A954D100703ACF /* AudioToolbox.framework in Frameworks */,
+				0628186F19A9549E00703ACF /* AVFoundation.framework in Frameworks */,
+				0628185219A8ED5300703ACF /* CoreMotion.framework in Frameworks */,
+				0676C5A119A8DE8C004DC90F /* libOPjective.a in Frameworks */,
 				0666B87D19A828A400760006 /* OpenGLES.framework in Frameworks */,
 				0666B87719A828A400760006 /* CoreGraphics.framework in Frameworks */,
 				0666B87919A828A400760006 /* UIKit.framework in Frameworks */,
@@ -91,9 +170,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0628185819A90F0500703ACF /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				0628185B19A90F3C00703ACF /* Starfield.vsh */,
+				0628185D19A90F4D00703ACF /* Starfield.fsh */,
+				0628186619A91B5100703ACF /* Creep.fsh */,
+				0628186919A92CA500703ACF /* Creep.vsh */,
+				0628187719A95C6C00703ACF /* ScreenSpace.vsh */,
+				0628187919A95CB300703ACF /* CrossHair.fsh */,
+				06E8876619AA3C1F0049C7E1 /* FullscreenQuad.vsh */,
+				06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */,
+				06E8877519AA88910049C7E1 /* Particles.vsh */,
+				06E8877719AA8A7A0049C7E1 /* Particles.fsh */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		0628185F19A9145400703ACF /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				0628186019A9150700703ACF /* Creep.h */,
+				0628186119A9150700703ACF /* Creep.m */,
+			);
+			name = Enemy;
+			sourceTree = "<group>";
+		};
+		0628188719AA372500703ACF /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				0628188819AA375300703ACF /* RosyWriterVideoProcessor.h */,
+				0628188919AA375300703ACF /* RosyWriterVideoProcessor.m */,
+			);
+			name = Video;
+			sourceTree = "<group>";
+		};
 		0666B86819A828A400760006 = {
 			isa = PBXGroup;
 			children = (
+				0628186B19A93B8800703ACF /* Shootable.h */,
+				0676C59819A8DE34004DC90F /* OPjective.xcodeproj */,
 				0666B87E19A828A400760006 /* BlastAR! */,
 				0666B8A419A828A400760006 /* BlastAR!Tests */,
 				0666B87319A828A400760006 /* Frameworks */,
@@ -113,6 +229,10 @@
 		0666B87319A828A400760006 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06E8876C19AA416E0049C7E1 /* QuartzCore.framework */,
+				0628187019A954D100703ACF /* AudioToolbox.framework */,
+				0628186E19A9549E00703ACF /* AVFoundation.framework */,
+				0628185119A8ED5300703ACF /* CoreMotion.framework */,
 				0666B87419A828A400760006 /* Foundation.framework */,
 				0666B87619A828A400760006 /* CoreGraphics.framework */,
 				0666B87819A828A400760006 /* UIKit.framework */,
@@ -126,16 +246,27 @@
 		0666B87E19A828A400760006 /* BlastAR! */ = {
 			isa = PBXGroup;
 			children = (
+				0628185819A90F0500703ACF /* Shaders */,
+				06E8876E19AA696D0049C7E1 /* Effects */,
+				0628188719AA372500703ACF /* Video */,
+				0676C5A219A8E06F004DC90F /* Scene */,
+				0628185F19A9145400703ACF /* Enemy */,
 				0666B88719A828A400760006 /* AppDelegate.h */,
 				0666B88819A828A400760006 /* AppDelegate.m */,
 				0666B88A19A828A400760006 /* Main_iPhone.storyboard */,
 				0666B88D19A828A400760006 /* Main_iPad.storyboard */,
-				0666B89019A828A400760006 /* Shader.fsh */,
-				0666B89219A828A400760006 /* Shader.vsh */,
+				0666B89019A828A400760006 /* room.fsh */,
+				0666B89219A828A400760006 /* room.vsh */,
 				0666B89419A828A400760006 /* ViewController.h */,
-				0666B89519A828A400760006 /* ViewController.m */,
+				0666B89519A828A400760006 /* ViewController.mm */,
 				0666B89719A828A400760006 /* Images.xcassets */,
 				0666B87F19A828A400760006 /* Supporting Files */,
+				0676C5A619A8E217004DC90F /* Drawable.h */,
+				0628186819A91B9D00703ACF /* Updateable.h */,
+				0628186319A9157200703ACF /* ShadedMesh.h */,
+				0628186419A9157200703ACF /* ShadedMesh.m */,
+				0628187B19A95EAD00703ACF /* Singletons.h */,
+				0628187C19A95EDC00703ACF /* Singletons.c */,
 			);
 			path = "BlastAR!";
 			sourceTree = "<group>";
@@ -167,6 +298,39 @@
 				0666B8A719A828A400760006 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0676C59919A8DE34004DC90F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0676C59E19A8DE34004DC90F /* libOPjective.a */,
+				0676C5A019A8DE34004DC90F /* OPjectiveTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0676C5A219A8E06F004DC90F /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				0676C5A319A8E090004DC90F /* Background.h */,
+				0676C5A419A8E090004DC90F /* Background.m */,
+				0628185519A90ACB00703ACF /* Starfield.h */,
+				0628185619A90ACB00703ACF /* Starfield.m */,
+				0628187219A95B0B00703ACF /* Crosshair.h */,
+				0628187319A95B0B00703ACF /* Crosshair.m */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
+		06E8876E19AA696D0049C7E1 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				06E8876F19AA69BC0049C7E1 /* Particles.h */,
+				06E8877019AA69BC0049C7E1 /* Particles.m */,
+				06E8877219AA6A050049C7E1 /* SoundFactory.h */,
+				06E8877319AA6A050049C7E1 /* SoundFactory.m */,
+			);
+			name = Effects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +396,12 @@
 			mainGroup = 0666B86819A828A400760006;
 			productRefGroup = 0666B87219A828A400760006 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0676C59919A8DE34004DC90F /* Products */;
+					ProjectRef = 0676C59819A8DE34004DC90F /* OPjective.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0666B87019A828A400760006 /* BlastAR! */,
@@ -240,17 +410,44 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		0676C59E19A8DE34004DC90F /* libOPjective.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOPjective.a;
+			remoteRef = 0676C59D19A8DE34004DC90F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0676C5A019A8DE34004DC90F /* OPjectiveTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OPjectiveTests.xctest;
+			remoteRef = 0676C59F19A8DE34004DC90F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		0666B86F19A828A400760006 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0666B89119A828A400760006 /* Shader.fsh in Resources */,
+				0666B89119A828A400760006 /* room.fsh in Resources */,
+				06E8876B19AA3C970049C7E1 /* FullscreenQuad.fsh in Resources */,
 				0666B88F19A828A400760006 /* Main_iPad.storyboard in Resources */,
+				06E8877819AA8A7A0049C7E1 /* Particles.fsh in Resources */,
+				06E8877619AA88920049C7E1 /* Particles.vsh in Resources */,
+				0628185E19A90F4D00703ACF /* Starfield.fsh in Resources */,
+				0628186A19A92CA500703ACF /* Creep.vsh in Resources */,
 				0666B88C19A828A400760006 /* Main_iPhone.storyboard in Resources */,
+				0628187819A95C6C00703ACF /* ScreenSpace.vsh in Resources */,
+				0628186719A91B5100703ACF /* Creep.fsh in Resources */,
+				06E8876719AA3C1F0049C7E1 /* FullscreenQuad.vsh in Resources */,
 				0666B89819A828A400760006 /* Images.xcassets in Resources */,
+				0628185C19A90F3C00703ACF /* Starfield.vsh in Resources */,
 				0666B88319A828A400760006 /* InfoPlist.strings in Resources */,
-				0666B89319A828A400760006 /* Shader.vsh in Resources */,
+				0628187A19A95CB300703ACF /* CrossHair.fsh in Resources */,
+				0666B89319A828A400760006 /* room.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,9 +466,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0666B89619A828A400760006 /* ViewController.m in Sources */,
+				06E8877119AA69BC0049C7E1 /* Particles.m in Sources */,
+				0666B89619A828A400760006 /* ViewController.mm in Sources */,
 				0666B88919A828A400760006 /* AppDelegate.m in Sources */,
+				0628188A19AA375300703ACF /* RosyWriterVideoProcessor.m in Sources */,
+				06E8877419AA6A050049C7E1 /* SoundFactory.m in Sources */,
+				0628185719A90ACB00703ACF /* Starfield.m in Sources */,
+				0628186519A9157200703ACF /* ShadedMesh.m in Sources */,
+				0628187419A95B0B00703ACF /* Crosshair.m in Sources */,
+				0628187D19A95EDC00703ACF /* Singletons.c in Sources */,
+				0628186219A9150700703ACF /* Creep.m in Sources */,
 				0666B88519A828A400760006 /* main.m in Sources */,
+				0676C5A519A8E090004DC90F /* Background.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +616,7 @@
 				GCC_PREFIX_HEADER = "BlastAR!/BlastAR!-Prefix.pch";
 				INFOPLIST_FILE = "BlastAR!/BlastAR!-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = ./../../OPjective/OPjective;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -423,6 +630,7 @@
 				GCC_PREFIX_HEADER = "BlastAR!/BlastAR!-Prefix.pch";
 				INFOPLIST_FILE = "BlastAR!/BlastAR!-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = ./../../OPjective/OPjective;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -486,6 +694,7 @@
 				0666B8B019A828A400760006 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0666B8B119A828A400760006 /* Build configuration list for PBXNativeTarget "BlastAR!Tests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +703,7 @@
 				0666B8B319A828A400760006 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

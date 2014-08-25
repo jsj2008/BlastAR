@@ -11,4 +11,7 @@
 
 @interface ViewController : GLKViewController
 
+//@property (weak, nonatomic) IBOutlet UILabel *title;
+//@property (weak, nonatomic) IBOutlet UILabel *tapToBegin;
+
 @end
