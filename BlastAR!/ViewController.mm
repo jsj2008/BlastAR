@@ -190,6 +190,9 @@ enum GameState{
     self.nearestEnemy = nil;
     self.gameState = gamePlaying;
     self.viewRedness = 0.0f;
+    self.spawnInterval = 5;
+    self.proximityTimer = 2.5f;
+    self.spawnTimer = self.spawnInterval;
 }
 
 GLKMatrix4 VP;
@@ -282,17 +285,21 @@ vec3 shootDir = {0};
             }
             
             if(self.proximityTimer <= 0.0){
+                float dist = vec3_dist((float*)VEC3_ZERO, _nearestEnemy.position.v);
                 self.proximityTimer = [self proximityInterval];
                 if(_nearestEnemy != nil){
-                    float dist = vec3_dist((float*)VEC3_ZERO, _nearestEnemy.position.v);
-                    float pitch = 10.0f - dist;
-                    [self.proximityWarning setPitch:pitch];
                     [self.proximityWarning play];
                     
                     if(dist < 0.75f){
                         _gameState = gameOver;
                     }
                 }
+            }
+            
+            if(_nearestEnemy){
+                float dist = vec3_dist((float*)VEC3_ZERO, _nearestEnemy.position.v);
+                float pitch = 10.0f - dist;
+                [self.proximityWarning setPitch:pitch];
             }
             break;
         case gameOver:

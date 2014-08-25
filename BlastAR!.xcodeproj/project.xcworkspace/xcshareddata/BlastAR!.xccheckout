@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>49C715FF-4775-4973-ACA8-1681BC9F4190</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BlastAR!</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2E86A774-D067-446E-BE2D-281BDA9DD8C6</key>
+		<string>https://github.com/mrpossoms/OPjective.git</string>
+		<key>E62107AA-6653-4F9A-B6AF-45D2915DDE6B</key>
+		<string>https://github.com/mrpossoms/BlastAR.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BlastAR!.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2E86A774-D067-446E-BE2D-281BDA9DD8C6</key>
+		<string>../../OPjective</string>
+		<key>E62107AA-6653-4F9A-B6AF-45D2915DDE6B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mrpossoms/BlastAR.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E62107AA-6653-4F9A-B6AF-45D2915DDE6B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E62107AA-6653-4F9A-B6AF-45D2915DDE6B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BlastAR!</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2E86A774-D067-446E-BE2D-281BDA9DD8C6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OPjective</string>
+		</dict>
+	</array>
+</dict>
+</plist>
