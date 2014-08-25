@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0608106E19A6BD5A0005BC51 /* OPjective.m in Sources */ = {isa = PBXBuildFile; fileRef = 0608106819A6BD5A0005BC51 /* OPjective.m */; };
+		0608106F19A6BD5A0005BC51 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 0608106B19A6BD5A0005BC51 /* Mesh.m */; };
+		0608107019A6BD5A0005BC51 /* Shader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0608106D19A6BD5A0005BC51 /* Shader.m */; };
+		0628186D19A9546A00703ACF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628186C19A9546A00703ACF /* AVFoundation.framework */; };
+		06467FBF19A70DD0009E628E /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = 06467FBE19A70DD0009E628E /* Sound.m */; };
+		065074C619A6CCF500741471 /* Texture.m in Sources */ = {isa = PBXBuildFile; fileRef = 065074C519A6CCF500741471 /* Texture.m */; };
+		0666B85A19A7DE8A00760006 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B85919A7DE8A00760006 /* GLKit.framework */; };
+		0666B85C19A7DEB400760006 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B85B19A7DEB400760006 /* OpenAL.framework */; };
+		0666B86119A7DF0500760006 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B86019A7DF0500760006 /* AudioToolbox.framework */; };
+		06ADC21F19A55D5300E9DD50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06ADC21E19A55D5300E9DD50 /* Foundation.framework */; };
+		06ADC22D19A55D5300E9DD50 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06ADC22C19A55D5300E9DD50 /* XCTest.framework */; };
+		06ADC22E19A55D5300E9DD50 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06ADC21E19A55D5300E9DD50 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		06ADC23119A55D5300E9DD50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 06ADC21319A55D5300E9DD50 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 06ADC21A19A55D5300E9DD50;
+			remoteInfo = OPjective;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		06ADC21919A55D5300E9DD50 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0608106619A6BD5A0005BC51 /* OPjective-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OPjective-Prefix.pch"; sourceTree = "<group>"; };
+		0608106719A6BD5A0005BC51 /* OPjective.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPjective.h; sourceTree = "<group>"; };
+		0608106819A6BD5A0005BC51 /* OPjective.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPjective.m; sourceTree = "<group>"; };
+		0608106A19A6BD5A0005BC51 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		0608106B19A6BD5A0005BC51 /* Mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
+		0608106C19A6BD5A0005BC51 /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		0608106D19A6BD5A0005BC51 /* Shader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shader.m; sourceTree = "<group>"; };
+		0628186C19A9546A00703ACF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		06467FBD19A70DD0009E628E /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = Audio/Sound.h; sourceTree = "<group>"; };
+		06467FBE19A70DD0009E628E /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sound.m; path = Audio/Sound.m; sourceTree = "<group>"; };
+		065074C419A6CCF500741471 /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture.h; sourceTree = "<group>"; };
+		065074C519A6CCF500741471 /* Texture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture.m; sourceTree = "<group>"; };
+		0666B85919A7DE8A00760006 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		0666B85B19A7DEB400760006 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		0666B86019A7DF0500760006 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0666B86419A8041300760006 /* linearAlgebra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = linearAlgebra.h; path = Math/linearAlgebra.h; sourceTree = "<group>"; };
+		06ADC21B19A55D5300E9DD50 /* libOPjective.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOPjective.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		06ADC21E19A55D5300E9DD50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		06ADC22B19A55D5300E9DD50 /* OPjectiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OPjectiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06ADC22C19A55D5300E9DD50 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06ADC21819A55D5300E9DD50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0628186D19A9546A00703ACF /* AVFoundation.framework in Frameworks */,
+				0666B86119A7DF0500760006 /* AudioToolbox.framework in Frameworks */,
+				0666B85C19A7DEB400760006 /* OpenAL.framework in Frameworks */,
+				0666B85A19A7DE8A00760006 /* GLKit.framework in Frameworks */,
+				06ADC21F19A55D5300E9DD50 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06ADC22819A55D5300E9DD50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06ADC22D19A55D5300E9DD50 /* XCTest.framework in Frameworks */,
+				06ADC22E19A55D5300E9DD50 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0608106519A6BD5A0005BC51 /* OPjective */ = {
+			isa = PBXGroup;
+			children = (
+				0666B86219A803BD00760006 /* Math */,
+				0608106619A6BD5A0005BC51 /* OPjective-Prefix.pch */,
+				0608106719A6BD5A0005BC51 /* OPjective.h */,
+				0608106819A6BD5A0005BC51 /* OPjective.m */,
+				06467FBC19A70DB6009E628E /* Audio */,
+				0608106919A6BD5A0005BC51 /* Rendering */,
+			);
+			path = OPjective;
+			sourceTree = "<group>";
+		};
+		0608106919A6BD5A0005BC51 /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				0608106A19A6BD5A0005BC51 /* Mesh.h */,
+				0608106B19A6BD5A0005BC51 /* Mesh.m */,
+				0608106C19A6BD5A0005BC51 /* Shader.h */,
+				0608106D19A6BD5A0005BC51 /* Shader.m */,
+				065074C419A6CCF500741471 /* Texture.h */,
+				065074C519A6CCF500741471 /* Texture.m */,
+			);
+			path = Rendering;
+			sourceTree = "<group>";
+		};
+		06467FBC19A70DB6009E628E /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				06467FBD19A70DD0009E628E /* Sound.h */,
+				06467FBE19A70DD0009E628E /* Sound.m */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
+		0666B86219A803BD00760006 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				0666B86419A8041300760006 /* linearAlgebra.h */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
+		06ADC21219A55D5300E9DD50 = {
+			isa = PBXGroup;
+			children = (
+				0608106519A6BD5A0005BC51 /* OPjective */,
+				06ADC21D19A55D5300E9DD50 /* Frameworks */,
+				06ADC21C19A55D5300E9DD50 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		06ADC21C19A55D5300E9DD50 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06ADC21B19A55D5300E9DD50 /* libOPjective.a */,
+				06ADC22B19A55D5300E9DD50 /* OPjectiveTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06ADC21D19A55D5300E9DD50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0628186C19A9546A00703ACF /* AVFoundation.framework */,
+				0666B86019A7DF0500760006 /* AudioToolbox.framework */,
+				0666B85B19A7DEB400760006 /* OpenAL.framework */,
+				0666B85919A7DE8A00760006 /* GLKit.framework */,
+				06ADC21E19A55D5300E9DD50 /* Foundation.framework */,
+				06ADC22C19A55D5300E9DD50 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06ADC21A19A55D5300E9DD50 /* OPjective */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06ADC23E19A55D5300E9DD50 /* Build configuration list for PBXNativeTarget "OPjective" */;
+			buildPhases = (
+				06ADC21719A55D5300E9DD50 /* Sources */,
+				06ADC21819A55D5300E9DD50 /* Frameworks */,
+				06ADC21919A55D5300E9DD50 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OPjective;
+			productName = OPjective;
+			productReference = 06ADC21B19A55D5300E9DD50 /* libOPjective.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		06ADC22A19A55D5300E9DD50 /* OPjectiveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06ADC24119A55D5300E9DD50 /* Build configuration list for PBXNativeTarget "OPjectiveTests" */;
+			buildPhases = (
+				06ADC22719A55D5300E9DD50 /* Sources */,
+				06ADC22819A55D5300E9DD50 /* Frameworks */,
+				06ADC22919A55D5300E9DD50 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				06ADC23219A55D5300E9DD50 /* PBXTargetDependency */,
+			);
+			name = OPjectiveTests;
+			productName = OPjectiveTests;
+			productReference = 06ADC22B19A55D5300E9DD50 /* OPjectiveTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06ADC21319A55D5300E9DD50 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = OPifex;
+			};
+			buildConfigurationList = 06ADC21619A55D5300E9DD50 /* Build configuration list for PBXProject "OPjective" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 06ADC21219A55D5300E9DD50;
+			productRefGroup = 06ADC21C19A55D5300E9DD50 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06ADC21A19A55D5300E9DD50 /* OPjective */,
+				06ADC22A19A55D5300E9DD50 /* OPjectiveTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06ADC22919A55D5300E9DD50 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06ADC21719A55D5300E9DD50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0608106F19A6BD5A0005BC51 /* Mesh.m in Sources */,
+				065074C619A6CCF500741471 /* Texture.m in Sources */,
+				0608107019A6BD5A0005BC51 /* Shader.m in Sources */,
+				06467FBF19A70DD0009E628E /* Sound.m in Sources */,
+				0608106E19A6BD5A0005BC51 /* OPjective.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		06ADC22719A55D5300E9DD50 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		06ADC23219A55D5300E9DD50 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 06ADC21A19A55D5300E9DD50 /* OPjective */;
+			targetProxy = 06ADC23119A55D5300E9DD50 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		06ADC23C19A55D5300E9DD50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		06ADC23D19A55D5300E9DD50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		06ADC23F19A55D5300E9DD50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/OPjective.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OPjective/OPjective-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = OPjective;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "/Users/kirkroerig/Code/OPjective/**";
+			};
+			name = Debug;
+		};
+		06ADC24019A55D5300E9DD50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/OPjective.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OPjective/OPjective-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = OPjective;
+				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "/Users/kirkroerig/Code/OPjective/**";
+			};
+			name = Release;
+		};
+		06ADC24219A55D5300E9DD50 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OPjective/OPjective-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OPjectiveTests/OPjectiveTests-Info.plist";
+				PRODUCT_NAME = OPjectiveTests;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		06ADC24319A55D5300E9DD50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OPjective/OPjective-Prefix.pch";
+				INFOPLIST_FILE = "OPjectiveTests/OPjectiveTests-Info.plist";
+				PRODUCT_NAME = OPjectiveTests;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06ADC21619A55D5300E9DD50 /* Build configuration list for PBXProject "OPjective" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06ADC23C19A55D5300E9DD50 /* Debug */,
+				06ADC23D19A55D5300E9DD50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06ADC23E19A55D5300E9DD50 /* Build configuration list for PBXNativeTarget "OPjective" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06ADC23F19A55D5300E9DD50 /* Debug */,
+				06ADC24019A55D5300E9DD50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06ADC24119A55D5300E9DD50 /* Build configuration list for PBXNativeTarget "OPjectiveTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06ADC24219A55D5300E9DD50 /* Debug */,
+				06ADC24319A55D5300E9DD50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06ADC21319A55D5300E9DD50 /* Project object */;
+}

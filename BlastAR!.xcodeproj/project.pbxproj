@@ -41,7 +41,6 @@
 		0666B8A119A828A400760006 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B87819A828A400760006 /* UIKit.framework */; };
 		0666B8A919A828A400760006 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0666B8A719A828A400760006 /* InfoPlist.strings */; };
 		0666B8AB19A828A400760006 /* BlastAR_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0666B8AA19A828A400760006 /* BlastAR_Tests.m */; };
-		0676C5A119A8DE8C004DC90F /* libOPjective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0676C59E19A8DE34004DC90F /* libOPjective.a */; };
 		0676C5A519A8E090004DC90F /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 0676C5A419A8E090004DC90F /* Background.m */; };
 		06E8876719AA3C1F0049C7E1 /* FullscreenQuad.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8876619AA3C1F0049C7E1 /* FullscreenQuad.vsh */; };
 		06E8876B19AA3C970049C7E1 /* FullscreenQuad.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */; };
@@ -50,6 +49,7 @@
 		06E8877419AA6A050049C7E1 /* SoundFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E8877319AA6A050049C7E1 /* SoundFactory.m */; };
 		06E8877619AA88920049C7E1 /* Particles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8877519AA88910049C7E1 /* Particles.vsh */; };
 		06E8877819AA8A7A0049C7E1 /* Particles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8877719AA8A7A0049C7E1 /* Particles.fsh */; };
+		06E8878B19AABA570049C7E1 /* libOPjective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E8878819AAB9F80049C7E1 /* libOPjective.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,16 +60,16 @@
 			remoteGlobalIDString = 0666B87019A828A400760006;
 			remoteInfo = "BlastAR!";
 		};
-		0676C59D19A8DE34004DC90F /* PBXContainerItemProxy */ = {
+		06E8878719AAB9F80049C7E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0676C59819A8DE34004DC90F /* OPjective.xcodeproj */;
+			containerPortal = 06E8878219AAB9F80049C7E1 /* OPjective.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06ADC21B19A55D5300E9DD50;
 			remoteInfo = OPjective;
 		};
-		0676C59F19A8DE34004DC90F /* PBXContainerItemProxy */ = {
+		06E8878919AAB9F80049C7E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0676C59819A8DE34004DC90F /* OPjective.xcodeproj */;
+			containerPortal = 06E8878219AAB9F80049C7E1 /* OPjective.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06ADC22B19A55D5300E9DD50;
 			remoteInfo = OPjectiveTests;
@@ -124,7 +124,6 @@
 		0666B8A619A828A400760006 /* BlastAR!Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BlastAR!Tests-Info.plist"; sourceTree = "<group>"; };
 		0666B8A819A828A400760006 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0666B8AA19A828A400760006 /* BlastAR_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlastAR_Tests.m; sourceTree = "<group>"; };
-		0676C59819A8DE34004DC90F /* OPjective.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OPjective.xcodeproj; path = ../../OPjective/OPjective.xcodeproj; sourceTree = "<group>"; };
 		0676C5A319A8E090004DC90F /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = Scene/Background.h; sourceTree = "<group>"; };
 		0676C5A419A8E090004DC90F /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = Scene/Background.m; sourceTree = "<group>"; };
 		0676C5A619A8E217004DC90F /* Drawable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Drawable.h; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		06E8877319AA6A050049C7E1 /* SoundFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundFactory.m; path = Effects/SoundFactory.m; sourceTree = "<group>"; };
 		06E8877519AA88910049C7E1 /* Particles.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Particles.vsh; path = Shaders/Particles.vsh; sourceTree = "<group>"; };
 		06E8877719AA8A7A0049C7E1 /* Particles.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Particles.fsh; path = Shaders/Particles.fsh; sourceTree = "<group>"; };
+		06E8878219AAB9F80049C7E1 /* OPjective.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OPjective.xcodeproj; path = OPjective/OPjective.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,11 +144,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06E8878B19AABA570049C7E1 /* libOPjective.a in Frameworks */,
 				06E8876D19AA416E0049C7E1 /* QuartzCore.framework in Frameworks */,
 				0628187119A954D100703ACF /* AudioToolbox.framework in Frameworks */,
 				0628186F19A9549E00703ACF /* AVFoundation.framework in Frameworks */,
 				0628185219A8ED5300703ACF /* CoreMotion.framework in Frameworks */,
-				0676C5A119A8DE8C004DC90F /* libOPjective.a in Frameworks */,
 				0666B87D19A828A400760006 /* OpenGLES.framework in Frameworks */,
 				0666B87719A828A400760006 /* CoreGraphics.framework in Frameworks */,
 				0666B87919A828A400760006 /* UIKit.framework in Frameworks */,
@@ -208,8 +208,8 @@
 		0666B86819A828A400760006 = {
 			isa = PBXGroup;
 			children = (
+				06E8878219AAB9F80049C7E1 /* OPjective.xcodeproj */,
 				0628186B19A93B8800703ACF /* Shootable.h */,
-				0676C59819A8DE34004DC90F /* OPjective.xcodeproj */,
 				0666B87E19A828A400760006 /* BlastAR! */,
 				0666B8A419A828A400760006 /* BlastAR!Tests */,
 				0666B87319A828A400760006 /* Frameworks */,
@@ -300,15 +300,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0676C59919A8DE34004DC90F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0676C59E19A8DE34004DC90F /* libOPjective.a */,
-				0676C5A019A8DE34004DC90F /* OPjectiveTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0676C5A219A8E06F004DC90F /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +322,15 @@
 				06E8877319AA6A050049C7E1 /* SoundFactory.m */,
 			);
 			name = Effects;
+			sourceTree = "<group>";
+		};
+		06E8878319AAB9F80049C7E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06E8878819AAB9F80049C7E1 /* libOPjective.a */,
+				06E8878A19AAB9F80049C7E1 /* OPjectiveTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,8 +398,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0676C59919A8DE34004DC90F /* Products */;
-					ProjectRef = 0676C59819A8DE34004DC90F /* OPjective.xcodeproj */;
+					ProductGroup = 06E8878319AAB9F80049C7E1 /* Products */;
+					ProjectRef = 06E8878219AAB9F80049C7E1 /* OPjective.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -411,18 +411,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0676C59E19A8DE34004DC90F /* libOPjective.a */ = {
+		06E8878819AAB9F80049C7E1 /* libOPjective.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libOPjective.a;
-			remoteRef = 0676C59D19A8DE34004DC90F /* PBXContainerItemProxy */;
+			remoteRef = 06E8878719AAB9F80049C7E1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		0676C5A019A8DE34004DC90F /* OPjectiveTests.xctest */ = {
+		06E8878A19AAB9F80049C7E1 /* OPjectiveTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = OPjectiveTests.xctest;
-			remoteRef = 0676C59F19A8DE34004DC90F /* PBXContainerItemProxy */;
+			remoteRef = 06E8878919AAB9F80049C7E1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -616,7 +616,7 @@
 				GCC_PREFIX_HEADER = "BlastAR!/BlastAR!-Prefix.pch";
 				INFOPLIST_FILE = "BlastAR!/BlastAR!-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = ./../../OPjective/OPjective;
+				USER_HEADER_SEARCH_PATHS = ./OPjective/OPjective;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -630,7 +630,7 @@
 				GCC_PREFIX_HEADER = "BlastAR!/BlastAR!-Prefix.pch";
 				INFOPLIST_FILE = "BlastAR!/BlastAR!-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = ./../../OPjective/OPjective;
+				USER_HEADER_SEARCH_PATHS = ./OPjective/OPjective;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
