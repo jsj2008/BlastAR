@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ShadedMesh.h"
-#import "Drawable.h"
+#import "OPjective.h"
 
-@interface Crosshair : ShadedMesh <Drawable>
+@interface Crosshair : ShadedMesh <Drawable, Ranked>
 
 @end

@@ -132,4 +132,14 @@
     glDisable(GL_BLEND);
 }
 
+- (int) drawRank
+{
+    return 0;
+}
+
+- (int) updateRank
+{
+    return 0;
+}
+
 @end

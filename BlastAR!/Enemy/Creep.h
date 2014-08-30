@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Drawable.h"
-#import "Updateable.h"
-#import "ShadedMesh.h"
+#import "OPjective.h"
 #import "Shootable.h"
 
 static inline float pdf(vec3 x, int seed){
@@ -40,7 +38,7 @@ static inline float pdf(vec3 x, int seed){
     return result;
 }
 
-@interface Creep : ShadedMesh <Drawable, Updateable, Shootable>
+@interface Creep : ShadedMesh <Drawable, Updateable, Ranked, Shootable>
 
 @property (nonatomic) GLKVector3 position;
 @property (nonatomic) GLKVector3 velocity;

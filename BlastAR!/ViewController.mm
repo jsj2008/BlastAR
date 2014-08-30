@@ -9,22 +9,18 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreMotion/CoreMotion.h>
 #import "ViewController.h"
-#import "OPjective.h"
+
 #import "Background.h"
 #import "Scene/Starfield.h"
 #import "Scene/Crosshair.h"
 #import "Effects/SoundFactory.h"
 #import "Effects/Particles.h"
-#import "Enemy/Creep.h"
-#import "Drawable.h"
+
 #import "Singletons.h"
 
+#import "SpawnDelegate.h"
+#import "ProximityDelegate.h"
 
-enum GameState{
-    gameMainMenu,
-    gamePlaying,
-    gameOver
-};
 
 @interface ViewController () {
 
@@ -34,29 +30,11 @@ enum GameState{
 
 @property (strong, nonatomic) EAGLContext *context;
 @property (strong, nonatomic) CMMotionManager *motionManager;
-@property (strong, nonatomic) id <Drawable> crosshair;
+@property (strong, nonatomic) id <Drawable, Ranked> crosshair;
 @property (strong, nonatomic) Background* background;
 @property (nonatomic) GLKQuaternion orientation;
 
-@property (nonatomic) NSMutableArray *scene;
-@property (nonatomic) NSMutableArray *enemies;
-@property (nonatomic) Creep* nearestEnemy;
-
-@property (nonatomic) float viewRedness;
-
-@property (strong, nonatomic) NSDate* lastTime;
-@property (nonatomic) Sound* pewPew;
-@property (nonatomic) Sound* spawn;
-@property (nonatomic) Sound* proximityWarning;
-
 @property (nonatomic) Particles* smoke;
-
-@property (nonatomic) float spawnInterval;
-@property (nonatomic) double spawnTimer;
-@property (nonatomic) float proximityTimer;
-
-@property (nonatomic) enum GameState gameState;
-
 
 - (void)setupGL;
 - (void)tearDownGL;
@@ -90,9 +68,9 @@ enum GameState{
     return _enemies;
 }
 
-- (NSMutableArray*) scene{
+- (OrderedScene*) scene{
     if(!_scene){
-        _scene = [[NSMutableArray alloc] init];
+        _scene = [[OrderedScene alloc] init];
     }
     
     return _scene;
@@ -136,9 +114,9 @@ enum GameState{
     [self.scene addObject:_background = [[Background alloc] initWithGLKview:self andGLContext:self.context]];
     [self.scene addObject:self.smoke];
 
+    [[ReoccuringEvent alloc] initWithCallback:[[SpawnDelegate alloc] initWithGame:self] andInterval:5.0f];
+    [[ReoccuringEvent alloc] initWithCallback:[[ProximityDelegate alloc] initWithGame:self] andInterval:1.5f];
     
-    self.spawnTimer = self.spawnInterval = 5;
-    self.proximityTimer = [self proximityInterval];
     self.viewRedness = 0;
     
     self.gameState = gameMainMenu;
@@ -186,13 +164,12 @@ enum GameState{
 
 - (void) startGame
 {
+    [self.scene removeObjects:self.enemies];
     [self.enemies removeAllObjects];
+    [self.scene addObject:self.crosshair];
     self.nearestEnemy = nil;
     self.gameState = gamePlaying;
     self.viewRedness = 0.0f;
-    self.spawnInterval = 5;
-    self.proximityTimer = 2.5f;
-    self.spawnTimer = self.spawnInterval;
 }
 
 GLKMatrix4 VP;
@@ -271,31 +248,6 @@ vec3 shootDir = {0};
 
     switch (_gameState) {
         case gamePlaying:
-            self.spawnTimer -= dt;
-            self.proximityTimer -= dt;
-            
-            if(self.spawnTimer <= 0.0){
-                [self.enemies addObject:[[Creep alloc] init]];
-                self.spawnTimer = (self.spawnInterval -= 0.1f);
-                
-                if(self.spawnInterval < 0.75f)
-                    self.spawnInterval = 0.75f;
-                
-                [self.spawn play];
-            }
-            
-            if(self.proximityTimer <= 0.0){
-                float dist = vec3_dist((float*)VEC3_ZERO, _nearestEnemy.position.v);
-                self.proximityTimer = [self proximityInterval];
-                if(_nearestEnemy != nil){
-                    [self.proximityWarning play];
-                    
-                    if(dist < 0.75f){
-                        _gameState = gameOver;
-                    }
-                }
-            }
-            
             if(_nearestEnemy){
                 float dist = vec3_dist((float*)VEC3_ZERO, _nearestEnemy.position.v);
                 float pitch = 10.0f - dist;
@@ -309,22 +261,11 @@ vec3 shootDir = {0};
             break;
     }
     
-    if(self.gameState == gamePlaying){
-        
-    }
-    
-    // update all the scene objects
-    for (id object in self.scene) {
-        if([object conformsToProtocol:@protocol(Updateable)]){
-                 [object updateWithTimeElapsed:dt];
-        }
-    }
-    
     if(_gameState == gamePlaying){
     // update the enemies
     float closestDist = 1000;
-    for (id object in self.enemies) {
-        if([object conformsToProtocol:@protocol(Updateable)]){
+    for (id object in self.scene.updatableObjects) {
+        if([object conformsToProtocol:@protocol(Shootable)]){
             Creep* creep = (Creep*)object;
             
             float d = vec3_dist((float*)VEC3_ZERO, creep.position.v);
@@ -332,9 +273,13 @@ vec3 shootDir = {0};
                 closestDist = d;
                 _nearestEnemy = creep;
             }
-            [object updateWithTimeElapsed:dt];
         }
     }
+    }
+
+    if(_gameState == gamePlaying){
+        [self.scene updateWithTimeElapsed:dt];
+        [ReoccuringEvent updateWithTimeElapsed:dt];
     }
 }
 
@@ -343,22 +288,9 @@ vec3 shootDir = {0};
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    for (id object in _scene) {
-        if([object conformsToProtocol:@protocol(Drawable)]){
-            [object drawWithViewProjection:&VP];
-        }
-    }
     
     glEnable(GL_DEPTH_TEST);
-    for (id object in self.enemies) {
-        if([object conformsToProtocol:@protocol(Drawable)]){
-            [object drawWithViewProjection:&VP];
-        }
-    }
-    
-    if(self.gameState == gamePlaying){
-        [self.crosshair drawWithViewProjection:&VP];
-    }
+    [self.scene drawWithViewProjection:&VP];
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -384,7 +316,7 @@ vec3 shootDir = {0};
     NSMutableArray* killedEnemies = [[NSMutableArray alloc] init];
     
     // check to see what enemies, if any were shot and or killed
-    for (id object in self.enemies) {
+    for (id object in self.scene.updatableObjects) {
         if([object conformsToProtocol:@protocol(Shootable)]){
             if([object fireAt:projectile]){
                 Creep* creep = (Creep*)object;
@@ -424,6 +356,7 @@ vec3 shootDir = {0};
     
     // clean up
     [self.enemies removeObjectsInArray:killedEnemies];
+    [self.scene removeObjects: killedEnemies];
     
     [self.pewPew play];
 }

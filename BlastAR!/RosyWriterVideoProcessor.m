@@ -76,7 +76,7 @@
 {
     if (self = [super init]) {
         previousSecondTimestamps = [[NSMutableArray alloc] init];
-        referenceOrientation = UIDeviceOrientationPortrait;
+        referenceOrientation = (AVCaptureVideoOrientation)UIDeviceOrientationPortrait;
     }
     return self;
 }
@@ -326,6 +326,7 @@
 		Clients whose image processing is faster than real-time should consider setting AVCaptureVideoDataOutput's
 		alwaysDiscardsLateVideoFrames property to NO. 
 	 */
+    [captureSession setSessionPreset:AVCaptureSessionPreset640x480];
 	[videoOut setAlwaysDiscardsLateVideoFrames:YES];
 	[videoOut setVideoSettings:[NSDictionary dictionaryWithObject:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA] forKey:(id)kCVPixelBufferPixelFormatTypeKey]];
 	dispatch_queue_t videoCaptureQueue = dispatch_queue_create("Video Capture Queue", DISPATCH_QUEUE_SERIAL);

@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "OPjective.h"
-#import "ShadedMesh.h"
-#import "Updateable.h"
-#import "Drawable.h"
 
 struct ParticleVertex{
     vec3 position;
@@ -21,7 +18,7 @@ struct ParticleVertex{
     float life;
 };
 
-@interface Particles : ShadedMesh<Drawable, Updateable>
+@interface Particles : ShadedMesh<Drawable, Updateable, Ranked>
 
 - (id) initWithCapacity:(int)capacity;
 - (void) spawnParticleAtPosition:(vec3)position withVelocity:(vec3)velocity andColor:(vec4)color andSize:(float)size andLifespan:(float)lifespan;

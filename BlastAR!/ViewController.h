@@ -8,10 +8,28 @@
 
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
+#import "Enemy/Creep.h"
+#import "OPjective.h"
+
+enum GameState{
+    gameMainMenu,
+    gamePlaying,
+    gameOver
+};
 
 @interface ViewController : GLKViewController
 
-//@property (weak, nonatomic) IBOutlet UILabel *title;
-//@property (weak, nonatomic) IBOutlet UILabel *tapToBegin;
+@property (nonatomic) OrderedScene *scene;
+@property (nonatomic) NSMutableArray *enemies;
+@property (nonatomic) Creep* nearestEnemy;
+
+@property (nonatomic) float viewRedness;
+
+@property (strong, nonatomic) NSDate* lastTime;
+@property (nonatomic) Sound* pewPew;
+@property (nonatomic) Sound* spawn;
+@property (nonatomic) Sound* proximityWarning;
+
+@property (nonatomic) enum GameState gameState;
 
 @end

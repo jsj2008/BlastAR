@@ -178,4 +178,14 @@ struct QuadVertex{
     [self checkError];
 }
 
+- (int) drawRank
+{
+    return -1;
+}
+
+- (int) updateRank
+{
+    return 0;
+}
+
 @end

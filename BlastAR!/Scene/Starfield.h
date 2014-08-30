@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Drawable.h"
-#import "ShadedMesh.h"
+#import "OPjective.h"
 
 @interface Starfield : ShadedMesh<Drawable>
 

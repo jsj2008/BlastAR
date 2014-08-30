@@ -261,4 +261,14 @@ struct CreepVertex{
     return NO;
 }
 
+- (int) drawRank
+{
+    return 0;
+}
+
+- (int) updateRank
+{
+    return 0;
+}
+
 @end

@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Drawable.h"
-#import "ShadedMesh.h"
+#import "OPjective.h"
 #import "RosyWriterVideoProcessor.h"
 
-@interface Background : ShadedMesh <RosyWriterVideoProcessorDelegate, Drawable>
+@interface Background : ShadedMesh <RosyWriterVideoProcessorDelegate, Drawable, Ranked>
 
 - (id) initWithGLKview:(GLKViewController*)view andGLContext:(CVEAGLContext)context;
 - (void) setHue:(vec3)color;
