@@ -16,6 +16,8 @@
 #import "Effects/SoundFactory.h"
 #import "Effects/Particles.h"
 
+#import "GenTest.h"
+
 #import "Singletons.h"
 
 #import "SpawnDelegate.h"
@@ -112,6 +114,7 @@
     
     
     [self.scene addObject:_background = [[Background alloc] initWithGLKview:self andGLContext:self.context]];
+    [self.scene addObject:[[GenTest alloc]init]];
     [self.scene addObject:self.smoke];
 
     [[ReoccuringEvent alloc] initWithCallback:[[SpawnDelegate alloc] initWithGame:self] andInterval:5.0f];

@@ -88,7 +88,13 @@ struct QuadVertex{
         }
     };
     
-    [self.mesh updateData:quad ofSize:sizeof(quad)];
+    static short indicies[] = {
+        1, 2, 0,
+        1, 3, 2
+    };
+    
+    [self.mesh updateData:quad ofSize:sizeof(quad) andIndicies:indicies ofSize:sizeof(indicies)];
+    //[self.mesh updateData:quad ofSize:sizeof(quad)];
     
     // Initialize the class responsible for managing AV capture session and asset writer
     self.videoProcessor = [[RosyWriterVideoProcessor alloc] init];
