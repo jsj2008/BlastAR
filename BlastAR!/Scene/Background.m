@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 OPifex. All rights reserved.
 //
 
+#import <OpenGLES/ES2/glext.h>
 #import <QuartzCore/CAEAGLLayer.h>
 #import "Background.h"
 #import "OPjective.h"
@@ -88,7 +89,7 @@ struct QuadVertex{
         }
     };
     
-    static short indicies[] = {
+    static unsigned int indicies[] = {
         1, 2, 0,
         1, 3, 2
     };
