@@ -97,10 +97,8 @@ void assignBones(struct vertex* v, int slice, int slices)
         
         // create the ring of vertices for this
         // segment of the body
-        for(int i = half; i--;){
+        for(int i = ver; i--;){
             float p = i / (float)half;
-            float x0 =  (p * 2.0f - 1.0f);
-            float x1 = -(p * 2.0f - 1.0f);
             
             top((mesh + si + i)->position, x0, z);
             bottom((mesh + si + half + i)->position, x1, z);
