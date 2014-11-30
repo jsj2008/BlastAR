@@ -117,8 +117,8 @@
     [self.scene addObject:[[GenTest alloc]init]];
     [self.scene addObject:self.smoke];
 
-    [[ReoccuringEvent alloc] initWithCallback:[[SpawnDelegate alloc] initWithGame:self] andInterval:5.0f];
-    [[ReoccuringEvent alloc] initWithCallback:[[ProximityDelegate alloc] initWithGame:self] andInterval:1.5f];
+    [ReoccuringEvent addWithCallback:[[SpawnDelegate alloc] initWithGame:self] andInterval:5.0f];
+    [ReoccuringEvent addWithCallback:[[ProximityDelegate alloc] initWithGame:self] andInterval:1.5f];
     
     self.viewRedness = 0;
     
@@ -156,6 +156,8 @@
 {
     [EAGLContext setCurrentContext:self.context];
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glCullFace(GL_BACK);
 }
 
 - (void)tearDownGL

@@ -86,7 +86,11 @@ struct CreepVertex{
                 float test = pdf(p, bodySeed);
                 if(test > 0){
                     struct CreepVertex* vert = geo + vi; // grab a pointer to the current vertex for ease
-                    vec3 pos = { p[2] * 0.5f - 0.25f, p[1] * 0.5f - 0.25f, p[0] * 0.5f - 0.25f }; // world coordinate of the vertex
+                    vec3 pos = {
+                        p[2] * 0.5f - 0.25f,
+                        p[1] * 0.5f - 0.25f,
+                        p[0] * 0.5f - 0.25f
+                    }; // world coordinate of the vertex
                     
                     float distSqr = vec3_dot(pos, pos);
                     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060EF5C11A2A976200068B50 /* GenTest.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 060EF5C01A2A976200068B50 /* GenTest.fsh */; };
 		0628185219A8ED5300703ACF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628185119A8ED5300703ACF /* CoreMotion.framework */; };
 		0628185719A90ACB00703ACF /* Starfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628185619A90ACB00703ACF /* Starfield.m */; };
 		0628185C19A90F3C00703ACF /* Starfield.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628185B19A90F3C00703ACF /* Starfield.vsh */; };
@@ -80,6 +81,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		060EF5C01A2A976200068B50 /* GenTest.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = GenTest.fsh; path = Shaders/GenTest.fsh; sourceTree = "<group>"; };
 		0628185119A8ED5300703ACF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		0628185519A90ACB00703ACF /* Starfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Starfield.h; path = Scene/Starfield.h; sourceTree = "<group>"; };
 		0628185619A90ACB00703ACF /* Starfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Starfield.m; path = Scene/Starfield.m; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				06E8877519AA88910049C7E1 /* Particles.vsh */,
 				06E8877719AA8A7A0049C7E1 /* Particles.fsh */,
 				068FE38A19B364B800272EFB /* GenTest.vsh */,
+				060EF5C01A2A976200068B50 /* GenTest.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				0628185C19A90F3C00703ACF /* Starfield.vsh in Resources */,
 				0666B88319A828A400760006 /* InfoPlist.strings in Resources */,
 				0628187A19A95CB300703ACF /* CrossHair.fsh in Resources */,
+				060EF5C11A2A976200068B50 /* GenTest.fsh in Resources */,
 				0666B89319A828A400760006 /* room.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
