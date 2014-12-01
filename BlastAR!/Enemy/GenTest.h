@@ -13,9 +13,11 @@
 
 struct genBone;
 struct genBone{
-    vec3 basePosition;
+    vec3 offsetFromBase;
     vec3 position;
     vec3 velocity;
+    GLKQuaternion rotation;
+    float maxDistance;
     struct genBone* last;
     struct genBone* next;
 };
@@ -32,6 +34,8 @@ struct vertex{
 
 @end
 
-@interface GenTest : ShadedMesh<Drawable, Ranked>
+@interface GenTest : ShadedMesh<Drawable, Updateable, Ranked>
+
+@property (nonatomic) GenSkeleton* skel;
 
 @end

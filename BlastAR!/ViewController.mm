@@ -220,9 +220,11 @@ vec3 shootDir = {0};
     VP = GLKMatrix4Multiply(projectionMatrix, viewMatrix);
 }
 
+double lastTime = CFAbsoluteTimeGetCurrent();
 - (void)update
 {
-    double dt = 0;
+    double now = CFAbsoluteTimeGetCurrent();
+    double dt = now - lastTime;
     
     // use gyro data to do cool stuff
     if(self.motionManager.gyroAvailable){
@@ -268,24 +270,26 @@ vec3 shootDir = {0};
     
     if(_gameState == gamePlaying){
     // update the enemies
-    float closestDist = 1000;
-    for (id object in self.scene.updatableObjects) {
-        if([object conformsToProtocol:@protocol(Shootable)]){
-            Creep* creep = (Creep*)object;
-            
-            float d = vec3_dist((float*)VEC3_ZERO, creep.position.v);
-            if(d < closestDist){
-                closestDist = d;
-                _nearestEnemy = creep;
-            }
-        }
-    }
+//    float closestDist = 1000;
+//    for (id object in self.scene.updatableObjects) {
+//        if([object conformsToProtocol:@protocol(Shootable)]){
+//            Creep* creep = (Creep*)object;
+//            
+//            float d = vec3_dist((float*)VEC3_ZERO, creep.position.v);
+//            if(d < closestDist){
+//                closestDist = d;
+//                _nearestEnemy = creep;
+//            }
+//        }
+//    }
     }
 
     if(_gameState == gamePlaying){
         [self.scene updateWithTimeElapsed:dt];
-        [ReoccuringEvent updateWithTimeElapsed:dt];
+//        [ReoccuringEvent updateWithTimeElapsed:dt];
     }
+    
+    lastTime = now;
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
