@@ -106,16 +106,16 @@
 		064111C119AECBC000B7AF2A /* SpawnDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpawnDelegate.m; path = Events/SpawnDelegate.m; sourceTree = "<group>"; };
 		064111C319AECE5300B7AF2A /* ProximityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProximityDelegate.h; path = Events/ProximityDelegate.h; sourceTree = "<group>"; };
 		064111C419AECE5300B7AF2A /* ProximityDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProximityDelegate.m; path = Events/ProximityDelegate.m; sourceTree = "<group>"; };
-		0666B87119A828A400760006 /* BlastAR!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlastAR!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0666B87119A828A400760006 /* Projective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projective.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0666B87419A828A400760006 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0666B87619A828A400760006 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0666B87819A828A400760006 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0666B87A19A828A400760006 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		0666B87C19A828A400760006 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		0666B88019A828A400760006 /* BlastAR!-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BlastAR!-Info.plist"; sourceTree = "<group>"; };
+		0666B88019A828A400760006 /* Projective-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Projective-Info.plist"; sourceTree = "<group>"; };
 		0666B88219A828A400760006 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0666B88419A828A400760006 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0666B88619A828A400760006 /* BlastAR!-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlastAR!-Prefix.pch"; sourceTree = "<group>"; };
+		0666B88619A828A400760006 /* Projective-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Projective-Prefix.pch"; sourceTree = "<group>"; };
 		0666B88719A828A400760006 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0666B88819A828A400760006 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0666B88B19A828A400760006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -125,9 +125,9 @@
 		0666B89419A828A400760006 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0666B89519A828A400760006 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		0666B89719A828A400760006 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0666B89D19A828A400760006 /* BlastAR!Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BlastAR!Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0666B89D19A828A400760006 /* ProjectiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0666B89E19A828A400760006 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		0666B8A619A828A400760006 /* BlastAR!Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BlastAR!Tests-Info.plist"; sourceTree = "<group>"; };
+		0666B8A619A828A400760006 /* ProjectiveTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectiveTests-Info.plist"; sourceTree = "<group>"; };
 		0666B8A819A828A400760006 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0666B8AA19A828A400760006 /* BlastAR_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlastAR_Tests.m; sourceTree = "<group>"; };
 		066FDF7019AEBEA300C4B3C9 /* OPjective.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OPjective.xcodeproj; path = ../../OPjective/OPjective.xcodeproj; sourceTree = "<group>"; };
@@ -243,8 +243,8 @@
 		0666B87219A828A400760006 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0666B87119A828A400760006 /* BlastAR!.app */,
-				0666B89D19A828A400760006 /* BlastAR!Tests.xctest */,
+				0666B87119A828A400760006 /* Projective.app */,
+				0666B89D19A828A400760006 /* ProjectiveTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -294,10 +294,10 @@
 		0666B87F19A828A400760006 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0666B88019A828A400760006 /* BlastAR!-Info.plist */,
+				0666B88019A828A400760006 /* Projective-Info.plist */,
 				0666B88119A828A400760006 /* InfoPlist.strings */,
 				0666B88419A828A400760006 /* main.m */,
-				0666B88619A828A400760006 /* BlastAR!-Prefix.pch */,
+				0666B88619A828A400760006 /* Projective-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -314,7 +314,7 @@
 		0666B8A519A828A400760006 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0666B8A619A828A400760006 /* BlastAR!Tests-Info.plist */,
+				0666B8A619A828A400760006 /* ProjectiveTests-Info.plist */,
 				0666B8A719A828A400760006 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -356,9 +356,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0666B87019A828A400760006 /* BlastAR! */ = {
+		0666B87019A828A400760006 /* Projective */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0666B8AE19A828A400760006 /* Build configuration list for PBXNativeTarget "BlastAR!" */;
+			buildConfigurationList = 0666B8AE19A828A400760006 /* Build configuration list for PBXNativeTarget "Projective" */;
 			buildPhases = (
 				0666B86D19A828A400760006 /* Sources */,
 				0666B86E19A828A400760006 /* Frameworks */,
@@ -368,14 +368,14 @@
 			);
 			dependencies = (
 			);
-			name = "BlastAR!";
+			name = Projective;
 			productName = "BlastAR!";
-			productReference = 0666B87119A828A400760006 /* BlastAR!.app */;
+			productReference = 0666B87119A828A400760006 /* Projective.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0666B89C19A828A400760006 /* BlastAR!Tests */ = {
+		0666B89C19A828A400760006 /* ProjectiveTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0666B8B119A828A400760006 /* Build configuration list for PBXNativeTarget "BlastAR!Tests" */;
+			buildConfigurationList = 0666B8B119A828A400760006 /* Build configuration list for PBXNativeTarget "ProjectiveTests" */;
 			buildPhases = (
 				0666B89919A828A400760006 /* Sources */,
 				0666B89A19A828A400760006 /* Frameworks */,
@@ -386,9 +386,9 @@
 			dependencies = (
 				0666B8A319A828A400760006 /* PBXTargetDependency */,
 			);
-			name = "BlastAR!Tests";
+			name = ProjectiveTests;
 			productName = "BlastAR!Tests";
-			productReference = 0666B89D19A828A400760006 /* BlastAR!Tests.xctest */;
+			productReference = 0666B89D19A828A400760006 /* ProjectiveTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -408,7 +408,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0666B86C19A828A400760006 /* Build configuration list for PBXProject "BlastAR!" */;
+			buildConfigurationList = 0666B86C19A828A400760006 /* Build configuration list for PBXProject "Projective" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -427,8 +427,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				0666B87019A828A400760006 /* BlastAR! */,
-				0666B89C19A828A400760006 /* BlastAR!Tests */,
+				0666B87019A828A400760006 /* Projective */,
+				0666B89C19A828A400760006 /* ProjectiveTests */,
 			);
 		};
 /* End PBXProject section */
@@ -521,7 +521,7 @@
 /* Begin PBXTargetDependency section */
 		0666B8A319A828A400760006 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0666B87019A828A400760006 /* BlastAR! */;
+			target = 0666B87019A828A400760006 /* Projective */;
 			targetProxy = 0666B8A219A828A400760006 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -642,9 +642,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BlastAR!/BlastAR!-Prefix.pch";
-				INFOPLIST_FILE = "BlastAR!/BlastAR!-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BlastAR!/Projective-Prefix.pch";
+				INFOPLIST_FILE = "BlastAR!/Projective-Info.plist";
+				PRODUCT_NAME = Projective;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = ./../../OPjective/OPjective;
 				WRAPPER_EXTENSION = app;
@@ -659,9 +659,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BlastAR!/BlastAR!-Prefix.pch";
-				INFOPLIST_FILE = "BlastAR!/BlastAR!-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BlastAR!/Projective-Prefix.pch";
+				INFOPLIST_FILE = "BlastAR!/Projective-Info.plist";
+				PRODUCT_NAME = Projective;
 				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = ./../../OPjective/OPjective;
 				WRAPPER_EXTENSION = app;
@@ -683,8 +683,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BlastAR!Tests/BlastAR!Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BlastAR!Tests/ProjectiveTests-Info.plist";
+				PRODUCT_NAME = ProjectiveTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -701,8 +701,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BlastAR!/BlastAR!-Prefix.pch";
-				INFOPLIST_FILE = "BlastAR!Tests/BlastAR!Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BlastAR!Tests/ProjectiveTests-Info.plist";
+				PRODUCT_NAME = ProjectiveTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -711,7 +711,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0666B86C19A828A400760006 /* Build configuration list for PBXProject "BlastAR!" */ = {
+		0666B86C19A828A400760006 /* Build configuration list for PBXProject "Projective" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0666B8AC19A828A400760006 /* Debug */,
@@ -720,7 +720,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0666B8AE19A828A400760006 /* Build configuration list for PBXNativeTarget "BlastAR!" */ = {
+		0666B8AE19A828A400760006 /* Build configuration list for PBXNativeTarget "Projective" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0666B8AF19A828A400760006 /* Debug */,
@@ -729,7 +729,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0666B8B119A828A400760006 /* Build configuration list for PBXNativeTarget "BlastAR!Tests" */ = {
+		0666B8B119A828A400760006 /* Build configuration list for PBXNativeTarget "ProjectiveTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0666B8B219A828A400760006 /* Debug */,

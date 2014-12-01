@@ -37,7 +37,6 @@
         struct genBone* last = bone->last; // toward the nose
         
         vec3 dirFromLast;
-        vec3 properOrigin;
         float distToLast;
         float deltaToTargetLength;
         
@@ -148,7 +147,6 @@ void assignBones(struct vertex* v, GenSkeleton* skel, int slice, int slices)
             struct vertex* vert = mesh + si + i;
             
             circle(vert->position, p, z);
-            
             assignBones(vert, _skel, s, slices);
             
             vec3 color = {
@@ -254,10 +252,6 @@ float r = 0;
     bzero(boneRotations, sizeof(boneRotations));
     
     for(int i = CREEP_BONES; i--;){
-        float p = i * M_PI / (float)CREEP_BONES;
-        // p * p - 1 = 0
-        // (p + 1)(p - 1) = 0
-        // p = -1, p = 1
         
         memcpy(bonePositions + i, self.skel.bones[i].position, sizeof(vec3));
         memcpy(boneRotations + i, self.skel.bones[i].rotation.q, sizeof(vec4));
