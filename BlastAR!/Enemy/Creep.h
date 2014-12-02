@@ -10,34 +10,6 @@
 #import "OPjective.h"
 #import "Shootable.h"
 
-static inline float pdf(vec3 x, int seed){
-    float result = 1.0f;
-    
-    for(int i = 3; i--;){
-        int select = seed % 5;
-        switch (select) {
-            case 0:
-                result *= sin(x[i]);
-                break;
-            case 1:
-                result *= cos(x[i]);
-                break;
-            case 3:
-                result *= x[i] * x[i];
-                break;
-            case 4:
-                result *= x[i] * x[i] * x[i];
-                break;
-            default:
-                result += x[i];
-                break;
-        }
-        seed += rand();
-    }
-    
-    return result;
-}
-
 @interface Creep : ShadedMesh <Drawable, Updateable, Ranked, Shootable>
 
 @property (nonatomic) GLKVector3 position;

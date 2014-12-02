@@ -90,8 +90,8 @@
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     
     // setup the core motion stuffs
-    [self.motionManager startGyroUpdates];
-    self.motionManager.gyroUpdateInterval = 0.01;
+    [self.motionManager startDeviceMotionUpdates];
+    self.motionManager.deviceMotionUpdateInterval = 0.01;
     self.orientation = GLKQuaternionIdentity;
     
     if (!self.context) {
@@ -114,7 +114,7 @@
     
     
     [self.scene addObject:_background = [[Background alloc] initWithGLKview:self andGLContext:self.context]];
-    [self.scene addObject:[[GenTest alloc]init]];
+//    [self.scene addObject:[[GenTest alloc]init]];
     [self.scene addObject:self.smoke];
 
     [ReoccuringEvent addWithCallback:[[SpawnDelegate alloc] initWithGame:self] andInterval:5.0f];
@@ -188,22 +188,13 @@ vec3 shootDir = {0};
     static const GLKVector3 forward = { 0, 0, 1 };
     static const GLKVector3 up      = { 0, 1, 0 };
     
-    GLKQuaternion omega = GLKQuaternionMultiply(
-                                GLKQuaternionMakeWithAngleAndAxis(YPR[0], 0, 1, 0),
-                                GLKQuaternionMakeWithAngleAndAxis(-YPR[1], 1, 0, 0)
-                                );
-    omega = GLKQuaternionMultiply(
-                                omega,
-                                GLKQuaternionMakeWithAngleAndAxis(YPR[2], 0, 0, 1)
-                                );
+    CMQuaternion q = self.motionManager.deviceMotion.attitude.quaternion;
+    _orientation = GLKQuaternionMake(q.x, q.y, q.z, q.w);
+    _orientation = GLKQuaternionMultiply(_orientation,
+                                         GLKQuaternionMakeWithAngleAndAxis(-M_PI_2, 0, 0, 1)
+                                         );
     
-    _orientation = GLKQuaternionMultiply(_orientation, omega);
     
-//    _orientation = GLKQuaternionMultiply(
-//                                _orientation,
-//                                GLKQuaternionMakeWithAngleAndAxis(YPR[2], 0, 0, 1)
-//                                );
-//    
     GLKVector3 adjForward = GLKQuaternionRotateVector3(_orientation, forward);
     GLKVector3 adjUp = GLKQuaternionRotateVector3(_orientation, up);
     
@@ -225,30 +216,6 @@ double lastTime = CFAbsoluteTimeGetCurrent();
 {
     double now = CFAbsoluteTimeGetCurrent();
     double dt = now - lastTime;
-    
-    // use gyro data to do cool stuff
-    if(self.motionManager.gyroAvailable){
-        NSTimeInterval elapsed = dt = -[self.lastTime timeIntervalSinceNow];
-        CMGyroData* data = self.motionManager.gyroData;
-        float x = data.rotationRate.x;
-        float y = data.rotationRate.y;
-        float z = data.rotationRate.z;
-        GLKVector3 omega = { x * 2, y * 2, z * 2 };
-        //GLKVector3 temp = {0};
-        //omega = GLKQuaternionRotateVector3(self.orientation, omega);
-        
-//        NSLog(@"Yaw: %f Pitch: %f Roll: %f",
-//              YPR[2],
-//              YPR[0],
-//              YPR[1]
-//        );
-        
-        YPR[0] = omega.x * elapsed;
-        YPR[1] = omega.y * elapsed;
-        YPR[2] = omega.z * elapsed;
-        
-        _lastTime = [NSDate date];
-    }
 
     [self UpdateViewProjectionMatrix];
     [self.background setHue:(float*)VEC3_ONE];
@@ -270,23 +237,23 @@ double lastTime = CFAbsoluteTimeGetCurrent();
     
     if(_gameState == gamePlaying){
     // update the enemies
-//    float closestDist = 1000;
-//    for (id object in self.scene.updatableObjects) {
-//        if([object conformsToProtocol:@protocol(Shootable)]){
-//            Creep* creep = (Creep*)object;
-//            
-//            float d = vec3_dist((float*)VEC3_ZERO, creep.position.v);
-//            if(d < closestDist){
-//                closestDist = d;
-//                _nearestEnemy = creep;
-//            }
-//        }
-//    }
+    float closestDist = 1000;
+    for (id object in self.scene.updatableObjects) {
+        if([object conformsToProtocol:@protocol(Shootable)]){
+            Creep* creep = (Creep*)object;
+            
+            float d = vec3_dist((float*)VEC3_ZERO, creep.position.v);
+            if(d < closestDist){
+                closestDist = d;
+                _nearestEnemy = creep;
+            }
+        }
+    }
     }
 
     if(_gameState == gamePlaying){
         [self.scene updateWithTimeElapsed:dt];
-//        [ReoccuringEvent updateWithTimeElapsed:dt];
+        [ReoccuringEvent updateWithTimeElapsed:dt];
     }
     
     lastTime = now;
