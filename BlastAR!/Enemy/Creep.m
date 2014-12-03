@@ -16,7 +16,9 @@
 @property (nonatomic) float scaleVelocity;
 @property (nonatomic) float scale;
 @property (nonatomic) CreepSkeleton* skeleton;
+@property (nonatomic) struct CreepVertex* vertices;
 @property (nonatomic) unsigned int* indices;
+@property (nonatomic) int indexCount, vertexCount;
 
 @end
 
@@ -57,14 +59,17 @@
         [self withAttributeName:"aColor" andElements:4];
         [self withAttributeName:"aBones" andElements:3];
         
-        const int vertexCount = 100;
-        struct CreepVertex verts[vertexCount] = {0};
+        _vertexCount = 100;
+        _vertices = malloc(_vertexCount * sizeof(struct CreepVertex));
 
-        int indexCount = [CreepFactory generateWithMesh:verts
-                                                ofCount:vertexCount
+        _indexCount = [CreepFactory generateWithMesh:_vertices
+                                                ofCount:_vertexCount
                                       resultingIndicies:&_indices
                                            withSkeleton:_skeleton];
-        [self.mesh updateData:verts ofSize:sizeof(verts) andIndicies:_indices ofSize:sizeof(unsigned int) * indexCount];
+        [self.mesh updateData:_vertices
+                       ofSize:sizeof(struct CreepVertex) * _vertexCount
+                  andIndicies:_indices
+                       ofSize:sizeof(unsigned int) * _indexCount];
         
         _radius = 1.0f;
         
@@ -78,11 +83,13 @@
         
         vec3_rand_norm(_position.v);
         vec3_mul(_position.v, _position.v, spawnLimiter);
-        vec3_scale(_position.v, _position.v, 15.0);
+        vec3_scale(_position.v, _position.v, 60.0);
         
         vec3_rand_norm(_velocity.v);
         
-        _HP = 3;
+        _HP = 5;
+    
+        [_skeleton updateWithTimeElapsed:0];
     }
     
     return self;
@@ -105,21 +112,21 @@
         // compute the left vector
         vec3_mul_cross(left, dpos, up);
         vec3_norm(left, left);
-        vec3_scale(left, left, sin(dist * 2 * M_PI) * dist);
+        vec3_scale(left, left, sin(dist * M_PI) * 100);
         
         // compute the up vector
         vec3_mul_cross(up, dpos, left);
         vec3_norm(up, up);
-        vec3_scale(up, up, sin(dist * 2 * M_PI) * dist);
+        vec3_scale(up, up, sin(dist * M_PI) * 100);
         
         vec3_add(dpos, dpos, left);
         vec3_add(dpos, dpos, up);
         
-        vec3_norm(dpos, dpos);
+//        vec3_norm(dpos, dpos);
         vec3_scale(dpos, dpos, dt);
         
         vec3_add(_velocity.v, _velocity.v, dpos);
-        vec3_scale(_velocity.v, _velocity.v, 0.94f);
+        vec3_scale(_velocity.v, _velocity.v, 0.8f);
     }
     
     // update position
@@ -159,17 +166,61 @@
     [self.shader usingMat4x4:(GLKMatrix4*)&GLKMatrix4Identity withName:"uModel"];
     [self.shader usingArray:bonePositions ofLength:CREEP_BONES andType:vec3Array withName:"uBonePositions"];
     [self.shader usingArray:boneRotations ofLength:CREEP_BONES andType:vec4Array withName:"uBoneRotations"];
-    [self drawAs:GL_LINE_STRIP];
+    [self drawAs:GL_LINES];
 }
 
-- (BOOL) fireAt:(ray3)projectile
+- (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint
 {
     // don't intersect things that are dead already.
     if(!_HP) return NO;
     
-    vec3 hitPoint = {0};
-    if([self.skeleton checkIntersection:hitPoint withProjectile:projectile]){
+    struct genBone* hitBone;
+    if([self.skeleton checkIntersection:hitPoint intersectedBone:&hitBone withProjectile:projectile]){
         --_HP;
+
+        int remove[20], offset = 0;
+        for(int i = _vertexCount; i--;){
+            struct CreepVertex* v = _vertices + i;
+            vec3 dif, pos;
+            
+            vec3_add(pos, v->position, hitBone->position);
+            vec3_sub(dif, hitPoint, pos);
+            
+            if(vec3_dot(dif, dif) <= hitBone->radius * hitBone->radius){
+                remove[offset++] = i;
+                if(i & 1){
+                    remove[offset++] = i - 1;
+                }
+                else{
+                    remove[offset++] = i + 1;
+                }
+                if(offset >= 20) break;
+            }
+        }
+        
+        int end = _vertexCount - 1;
+        for(int i = 0; i < _indexCount; i++){
+            int ind = _indices[i];
+            for(int j = offset; j--;){
+                if(ind == remove[j]){
+                    // swap
+                    int old = _indices[end];
+                    _indices[end] = ind;
+                    _indices[i] = old;
+                    end--;
+                    _indexCount--;
+                    break;
+                }
+            }
+        }
+        
+        [self.mesh updateData:_vertices
+                       ofSize:sizeof(struct CreepVertex) * _vertexCount
+                  andIndicies:_indices
+                       ofSize:sizeof(unsigned int) * _indexCount];
+        
+        
+        return YES;
     }
     
     return NO;
@@ -187,6 +238,7 @@
 
 - (void)dealloc
 {
+    free(_vertices);
     free(_indices);
 }
 

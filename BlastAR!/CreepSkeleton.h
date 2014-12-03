@@ -13,12 +13,11 @@
 
 struct genBone;
 struct genBone{
-    vec3 offsetFromBase;
     vec3 position;
-    vec3 velocity;
     float radius;
     GLKQuaternion rotation;
     float maxDistance;
+    int index;
     struct genBone* last;
     struct genBone* next;
 };
@@ -28,6 +27,6 @@ struct genBone{
 @property (nonatomic) struct genBone* bones;
 @property (nonatomic) struct genBone* head;
 
-- (BOOL)checkIntersection:(vec3)intersection withProjectile:(ray3)ray;
+- (BOOL)checkIntersection:(vec3)intersection intersectedBone:(struct genBone**)bone withProjectile:(ray3)ray;
 
 @end

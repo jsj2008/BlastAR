@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/Enemy/Creep.m"
-            timestampString = "439190187.951463"
+            timestampString = "439278606.907408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "-updateWithTimeElapsed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/Enemy/Creep.m"
-            timestampString = "439190187.951463"
+            timestampString = "439278606.907408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-updateWithTimeElapsed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439276746.51921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439276746.51921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346">
+            startingLineNumber = "343"
+            endingLineNumber = "343">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439276746.51921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342">
+            startingLineNumber = "339"
+            endingLineNumber = "339">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -214,12 +214,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/Enemy/Creep.m"
-            timestampString = "439190187.951463"
+            timestampString = "439278606.907408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-fireAt:"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "-fireAt:withIntersection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -246,11 +246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439275734.863538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "-UpdateViewProjectionMatrix"
             landmarkType = "5">
          </BreakpointContent>
@@ -262,11 +262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439275734.863538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-UpdateViewProjectionMatrix"
             landmarkType = "5">
          </BreakpointContent>
@@ -278,11 +278,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439275734.863538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "-UpdateViewProjectionMatrix"
             landmarkType = "5">
          </BreakpointContent>
@@ -348,22 +348,6 @@
             startingLineNumber = "94"
             endingLineNumber = "94"
             landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BlastAR!/Effects/Particles.m"
-            timestampString = "430613223.10583"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-updateWithTimeElapsed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -518,11 +502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439275734.863538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-update"
             landmarkType = "5">
          </BreakpointContent>
@@ -566,11 +550,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439276746.51921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -614,11 +598,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439275734.863538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "-update"
             landmarkType = "5">
          </BreakpointContent>
@@ -630,11 +614,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439275734.863538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
             landmarkName = "-update"
             landmarkType = "5">
          </BreakpointContent>
@@ -646,11 +630,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "439193291.460983"
+            timestampString = "439275734.863538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "-glkView:drawInRect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1020,6 +1004,22 @@
             startingLineNumber = "193"
             endingLineNumber = "193"
             landmarkName = "-generateWithMesh:andIndicies:ofSize:withSliceSize:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BlastAR!/Effects/Particles.m"
+            timestampString = "439276505.475079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-spawnParticleAtPosition:withVelocity:andColor:andSize:andLifespan:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

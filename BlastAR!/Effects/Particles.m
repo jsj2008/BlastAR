@@ -129,6 +129,7 @@
     
     [self drawAs:GL_POINTS];
     
+    glEnable(GL_DEPTH_TEST);
     glDisable(GL_BLEND);
 }
 

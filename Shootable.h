@@ -10,6 +10,6 @@
 
 @protocol Shootable <NSObject>
 
-- (BOOL) fireAt:(ray3)projectile;
+- (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint;
 
 @end

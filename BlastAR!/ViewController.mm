@@ -186,14 +186,10 @@ vec3 shootDir = {0};
     // create and update the view projection matrix
     float aspect = AR_ASPECT_RATIO = fabsf(self.view.bounds.size.width / self.view.bounds.size.height);
     static const GLKVector3 forward = { 0, 0, 1 };
-    static const GLKVector3 up      = { 0, 1, 0 };
+    static const GLKVector3 up      = { 1, 0, 0 };
     
     CMQuaternion q = self.motionManager.deviceMotion.attitude.quaternion;
     _orientation = GLKQuaternionMake(q.x, q.y, q.z, q.w);
-    _orientation = GLKQuaternionMultiply(_orientation,
-                                         GLKQuaternionMakeWithAngleAndAxis(-M_PI_2, 0, 0, 1)
-                                         );
-    
     
     GLKVector3 adjForward = GLKQuaternionRotateVector3(_orientation, forward);
     GLKVector3 adjUp = GLKQuaternionRotateVector3(_orientation, up);
@@ -294,14 +290,15 @@ double lastTime = CFAbsoluteTimeGetCurrent();
     // check to see what enemies, if any were shot and or killed
     for (id object in self.scene.updatableObjects) {
         if([object conformsToProtocol:@protocol(Shootable)]){
-            if([object fireAt:projectile]){
+            vec3 hitPoint;
+            if([object fireAt:projectile withIntersection:hitPoint]){
                 Creep* creep = (Creep*)object;
                 
                 struct ParticleVertex smoke[10];
                 
                 for(int i = 10; i--;){
                     struct ParticleVertex p = {
-                        .position = { creep.position.x, creep.position.y, creep.position.z },
+                        .position = { hitPoint[0], hitPoint[1], hitPoint[2] },
                         .velocity = {RAND_F_NORM * RAND_F, RAND_F_NORM  * RAND_F, RAND_F_NORM * RAND_F},
                         .color = { 0.6f, 0.6f, 0.6f, RAND_F },
                         .size = 200.0f * (RAND_F + 1.0f),

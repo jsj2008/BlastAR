@@ -23,6 +23,7 @@
             _bones[i].last = i - 1 >= 0 ? _bones + i - 1 : NULL;
             _bones[i].maxDistance = 0.8f;
             _bones[i].rotation = GLKQuaternionIdentity;
+            _bones[i].index = i;
         }
         
         _head = _bones;
@@ -67,11 +68,12 @@
     }
 }
 
-- (BOOL)checkIntersection:(vec3)intersection withProjectile:(ray3)ray
+- (BOOL)checkIntersection:(vec3)intersection intersectedBone:(struct genBone **)hitBone withProjectile:(ray3)ray
 {
     for(int i = CREEP_BONES; i--;){
         struct genBone* bone = _bones + i;
         if(vec3_ray_sphere(intersection, ray, bone->position, bone->radius)){
+            *hitBone = bone;
             return YES;
         }
     }
