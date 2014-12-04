@@ -187,13 +187,16 @@
             vec3_sub(dif, hitPoint, pos);
             
             if(vec3_dot(dif, dif) <= hitBone->radius * hitBone->radius){
-                remove[offset++] = i;
+                remove[offset] = i;
+                ++offset;
                 if(i & 1){
-                    remove[offset++] = i - 1;
+                    remove[offset] = i + 1;
                 }
                 else{
-                    remove[offset++] = i + 1;
+                    remove[offset] = i - 1;
                 }
+                ++offset;
+                
                 if(offset >= 20) break;
             }
         }
