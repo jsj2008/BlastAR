@@ -40,7 +40,7 @@ void main(){
     
     vec3 modelPos = rotate_vector(uBoneRotations[i], aPosition.xyz);
     modelPos += (uBonePositions[li] + uBonePositions[ni]) * 0.25 + uBonePositions[i] * 0.75;
-    vec4 worldPos = uModel * vec4(modelPos, 1.0);
+    vec4 worldPos = vec4(modelPos, 1.0);
     
     vColor = aColor;
     

@@ -71,11 +71,11 @@ void assignCreepBones(struct CreepVertex* v, CreepSkeleton* skel, int slice, int
             creepCrossSection(vert->position, p, z);
             assignCreepBones(vert, skeleton, s, slices);
             
-            vec3 color = {
-                z, 1.0 - z, 0
+            vec4 color = {
+                z, 1.0 - z, 0, 1
             };
             
-            memcpy(vert->color, color, sizeof(vec3));
+            memcpy(vert->color, color, sizeof(vec4));
         }
         
         // generate the triangles for the mesh if we already

@@ -161,9 +161,10 @@
     
     glLineWidth(2);
     
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     [self.shader bind];
     [self.shader usingMat4x4:viewProjection withName:"uVP"];
-    [self.shader usingMat4x4:(GLKMatrix4*)&GLKMatrix4Identity withName:"uModel"];
     [self.shader usingArray:bonePositions ofLength:CREEP_BONES andType:vec3Array withName:"uBonePositions"];
     [self.shader usingArray:boneRotations ofLength:CREEP_BONES andType:vec4Array withName:"uBoneRotations"];
     [self drawAs:GL_LINES];
@@ -177,43 +178,20 @@
     struct genBone* hitBone;
     if([self.skeleton checkIntersection:hitPoint intersectedBone:&hitBone withProjectile:projectile]){
         --_HP;
-
-        int remove[20], offset = 0;
-        for(int i = _vertexCount; i--;){
+        int vertsPerBone = _vertexCount / CREEP_BONES;
+        int offset = vertsPerBone * hitBone->index;
+        for(int i = offset; i < offset + vertsPerBone; ++i){
             struct CreepVertex* v = _vertices + i;
             vec3 dif, pos;
             
-            vec3_add(pos, v->position, hitBone->position);
+//            quat_mul_vec3(pos, hitBone->rotation.q, v->position);
+            GLKVector3 rot = GLKQuaternionRotateVector3(hitBone->rotation, GLKVector3MakeWithArray(v->position));
+            vec3_add(pos, rot.v, hitBone->position);
             vec3_sub(dif, hitPoint, pos);
             
-            if(vec3_dot(dif, dif) <= hitBone->radius * hitBone->radius){
-                remove[offset] = i;
-                ++offset;
-                if(i & 1){
-                    remove[offset] = i + 1;
-                }
-                else{
-                    remove[offset] = i - 1;
-                }
-                ++offset;
-                
-                if(offset >= 20) break;
-            }
-        }
-        
-        int end = _vertexCount - 1;
-        for(int i = 0; i < _indexCount; i++){
-            int ind = _indices[i];
-            for(int j = offset; j--;){
-                if(ind == remove[j]){
-                    // swap
-                    int old = _indices[end];
-                    _indices[end] = ind;
-                    _indices[i] = old;
-                    end--;
-                    _indexCount--;
-                    break;
-                }
+            if(vec3_dot(dif, dif) <= (hitBone->radius * hitBone->radius) + 0.001 && _vertices[i].color[3] > 0.01f){
+//                _vertices[i].color[2] = 1;
+                _vertices[i].color[3] = 0;
             }
         }
         

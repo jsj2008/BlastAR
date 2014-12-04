@@ -9,5 +9,8 @@
 varying lowp vec4 vColor;
 
 void main(void){
+    
+    if(vColor.a < 0.5) discard;
+    
     gl_FragColor = vColor;
 }

@@ -16,8 +16,6 @@
 #import "Effects/SoundFactory.h"
 #import "Effects/Particles.h"
 
-#import "GenTest.h"
-
 #import "Singletons.h"
 
 #import "SpawnDelegate.h"
