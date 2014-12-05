@@ -87,7 +87,7 @@
         
         vec3_rand_norm(_velocity.v);
         
-        _HP = 5;
+        _HP = 10;
     
         [_skeleton updateWithTimeElapsed:0];
     }
@@ -177,21 +177,30 @@
     
     struct genBone* hitBone;
     if([self.skeleton checkIntersection:hitPoint intersectedBone:&hitBone withProjectile:projectile]){
-        --_HP;
         int vertsPerBone = _vertexCount / CREEP_BONES;
         int offset = vertsPerBone * hitBone->index;
+        
+        --_HP;
+        
         for(int i = offset; i < offset + vertsPerBone; ++i){
             struct CreepVertex* v = _vertices + i;
-            vec3 dif, pos;
             
-//            quat_mul_vec3(pos, hitBone->rotation.q, v->position);
-            GLKVector3 rot = GLKQuaternionRotateVector3(hitBone->rotation, GLKVector3MakeWithArray(v->position));
-            vec3_add(pos, rot.v, hitBone->position);
-            vec3_sub(dif, hitPoint, pos);
-            
-            if(vec3_dot(dif, dif) <= (hitBone->radius * hitBone->radius) + 0.001 && _vertices[i].color[3] > 0.01f){
-//                _vertices[i].color[2] = 1;
-                _vertices[i].color[3] = 0;
+            if(_vertices[i].color[3] > 0.001f){
+                vec3 dif, pos;
+                
+    //            quat_mul_vec3(pos, hitBone->rotation.q, v->position);
+                GLKVector3 rot = GLKQuaternionRotateVector3(hitBone->rotation, GLKVector3MakeWithArray(v->position));
+                vec3_add(pos, rot.v, hitBone->position);
+                
+                if(vec3_ray_sphere(hitPoint, projectile, pos, (hitBone->radius / 3)) * (rand() % 100) / 50.0f ){
+                    
+                    // color the hole's perimeter white
+                    for(int j = 3; j--;){
+                        _vertices[i].color[j] = 1;
+                    }
+                    
+                    _vertices[i].color[3] = 0;
+                }
             }
         }
         

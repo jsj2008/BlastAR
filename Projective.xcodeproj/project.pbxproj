@@ -46,6 +46,7 @@
 		0668A1501A2D26EA00E90D48 /* CreepSkeleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0668A14F1A2D26EA00E90D48 /* CreepSkeleton.m */; };
 		066FDF7919AEBF7F00C4B3C9 /* libOPjective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 066FDF7619AEBEA300C4B3C9 /* libOPjective.a */; };
 		0676C5A519A8E090004DC90F /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 0676C5A419A8E090004DC90F /* Background.m */; };
+		06C5C08E1A317688007ADE08 /* CreepRenderGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C5C08D1A317688007ADE08 /* CreepRenderGroup.m */; };
 		06E8876719AA3C1F0049C7E1 /* FullscreenQuad.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8876619AA3C1F0049C7E1 /* FullscreenQuad.vsh */; };
 		06E8876B19AA3C970049C7E1 /* FullscreenQuad.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */; };
 		06E8876D19AA416E0049C7E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E8876C19AA416E0049C7E1 /* QuartzCore.framework */; };
@@ -135,6 +136,8 @@
 		066FDF7019AEBEA300C4B3C9 /* OPjective.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OPjective.xcodeproj; path = ../../OPjective/OPjective.xcodeproj; sourceTree = "<group>"; };
 		0676C5A319A8E090004DC90F /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = Scene/Background.h; sourceTree = "<group>"; };
 		0676C5A419A8E090004DC90F /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = Scene/Background.m; sourceTree = "<group>"; };
+		06C5C08C1A317688007ADE08 /* CreepRenderGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreepRenderGroup.h; sourceTree = "<group>"; };
+		06C5C08D1A317688007ADE08 /* CreepRenderGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreepRenderGroup.m; sourceTree = "<group>"; };
 		06E8876619AA3C1F0049C7E1 /* FullscreenQuad.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = FullscreenQuad.vsh; path = Shaders/FullscreenQuad.vsh; sourceTree = "<group>"; };
 		06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = FullscreenQuad.fsh; path = Shaders/FullscreenQuad.fsh; sourceTree = "<group>"; };
 		06E8876C19AA416E0049C7E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -203,6 +206,8 @@
 				0668A14A1A2D25CC00E90D48 /* CreepFactory.m */,
 				0668A14E1A2D26EA00E90D48 /* CreepSkeleton.h */,
 				0668A14F1A2D26EA00E90D48 /* CreepSkeleton.m */,
+				06C5C08C1A317688007ADE08 /* CreepRenderGroup.h */,
+				06C5C08D1A317688007ADE08 /* CreepRenderGroup.m */,
 			);
 			name = Enemy;
 			sourceTree = "<group>";
@@ -497,6 +502,7 @@
 				064111C519AECE5300B7AF2A /* ProximityDelegate.m in Sources */,
 				0628185719A90ACB00703ACF /* Starfield.m in Sources */,
 				064111C219AECBC000B7AF2A /* SpawnDelegate.m in Sources */,
+				06C5C08E1A317688007ADE08 /* CreepRenderGroup.m in Sources */,
 				0628187419A95B0B00703ACF /* Crosshair.m in Sources */,
 				0628187D19A95EDC00703ACF /* Singletons.c in Sources */,
 				0628186219A9150700703ACF /* Creep.m in Sources */,

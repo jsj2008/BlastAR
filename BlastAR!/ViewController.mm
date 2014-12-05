@@ -21,7 +21,6 @@
 #import "SpawnDelegate.h"
 #import "ProximityDelegate.h"
 
-
 @interface ViewController () {
 
 }
@@ -102,6 +101,9 @@
     
     [self setupGL];
     
+    AR_WIDTH  = self.view.bounds.size.width * self.view.contentScaleFactor;
+    AR_HEIGHT = self.view.bounds.size.height * self.view.contentScaleFactor;
+    
     self.crosshair = [[Crosshair alloc] init];
     
     self.pewPew = [SoundFactory createShoot];
@@ -110,7 +112,9 @@
     
     self.smoke = [[Particles alloc] initWithCapacity:1000];
     
+    _creeps = [[CreepRenderGroup alloc] init];
     
+    [self.scene addRenderGroup:_creeps withName:@"creeps"];
     [self.scene addObject:_background = [[Background alloc] initWithGLKview:self andGLContext:self.context]];
 //    [self.scene addObject:[[GenTest alloc]init]];
     [self.scene addObject:self.smoke];
@@ -153,6 +157,7 @@
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
+    
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);
     glCullFace(GL_BACK);
@@ -257,7 +262,6 @@ double lastTime = CFAbsoluteTimeGetCurrent();
 {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
     
     glEnable(GL_DEPTH_TEST);
     [self.scene drawWithViewProjection:&VP];

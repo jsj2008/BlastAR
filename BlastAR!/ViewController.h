@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "Enemy/Creep.h"
+#import "CreepRenderGroup.h"
 #import "OPjective.h"
 
 enum GameState{
@@ -22,6 +23,8 @@ enum GameState{
 @property (nonatomic) OrderedScene *scene;
 @property (nonatomic) NSMutableArray *enemies;
 @property (nonatomic) Creep* nearestEnemy;
+@property (nonatomic) CreepRenderGroup* creeps;
+
 
 @property (nonatomic) float viewRedness;
 

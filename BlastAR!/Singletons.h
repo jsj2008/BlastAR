@@ -10,5 +10,5 @@
 #define BlastAR__Singletons_h
 
 extern float AR_ASPECT_RATIO;
-
+extern unsigned int AR_WIDTH, AR_HEIGHT;
 #endif

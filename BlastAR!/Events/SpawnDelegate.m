@@ -31,7 +31,7 @@
     
     Creep* enemy = [[Creep alloc] init];
     [_game.enemies addObject:enemy];
-    [_game.scene addObject:enemy];
+    [_game.scene addObject:enemy toGroup:@"creeps"];
     [_game.spawn play];
 }
 

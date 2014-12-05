@@ -9,3 +9,5 @@
 #include "Singletons.h"
 
 float AR_ASPECT_RATIO = 1.0f;
+
+unsigned int AR_WIDTH, AR_HEIGHT;
