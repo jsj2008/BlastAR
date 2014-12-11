@@ -120,11 +120,11 @@
     glDisable(GL_DEPTH_TEST);
     [super checkError];
     
-    [self.shader bind];
+    [[self.shaders lastObject] bind];
     [super checkError];
     
-    [self.shader usingFloat:&_totalTime ofLength:1 withName:"uTime"];
-    [self.shader usingMat4x4:viewProjection withName:"uVP"];
+    [[self.shaders lastObject] usingFloat:&_totalTime ofLength:1 withName:"uTime"];
+    [[self.shaders lastObject] usingMat4x4:viewProjection withName:"uVP"];
     [super checkError];
     
     [self drawAs:GL_POINTS];

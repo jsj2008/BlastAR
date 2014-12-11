@@ -54,6 +54,7 @@
 		06E8877419AA6A050049C7E1 /* SoundFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 06E8877319AA6A050049C7E1 /* SoundFactory.m */; };
 		06E8877619AA88920049C7E1 /* Particles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8877519AA88910049C7E1 /* Particles.vsh */; };
 		06E8877819AA8A7A0049C7E1 /* Particles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8877719AA8A7A0049C7E1 /* Particles.fsh */; };
+		06F97EA01A3917C8004BD05C /* VerletParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F97E9F1A3917C8004BD05C /* VerletParticle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,8 @@
 		06E8877319AA6A050049C7E1 /* SoundFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SoundFactory.m; path = Effects/SoundFactory.m; sourceTree = "<group>"; };
 		06E8877519AA88910049C7E1 /* Particles.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Particles.vsh; path = Shaders/Particles.vsh; sourceTree = "<group>"; };
 		06E8877719AA8A7A0049C7E1 /* Particles.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Particles.fsh; path = Shaders/Particles.fsh; sourceTree = "<group>"; };
+		06F97E9E1A3917C8004BD05C /* VerletParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerletParticle.h; path = Effects/VerletParticle.h; sourceTree = "<group>"; };
+		06F97E9F1A3917C8004BD05C /* VerletParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerletParticle.m; path = Effects/VerletParticle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +356,8 @@
 				06E8877019AA69BC0049C7E1 /* Particles.m */,
 				06E8877219AA6A050049C7E1 /* SoundFactory.h */,
 				06E8877319AA6A050049C7E1 /* SoundFactory.m */,
+				06F97E9E1A3917C8004BD05C /* VerletParticle.h */,
+				06F97E9F1A3917C8004BD05C /* VerletParticle.m */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 				0628186219A9150700703ACF /* Creep.m in Sources */,
 				0666B88519A828A400760006 /* main.m in Sources */,
 				0668A1501A2D26EA00E90D48 /* CreepSkeleton.m in Sources */,
+				06F97EA01A3917C8004BD05C /* VerletParticle.m in Sources */,
 				0676C5A519A8E090004DC90F /* Background.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

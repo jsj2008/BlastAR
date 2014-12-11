@@ -41,8 +41,8 @@
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_DEPTH_TEST);
     
-    [self.shader bind];
-    [self.shader usingFloat:&AR_ASPECT_RATIO ofLength:1 withName:"uAspect"];
+    [[self.shaders lastObject] bind];
+    [[self.shaders lastObject] usingFloat:&AR_ASPECT_RATIO ofLength:1 withName:"uAspect"];
     [self drawAs:GL_LINES];
     
     glEnable(GL_DEPTH_TEST);

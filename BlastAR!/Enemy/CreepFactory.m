@@ -119,6 +119,32 @@ void assignCreepBones(struct CreepVertex* v, CreepSkeleton* skel, int slice, int
     return indexCount;
 }
 
++ (NSMutableDictionary*)generateMeshGraphFromIndices:(unsigned int*)indices ofCount:(unsigned int)count
+{
+    NSMutableDictionary* graph = [[NSMutableDictionary alloc] init];
+    
+    for(int i = 0; i < count; i += 2){
+        NSNumber* ind = [NSNumber numberWithUnsignedInt:indices[i]];
+        NSNumber* next = [NSNumber numberWithUnsignedInt:indices[i + 1]];
+        
+        NSMutableSet* indNeighbors  = graph[ind];
+        NSMutableSet* nextNeighbors = graph[next];
+        
+        if(!indNeighbors){
+            indNeighbors = graph[ind] = [[NSMutableSet alloc] init];
+        }
+        
+        if(!nextNeighbors){
+            nextNeighbors = graph[next] = [[NSMutableSet alloc] init];
+        }
+        
+        [indNeighbors addObject:next];
+        [nextNeighbors addObject:ind];
+    }
+    
+    return graph;
+}
+
 + (void)seed:(unsigned int)seed
 {
     // TODO

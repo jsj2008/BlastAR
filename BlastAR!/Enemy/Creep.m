@@ -19,6 +19,7 @@
 @property (nonatomic) struct CreepVertex* vertices;
 @property (nonatomic) unsigned int* indices;
 @property (nonatomic) int indexCount, vertexCount;
+@property (nonatomic) NSMutableDictionary* meshGraph;
 
 @end
 
@@ -66,6 +67,8 @@
                                                 ofCount:_vertexCount
                                       resultingIndicies:&_indices
                                            withSkeleton:_skeleton];
+        _meshGraph = [CreepFactory generateMeshGraphFromIndices:_indices ofCount:_indexCount];
+        
         [self.mesh updateData:_vertices
                        ofSize:sizeof(struct CreepVertex) * _vertexCount
                   andIndicies:_indices
@@ -149,6 +152,8 @@
 {
     // for now, don't draw if dead
     if(!_HP) return;
+ 
+    Shader* shader = [self.shaders lastObject];
     
     vec3 bonePositions[CREEP_BONES];
     vec4 boneRotations[CREEP_BONES];
@@ -159,15 +164,24 @@
         memcpy(boneRotations + i, _skeleton.bones[i].rotation.q, sizeof(vec4));
     }
     
-    glLineWidth(2);
+    glLineWidth(2 * [UIScreen mainScreen].scale);
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-    [self.shader bind];
-    [self.shader usingMat4x4:viewProjection withName:"uVP"];
-    [self.shader usingArray:bonePositions ofLength:CREEP_BONES andType:vec3Array withName:"uBonePositions"];
-    [self.shader usingArray:boneRotations ofLength:CREEP_BONES andType:vec4Array withName:"uBoneRotations"];
+    [shader bind];
+    [shader usingMat4x4:viewProjection withName:"uVP"];
+    [shader usingArray:bonePositions ofLength:CREEP_BONES andType:vec3Array withName:"uBonePositions"];
+    [shader usingArray:boneRotations ofLength:CREEP_BONES andType:vec4Array withName:"uBoneRotations"];
+
+    // render the black fill
+    [shader usingArray:(GLfloat*)VEC3_ZERO ofLength:1 andType:vec3Array withName:"uColor"];
+    [self drawAs:GL_TRIANGLES];
+    
+    // render the wire frame
+    [shader usingArray:(GLfloat*)VEC3_ONE ofLength:1 andType:vec3Array withName:"uColor"];
     [self drawAs:GL_LINES];
+    
+//    glEnable(GL_DEPTH_TEST);
 }
 
 - (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint
@@ -186,9 +200,8 @@
             struct CreepVertex* v = _vertices + i;
             
             if(_vertices[i].color[3] > 0.001f){
-                vec3 dif, pos;
+                vec3 pos;
                 
-    //            quat_mul_vec3(pos, hitBone->rotation.q, v->position);
                 GLKVector3 rot = GLKQuaternionRotateVector3(hitBone->rotation, GLKVector3MakeWithArray(v->position));
                 vec3_add(pos, rot.v, hitBone->position);
                 

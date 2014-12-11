@@ -166,8 +166,8 @@ struct QuadVertex{
 
 - (void) setHue:(vec3)color
 {
-    [self.shader bind];
-    [self.shader usingFloat:color ofLength:3 withName:"uHue"];
+    [[self.shaders lastObject] bind];
+    [[self.shaders lastObject] usingFloat:color ofLength:3 withName:"uHue"];
 }
 
 - (void) drawWithViewProjection:(GLKMatrix4*)viewProjection{
@@ -176,8 +176,10 @@ struct QuadVertex{
 
     [self checkError];
     
-    [self.shader bind];
-    glUniform1i(glGetUniformLocation(self.shader.programId, "uTexture"), 0);
+    Shader* shader = [self.shaders lastObject];
+    
+    [shader bind];
+    glUniform1i(glGetUniformLocation(shader.programId, "uTexture"), 0);
     [self drawAs:GL_TRIANGLE_STRIP];
     [self checkError];
     

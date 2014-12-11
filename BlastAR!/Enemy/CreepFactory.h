@@ -20,4 +20,5 @@ struct CreepVertex{
 
 + (void)seed:(unsigned int)seed;
 + (int)generateWithMesh:(struct CreepVertex*)mesh ofCount:(unsigned int)size resultingIndicies:(unsigned int**)indices withSkeleton:(CreepSkeleton*)skeleton;
++ (NSMutableDictionary*)generateMeshGraphFromIndices:(unsigned int*)indices ofCount:(unsigned int)count;
 @end
