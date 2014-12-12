@@ -8,6 +8,7 @@
 
 #import "Rendering/ShadedMesh.h"
 #import "CreepFactory.h"
+#import "CreepSkeleton.h"
 
 #define VERLET_MAX_EDGES 6
 
@@ -25,6 +26,9 @@ struct VerletSimVertex{
 
 @interface VerletParticle : ShadedMesh<Drawable, Updateable>
 
-- (void)appendVertex:(struct CreepVertex*)vertex withIndex:(unsigned int)indexKey;
+- (instancetype)initWithIndices:(NSMutableArray*)indices
+                    andVertices:(struct CreepVertex*)verts
+                     usingGraph:(NSMutableDictionary*)graph
+                    andSkeleton:(CreepSkeleton*)skeleton;
 
 @end

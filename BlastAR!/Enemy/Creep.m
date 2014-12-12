@@ -9,6 +9,7 @@
 #import "Creep.h"
 #import "CreepSkeleton.h"
 #import "CreepFactory.h"
+#import "VerletParticle.h"
 
 @interface Creep()
 
@@ -93,6 +94,9 @@
         _HP = 10;
     
         [_skeleton updateWithTimeElapsed:0];
+        
+        
+        VerletParticle* p = [[VerletParticle alloc] initWithIndices:@[@4, @5] andVertices:_vertices usingGraph:_meshGraph andSkeleton:_skeleton];
     }
     
     return self;
@@ -201,9 +205,7 @@
             
             if(_vertices[i].color[3] > 0.001f){
                 vec3 pos;
-                
-                GLKVector3 rot = GLKQuaternionRotateVector3(hitBone->rotation, GLKVector3MakeWithArray(v->position));
-                vec3_add(pos, rot.v, hitBone->position);
+                memcpy(pos, [self.skeleton transformVertex:v].position, sizeof(vec3));
                 
                 if(vec3_ray_sphere(hitPoint, projectile, pos, (hitBone->radius / 3)) * (rand() % 100) / 50.0f ){
                     

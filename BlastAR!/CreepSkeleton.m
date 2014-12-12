@@ -81,6 +81,17 @@
     return NO;
 }
 
+- (struct CreepVertex)transformVertex:(struct CreepVertex*)vertex
+{
+    struct CreepVertex copy = *vertex;
+    struct genBone* bone = _bones + (unsigned int)(copy.bones[1]);
+    
+    GLKVector3 rot = GLKQuaternionRotateVector3(bone->rotation, GLKVector3MakeWithArray(copy.position));
+    vec3_add(copy.position, rot.v, bone->position);
+
+    return copy;
+}
+
 - (void)dealloc
 {
     free(_bones);

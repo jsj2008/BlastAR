@@ -10,6 +10,8 @@
 #import "OPjective.h"
 #import "CreepSkeleton.h"
 
+@class CreepSkeleton;
+
 struct CreepVertex{
     vec3 position;
     vec4 color;
@@ -19,6 +21,9 @@ struct CreepVertex{
 @interface CreepFactory : NSObject
 
 + (void)seed:(unsigned int)seed;
-+ (int)generateWithMesh:(struct CreepVertex*)mesh ofCount:(unsigned int)size resultingIndicies:(unsigned int**)indices withSkeleton:(CreepSkeleton*)skeleton;
++ (int)generateWithMesh:(struct CreepVertex *)mesh
+                ofCount:(unsigned int)size
+      resultingIndicies:(unsigned int **)indices
+           withSkeleton:(CreepSkeleton*)skeleton;
 + (NSMutableDictionary*)generateMeshGraphFromIndices:(unsigned int*)indices ofCount:(unsigned int)count;
 @end

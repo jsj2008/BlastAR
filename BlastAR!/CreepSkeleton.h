@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "OPjective.h"
+#import "CreepFactory.h"
 
 #define CREEP_BONES 10
 
@@ -28,5 +29,6 @@ struct genBone{
 @property (nonatomic) struct genBone* head;
 
 - (BOOL)checkIntersection:(vec3)intersection intersectedBone:(struct genBone**)bone withProjectile:(ray3)ray;
+- (struct CreepVertex)transformVertex:(struct CreepVertex*)vertex;
 
 @end
