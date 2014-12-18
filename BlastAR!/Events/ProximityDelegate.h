@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ViewController.h"
+#import "GameModel.h"
 
 @interface ProximityDelegate : NSObject
 
-- (id) initWithGame:(ViewController*)scene;
+- (id) initWithGame:(GameModel*)model;
 - (void) tick:(float*)interval;
 
 @end

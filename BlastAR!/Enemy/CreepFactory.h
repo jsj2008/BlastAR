@@ -25,5 +25,7 @@ struct CreepVertex{
                 ofCount:(unsigned int)size
       resultingIndicies:(unsigned int **)indices
            withSkeleton:(CreepSkeleton*)skeleton;
-+ (NSMutableDictionary*)generateMeshGraphFromIndices:(unsigned int*)indices ofCount:(unsigned int)count;
++ (Graph*)generateMeshGraphFromIndices:(unsigned int*)indices
+                          withVertices:(struct CreepVertex*)vertices
+                               ofCount:(unsigned int)count;
 @end

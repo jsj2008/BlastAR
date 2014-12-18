@@ -20,7 +20,7 @@
 @property (nonatomic) struct CreepVertex* vertices;
 @property (nonatomic) unsigned int* indices;
 @property (nonatomic) int indexCount, vertexCount;
-@property (nonatomic) NSMutableDictionary* meshGraph;
+@property (nonatomic) Graph* meshGraph;
 
 @end
 
@@ -68,7 +68,9 @@
                                                 ofCount:_vertexCount
                                       resultingIndicies:&_indices
                                            withSkeleton:_skeleton];
-        _meshGraph = [CreepFactory generateMeshGraphFromIndices:_indices ofCount:_indexCount];
+        _meshGraph = [CreepFactory generateMeshGraphFromIndices:_indices
+                                                   withVertices:(struct CreepVertex*)_vertices
+                                                        ofCount:_indexCount];
         
         [self.mesh updateData:_vertices
                        ofSize:sizeof(struct CreepVertex) * _vertexCount
@@ -94,12 +96,15 @@
         _HP = 10;
     
         [_skeleton updateWithTimeElapsed:0];
-        
-        
-        VerletParticle* p = [[VerletParticle alloc] initWithIndices:@[@4, @5] andVertices:_vertices usingGraph:_meshGraph andSkeleton:_skeleton];
     }
     
     return self;
+}
+
+- (void)dealloc
+{
+    free(_vertices);
+    free(_indices);
 }
 
 - (void) updateWithTimeElapsed:(double)dt
@@ -178,11 +183,12 @@
     [shader usingArray:boneRotations ofLength:CREEP_BONES andType:vec4Array withName:"uBoneRotations"];
 
     // render the black fill
-    [shader usingArray:(GLfloat*)VEC3_ZERO ofLength:1 andType:vec3Array withName:"uColor"];
+    vec4 black = { 0, 0, 0, 1 };
+    [shader usingArray:black ofLength:1 andType:vec4Array withName:"uColor"];
     [self drawAs:GL_TRIANGLES];
     
     // render the wire frame
-    [shader usingArray:(GLfloat*)VEC3_ONE ofLength:1 andType:vec3Array withName:"uColor"];
+    [shader usingArray:(GLfloat*)VEC4_ONE ofLength:1 andType:vec4Array withName:"uColor"];
     [self drawAs:GL_LINES];
     
 //    glEnable(GL_DEPTH_TEST);
@@ -197,6 +203,7 @@
     if([self.skeleton checkIntersection:hitPoint intersectedBone:&hitBone withProjectile:projectile]){
         int vertsPerBone = _vertexCount / CREEP_BONES;
         int offset = vertsPerBone * hitBone->index;
+        NSMutableArray* intersectedVerts = [[NSMutableArray alloc] init];
         
         --_HP;
         
@@ -215,9 +222,16 @@
                     }
                     
                     _vertices[i].color[3] = 0;
+                    
+                    [intersectedVerts addObject:[NSNumber numberWithInt:i]];
                 }
             }
         }
+        
+        VerletParticle* p = [[VerletParticle alloc] initWithIndices:intersectedVerts
+                                                        andVertices:_vertices
+                                                         usingGraph:_meshGraph
+                                                        andSkeleton:_skeleton];
         
         [self.mesh updateData:_vertices
                        ofSize:sizeof(struct CreepVertex) * _vertexCount
@@ -239,12 +253,6 @@
 - (int) updateRank
 {
     return 0;
-}
-
-- (void)dealloc
-{
-    free(_vertices);
-    free(_indices);
 }
 
 @end

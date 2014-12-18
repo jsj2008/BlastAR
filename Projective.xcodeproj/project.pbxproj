@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060070581A405F7A0003DC0D /* VerletParticle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 060070571A405F7A0003DC0D /* VerletParticle.vsh */; };
+		0600705D1A41B4570003DC0D /* ParticleFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0600705C1A41B4570003DC0D /* ParticleFactory.m */; };
 		0628185219A8ED5300703ACF /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0628185119A8ED5300703ACF /* CoreMotion.framework */; };
 		0628185719A90ACB00703ACF /* Starfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628185619A90ACB00703ACF /* Starfield.m */; };
 		0628185C19A90F3C00703ACF /* Starfield.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628185B19A90F3C00703ACF /* Starfield.vsh */; };
@@ -44,6 +46,9 @@
 		0666B8AB19A828A400760006 /* BlastAR_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0666B8AA19A828A400760006 /* BlastAR_Tests.m */; };
 		0668A14B1A2D25CC00E90D48 /* CreepFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0668A14A1A2D25CC00E90D48 /* CreepFactory.m */; };
 		0668A1501A2D26EA00E90D48 /* CreepSkeleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0668A14F1A2D26EA00E90D48 /* CreepSkeleton.m */; };
+		0668AB4A1A4323AD004EEF2C /* GamePlaying.m in Sources */ = {isa = PBXBuildFile; fileRef = 0668AB491A4323AD004EEF2C /* GamePlaying.m */; };
+		0668AB4E1A43262E004EEF2C /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0668AB4D1A43262E004EEF2C /* GameModel.m */; };
+		0668AB511A4369F7004EEF2C /* CameraEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0668AB501A4369F7004EEF2C /* CameraEntity.m */; };
 		066FDF7919AEBF7F00C4B3C9 /* libOPjective.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 066FDF7619AEBEA300C4B3C9 /* libOPjective.a */; };
 		0676C5A519A8E090004DC90F /* Background.m in Sources */ = {isa = PBXBuildFile; fileRef = 0676C5A419A8E090004DC90F /* Background.m */; };
 		06C5C08E1A317688007ADE08 /* CreepRenderGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C5C08D1A317688007ADE08 /* CreepRenderGroup.m */; };
@@ -82,6 +87,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		060070571A405F7A0003DC0D /* VerletParticle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = VerletParticle.vsh; path = Shaders/VerletParticle.vsh; sourceTree = "<group>"; };
+		0600705B1A41B4570003DC0D /* ParticleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleFactory.h; path = Effects/ParticleFactory.h; sourceTree = "<group>"; };
+		0600705C1A41B4570003DC0D /* ParticleFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticleFactory.m; path = Effects/ParticleFactory.m; sourceTree = "<group>"; };
 		0628185119A8ED5300703ACF /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		0628185519A90ACB00703ACF /* Starfield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Starfield.h; path = Scene/Starfield.h; sourceTree = "<group>"; };
 		0628185619A90ACB00703ACF /* Starfield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Starfield.m; path = Scene/Starfield.m; sourceTree = "<group>"; };
@@ -134,6 +142,12 @@
 		0668A14A1A2D25CC00E90D48 /* CreepFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreepFactory.m; path = Enemy/CreepFactory.m; sourceTree = "<group>"; };
 		0668A14E1A2D26EA00E90D48 /* CreepSkeleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreepSkeleton.h; sourceTree = "<group>"; };
 		0668A14F1A2D26EA00E90D48 /* CreepSkeleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreepSkeleton.m; sourceTree = "<group>"; };
+		0668AB481A4323AD004EEF2C /* GamePlaying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePlaying.h; path = States/GamePlaying.h; sourceTree = "<group>"; };
+		0668AB491A4323AD004EEF2C /* GamePlaying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamePlaying.m; path = States/GamePlaying.m; sourceTree = "<group>"; };
+		0668AB4C1A43262E004EEF2C /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameModel.h; path = Models/GameModel.h; sourceTree = "<group>"; };
+		0668AB4D1A43262E004EEF2C /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameModel.m; path = Models/GameModel.m; sourceTree = "<group>"; };
+		0668AB4F1A4369F7004EEF2C /* CameraEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraEntity.h; sourceTree = "<group>"; };
+		0668AB501A4369F7004EEF2C /* CameraEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraEntity.m; sourceTree = "<group>"; };
 		066FDF7019AEBEA300C4B3C9 /* OPjective.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OPjective.xcodeproj; path = ../../OPjective/OPjective.xcodeproj; sourceTree = "<group>"; };
 		0676C5A319A8E090004DC90F /* Background.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Background.h; path = Scene/Background.h; sourceTree = "<group>"; };
 		0676C5A419A8E090004DC90F /* Background.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Background.m; path = Scene/Background.m; sourceTree = "<group>"; };
@@ -196,6 +210,7 @@
 				06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */,
 				06E8877519AA88910049C7E1 /* Particles.vsh */,
 				06E8877719AA8A7A0049C7E1 /* Particles.fsh */,
+				060070571A405F7A0003DC0D /* VerletParticle.vsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -276,6 +291,8 @@
 		0666B87E19A828A400760006 /* BlastAR! */ = {
 			isa = PBXGroup;
 			children = (
+				0668AB4B1A432618004EEF2C /* Models */,
+				0668AB451A432387004EEF2C /* States */,
 				0628185819A90F0500703ACF /* Shaders */,
 				06E8876E19AA696D0049C7E1 /* Effects */,
 				0628188719AA372500703ACF /* Video */,
@@ -290,10 +307,12 @@
 				0666B89219A828A400760006 /* room.vsh */,
 				0666B89419A828A400760006 /* ViewController.h */,
 				0666B89519A828A400760006 /* ViewController.mm */,
-				0666B89719A828A400760006 /* Images.xcassets */,
-				0666B87F19A828A400760006 /* Supporting Files */,
 				0628187B19A95EAD00703ACF /* Singletons.h */,
 				0628187C19A95EDC00703ACF /* Singletons.c */,
+				0668AB4F1A4369F7004EEF2C /* CameraEntity.h */,
+				0668AB501A4369F7004EEF2C /* CameraEntity.m */,
+				0666B89719A828A400760006 /* Images.xcassets */,
+				0666B87F19A828A400760006 /* Supporting Files */,
 			);
 			path = "BlastAR!";
 			sourceTree = "<group>";
@@ -327,6 +346,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0668AB451A432387004EEF2C /* States */ = {
+			isa = PBXGroup;
+			children = (
+				0668AB481A4323AD004EEF2C /* GamePlaying.h */,
+				0668AB491A4323AD004EEF2C /* GamePlaying.m */,
+			);
+			name = States;
+			sourceTree = "<group>";
+		};
+		0668AB4B1A432618004EEF2C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0668AB4C1A43262E004EEF2C /* GameModel.h */,
+				0668AB4D1A43262E004EEF2C /* GameModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		066FDF7119AEBEA300C4B3C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +395,8 @@
 				06E8877319AA6A050049C7E1 /* SoundFactory.m */,
 				06F97E9E1A3917C8004BD05C /* VerletParticle.h */,
 				06F97E9F1A3917C8004BD05C /* VerletParticle.m */,
+				0600705B1A41B4570003DC0D /* ParticleFactory.h */,
+				0600705C1A41B4570003DC0D /* ParticleFactory.m */,
 			);
 			name = Effects;
 			sourceTree = "<group>";
@@ -478,6 +517,7 @@
 				0666B89819A828A400760006 /* Images.xcassets in Resources */,
 				0628185C19A90F3C00703ACF /* Starfield.vsh in Resources */,
 				0666B88319A828A400760006 /* InfoPlist.strings in Resources */,
+				060070581A405F7A0003DC0D /* VerletParticle.vsh in Resources */,
 				0628187A19A95CB300703ACF /* CrossHair.fsh in Resources */,
 				0666B89319A828A400760006 /* room.vsh in Resources */,
 			);
@@ -498,6 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0600705D1A41B4570003DC0D /* ParticleFactory.m in Sources */,
 				06E8877119AA69BC0049C7E1 /* Particles.m in Sources */,
 				0666B89619A828A400760006 /* ViewController.mm in Sources */,
 				0668A14B1A2D25CC00E90D48 /* CreepFactory.m in Sources */,
@@ -509,10 +550,13 @@
 				064111C219AECBC000B7AF2A /* SpawnDelegate.m in Sources */,
 				06C5C08E1A317688007ADE08 /* CreepRenderGroup.m in Sources */,
 				0628187419A95B0B00703ACF /* Crosshair.m in Sources */,
+				0668AB511A4369F7004EEF2C /* CameraEntity.m in Sources */,
 				0628187D19A95EDC00703ACF /* Singletons.c in Sources */,
+				0668AB4A1A4323AD004EEF2C /* GamePlaying.m in Sources */,
 				0628186219A9150700703ACF /* Creep.m in Sources */,
 				0666B88519A828A400760006 /* main.m in Sources */,
 				0668A1501A2D26EA00E90D48 /* CreepSkeleton.m in Sources */,
+				0668AB4E1A43262E004EEF2C /* GameModel.m in Sources */,
 				06F97EA01A3917C8004BD05C /* VerletParticle.m in Sources */,
 				0676C5A519A8E090004DC90F /* Background.m in Sources */,
 			);

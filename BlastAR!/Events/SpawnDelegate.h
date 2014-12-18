@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ViewController.h"
+#import "GameModel.h"
 #import "OPjective.h"
 
 @interface SpawnDelegate : NSObject
 
-- (id) initWithGame:(ViewController*)scene;
+- (id) initWithGame:(GameModel*)model;
 - (void) tick:(float*)interval;
 
 @end

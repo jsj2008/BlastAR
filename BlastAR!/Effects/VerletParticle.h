@@ -24,11 +24,14 @@ struct VerletSimVertex{
     struct VerletSimVertex* edges[VERLET_MAX_EDGES];
 };
 
-@interface VerletParticle : ShadedMesh<Drawable, Updateable>
+@interface VerletParticle : ShadedMesh<Drawable, Ranked, Updateable, Perishable>
+
+
 
 - (instancetype)initWithIndices:(NSMutableArray*)indices
                     andVertices:(struct CreepVertex*)verts
-                     usingGraph:(NSMutableDictionary*)graph
+                     usingGraph:(Graph*)graph
                     andSkeleton:(CreepSkeleton*)skeleton;
+- (void)addVelocity:(vec3)v withRandomness:(float)r;
 
 @end

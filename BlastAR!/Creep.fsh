@@ -8,11 +8,11 @@
 
 varying lowp vec4 vColor;
 
-uniform lowp vec3 uColor;
+uniform lowp vec4 uColor;
 
 void main(void){
     
     if(vColor.a < 0.5) discard;
     
-    gl_FragColor = vec4(uColor, 1.0) * vColor;
+    gl_FragColor = uColor * vColor;
 }

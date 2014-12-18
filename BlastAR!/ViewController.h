@@ -12,13 +12,10 @@
 #import "CreepRenderGroup.h"
 #import "OPjective.h"
 
-enum GameState{
-    gameMainMenu,
-    gamePlaying,
-    gameOver
-};
 
 @interface ViewController : GLKViewController
+
+@property (strong, nonatomic) EAGLContext *context;
 
 @property (nonatomic) OrderedScene *scene;
 @property (nonatomic) NSMutableArray *enemies;
@@ -32,7 +29,5 @@ enum GameState{
 @property (nonatomic) Sound* pewPew;
 @property (nonatomic) Sound* spawn;
 @property (nonatomic) Sound* proximityWarning;
-
-@property (nonatomic) enum GameState gameState;
 
 @end

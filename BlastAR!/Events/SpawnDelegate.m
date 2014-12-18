@@ -9,24 +9,21 @@
 #import "SpawnDelegate.h"
 
 @interface SpawnDelegate()
-@property ViewController* game;
+@property GameModel* game;
 @end
 
 @implementation SpawnDelegate
 
-- (id) initWithGame:(ViewController*)game
+- (id) initWithGame:(GameModel*)model
 {
     self = [super init];
-    _game = game;
+    _game = model;
     return self;
 }
 
 - (void) tick:(float*)interval
 {
-    if(_game.gameState != gamePlaying) return;
- 
     *interval -= 0.05f;
-    
     *interval = *interval < 0.25f ? 0.25f : *interval;
     
     Creep* enemy = [[Creep alloc] init];

@@ -59,8 +59,8 @@ void assignCreepBones(struct CreepVertex* v, CreepSkeleton* skel, int slice, int
         float z = s / (float)slices;
         
         //bzero(indices[0], sizeof(short) * indexCount);
-        NSLog(@"z: %f", 4 * (sqrtf(z) - z));
-        NSLog(@"Slice %d", s);
+//        NSLog(@"z: %f", 4 * (sqrtf(z) - z));
+//        NSLog(@"Slice %d", s);
         
         // create the ring of vertices for this
         // segment of the body
@@ -119,27 +119,21 @@ void assignCreepBones(struct CreepVertex* v, CreepSkeleton* skel, int slice, int
     return indexCount;
 }
 
-+ (NSMutableDictionary*)generateMeshGraphFromIndices:(unsigned int*)indices ofCount:(unsigned int)count
++ (Graph*)generateMeshGraphFromIndices:(unsigned int*)indices withVertices:(struct CreepVertex*)vertices ofCount:(unsigned int)count
 {
-    NSMutableDictionary* graph = [[NSMutableDictionary alloc] init];
+    Graph* graph = [[Graph alloc] init];
     
     for(int i = 0; i < count; i += 2){
         NSNumber* ind = [NSNumber numberWithUnsignedInt:indices[i]];
         NSNumber* next = [NSNumber numberWithUnsignedInt:indices[i + 1]];
         
-        NSMutableSet* indNeighbors  = graph[ind];
-        NSMutableSet* nextNeighbors = graph[next];
+        graph[ind]  = [NSValue valueWithPointer:vertices + [ind unsignedIntegerValue]];
+        graph[next] = [NSValue valueWithPointer:vertices + [next unsignedIntegerValue]];
         
-        if(!indNeighbors){
-            indNeighbors = graph[ind] = [[NSMutableSet alloc] init];
-        }
-        
-        if(!nextNeighbors){
-            nextNeighbors = graph[next] = [[NSMutableSet alloc] init];
-        }
-        
-        [indNeighbors addObject:next];
-        [nextNeighbors addObject:ind];
+        GraphNode* indNeighbors  = graph[ind];
+        GraphNode* nextNeighbors = graph[next];
+    
+        [indNeighbors connectToBoth:nextNeighbors];
     }
     
     return graph;

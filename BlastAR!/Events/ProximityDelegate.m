@@ -9,15 +9,15 @@
 #import "ProximityDelegate.h"
 
 @interface ProximityDelegate()
-@property ViewController* game;
+@property GameModel* game;
 @end
 
 @implementation ProximityDelegate
 
-- (id) initWithGame:(ViewController*)game
+- (id) initWithGame:(GameModel*)model
 {
     self = [super init];
-    _game = game;
+    _game = model;
     return self;
 }
 
@@ -28,7 +28,7 @@
         [_game.proximityWarning play];
         
         if(dist < 0.75f){
-            _game.gameState = gameOver;
+            // TODO end game, player lost
         }
     }
 }
