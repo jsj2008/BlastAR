@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OPjective.h"
 
-@interface CameraEntity : NSObject <Updateable>
+@interface CameraEntity : NSObject <Updateable, Ranked>
 
 @property (nonatomic, readonly) GLKVector3 shootDir;
 @property (nonatomic, readonly) GLKMatrix4 viewProjection;

@@ -56,6 +56,7 @@
     AR_HEIGHT = self.view.bounds.size.height * self.view.contentScaleFactor;
 
     _game = [[GameModel alloc] init];
+    _game.camera = [[CameraEntity alloc] init];
     _playing = [[GamePlaying alloc] initWithGameModel:_game andViewController:self];
     
     _game.camera.aspect = AR_ASPECT_RATIO = AR_WIDTH / (float)AR_HEIGHT;

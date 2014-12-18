@@ -110,7 +110,8 @@
     NSMutableArray* killedEnemies = [[NSMutableArray alloc] init];
     
     // check to see what enemies, if any were shot and or killed
-    for (id object in model.scene.updatableObjects) {
+    for (int i = model.scene.updatableObjects.count; i--;) {
+        id object = model.scene.updatableObjects[i];
         if([object conformsToProtocol:@protocol(Shootable)]){
             vec3 hitPoint;
             if([object fireAt:projectile withIntersection:hitPoint]){

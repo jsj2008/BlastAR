@@ -36,6 +36,16 @@
     [_motionManager stopDeviceMotionUpdates];
 }
 
+- (int)updateRank
+{
+    return 0;
+}
+
+- (int)drawRank
+{
+    return -100;
+}
+
 - (void)updateWithTimeElapsed:(double)dt
 {
     // create and update the view projection matrix
