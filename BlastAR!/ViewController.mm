@@ -36,11 +36,22 @@
 
 @implementation ViewController
 
+static GLuint VIEW_FBO, VIEW_RBO;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+ 
+    glGenFramebuffers(1, &VIEW_FBO);
+    glGenRenderbuffers(1, &VIEW_RBO);
+    
+//    glBindFramebuffer(GL_FRAMEBUFFER, VIEW_FBO);
+//    glBindRenderbuffer(GL_RENDERBUFFER, VIEW_RBO);
     
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+//    [self.context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(id<EAGLDrawable>)self.view.layer];
+//    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, VIEW_RBO);
+
     
     if (!self.context) {
         NSLog(@"Failed to create ES context");
@@ -94,6 +105,7 @@
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:self.context];
+    [PostEffect setVertexShader:@"FullscreenQuad"];
     
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_BLEND);

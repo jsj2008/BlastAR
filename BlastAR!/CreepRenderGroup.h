@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 OPifex. All rights reserved.
 //
 
-#import "Rendering/RenderGroup.h"
+#import "OPjective.h"
 
 @interface CreepRenderGroup : RenderGroup
+
+- (instancetype)initWithGLKView:(GLKView*)view;
 
 @end

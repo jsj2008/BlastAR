@@ -22,12 +22,17 @@
     [self withAttributeName:"aPosition" andElements:3];
     
     // cross hair geometry
-    GLfloat mesh[] = {
-         0.0f,  0.1f, 0.0,
-         0.0f, -0.1f, 0.0,
-         0.1f,  0.0f, 0.0,
-        -0.1f,  0.0f, 0.0
-    };
+    const unsigned int meshLen = 80;
+    float s = 0.1f;
+    vec3 mesh[meshLen];
+    bzero(mesh, sizeof(mesh));
+    float dt = (M_PI * 2.0f) / (float)meshLen;
+    for(int i = 0; i < meshLen; ++i){
+        float t = dt * i;
+        
+        mesh[i][0] = cos(t) * s;
+        mesh[i][1] = sin(t) * s;
+    }
     
     [self.mesh updateData:mesh ofSize:sizeof(mesh)];
     [self buildWithVertexProg:@"ScreenSpace" andFragmentProg:@"CrossHair"];
@@ -38,15 +43,25 @@
 - (void) drawWithViewProjection:(GLKMatrix4 *)viewProjection
 {
     glEnable(GL_BLEND);
+    glLineWidth(1.0f);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     glDisable(GL_DEPTH_TEST);
     
-    [[self.shaders lastObject] bind];
-    [[self.shaders lastObject] usingFloat:&AR_ASPECT_RATIO ofLength:1 withName:"uAspect"];
-    [self drawAs:GL_LINES];
+    vec4 blue = { 0.6, 0.6, 0.9, 0.25f };
+    vec4 light = { 0.1, 0.1, 0.1, 0.125f };
+    
+    Shader* shader = (Shader*)[self.shaders lastObject];
+    
+    [shader bind];
+    [shader usingFloat:&AR_ASPECT_RATIO ofLength:1 withName:"uAspect"];
+    
+    [shader usingArray:light ofLength:1 andType:vec4Array withName:"uColor"];
+    [self drawAs:GL_TRIANGLE_FAN];
+    
+    [shader usingArray:blue ofLength:1 andType:vec4Array withName:"uColor"];
+    [self drawAs:GL_LINE_LOOP];
     
     glEnable(GL_DEPTH_TEST);
-    glDisable(GL_BLEND);
 }
 
 - (int) drawRank

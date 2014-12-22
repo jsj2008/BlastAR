@@ -166,8 +166,10 @@ struct QuadVertex{
 
 - (void) setHue:(vec3)color
 {
-    [[self.shaders lastObject] bind];
-    [[self.shaders lastObject] usingFloat:color ofLength:3 withName:"uHue"];
+    Shader* shader = (Shader*)[self.shaders lastObject];
+    
+    [shader bind];
+    [shader usingFloat:color ofLength:3 withName:"uHue"];
 }
 
 - (void) drawWithViewProjection:(GLKMatrix4*)viewProjection{

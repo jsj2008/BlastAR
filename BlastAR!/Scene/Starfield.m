@@ -40,8 +40,10 @@
 
 - (void) drawWithViewProjection:(GLKMatrix4 *)viewProjection
 {
-    [[self.shaders lastObject] bind];
-    [[self.shaders lastObject] usingMat4x4:viewProjection withName:"uVP"];
+    Shader* shader = (Shader*)[self.shaders lastObject];
+    
+    [shader bind];
+    [shader usingMat4x4:viewProjection withName:"uVP"];
     [self drawAs:GL_POINTS];
 }
 

@@ -159,6 +159,7 @@
 
 - (void) drawWithViewProjection:(GLKMatrix4 *)viewProjection
 {
+    
     // for now, don't draw if dead
     if(!_HP) return;
  

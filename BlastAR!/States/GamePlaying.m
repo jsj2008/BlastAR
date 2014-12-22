@@ -33,7 +33,7 @@
     _model.spawn  = [SoundFactory createSpawn];
     _model.proximityWarning = [SoundFactory createProximity];
     
-    _model.creeps = [[CreepRenderGroup alloc] init];
+    _model.creeps = [[CreepRenderGroup alloc] initWithGLKView:(GLKView*)view.view];
     
     [_model.scene addRenderGroup:_model.creeps withName:@"creeps"];
     [_model.scene addObject:_model.background = [[Background alloc] initWithGLKview:view andGLContext:view.context]];
@@ -41,7 +41,7 @@
     [_model.scene addObject:_model.camera];
     
     [ParticleFactory initWithScene:_model.scene andCapacities:100];
-        
+    
     return self;
 }
 
@@ -51,7 +51,7 @@
     
     [model.scene removeObjects:model.enemies];
     [model.enemies removeAllObjects];
-    [model.scene addObject:model.crosshair];
+    [model.creeps addObject:model.crosshair];
     model.nearestEnemy = nil;
     model.viewRedness = 0.0f;
     
