@@ -25,9 +25,7 @@
 {
     *interval -= 0.05f;
     *interval = *interval < 0.25f ? 0.25f : *interval;
- 
-    return;
-    
+
     Creep* enemy = [[Creep alloc] init];
     [_game.enemies addObject:enemy];
     [_game.scene addObject:enemy toGroup:@"creeps"];

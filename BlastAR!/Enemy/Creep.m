@@ -203,19 +203,17 @@
     struct genBone* hitBone;
     if([self.skeleton checkIntersection:hitPoint intersectedBone:&hitBone withProjectile:projectile]){
         int vertsPerBone = _vertexCount / CREEP_BONES;
-        int offset = vertsPerBone * hitBone->index;
+        int offset = vertsPerBone * (hitBone->index > 0 ? hitBone->index - 1 : 0);
         NSMutableArray* intersectedVerts = [[NSMutableArray alloc] init];
         
-        --_HP;
-        
-        for(int i = offset; i < offset + vertsPerBone; ++i){
+        for(int i = offset; i < offset + (vertsPerBone << 1); ++i){
             struct CreepVertex* v = _vertices + i;
             
             if(_vertices[i].color[3] > 0.001f){
                 vec3 pos;
                 memcpy(pos, [self.skeleton transformVertex:v].position, sizeof(vec3));
                 
-                if(vec3_ray_sphere(hitPoint, projectile, pos, (hitBone->radius / 3)) * (rand() % 100) / 50.0f ){
+                if(vec3_ray_sphere(hitPoint, projectile, pos, hitBone->radius / 4)){
                     
                     // color the hole's perimeter white
                     for(int j = 3; j--;){
@@ -224,7 +222,9 @@
                     
                     _vertices[i].color[3] = 0;
                     
-                    [intersectedVerts addObject:[NSNumber numberWithInt:i]];
+                    [intersectedVerts addObject:@(i)];
+                    
+                    --_HP;
                 }
             }
         }

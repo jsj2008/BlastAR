@@ -12,6 +12,7 @@
 #import "./../Scene/Background.h"
 #import "./../Scene/Starfield.h"
 #import "./../Scene/Crosshair.h"
+#import "./../Scene/Projectiles.h"
 #import "./../Effects/SoundFactory.h"
 #import "./../Effects/Particles.h"
 #import "./../Effects/ParticleFactory.h"
@@ -23,6 +24,7 @@
 @property (nonatomic) CameraEntity* camera;
 @property (strong, nonatomic) id <Drawable, Ranked> crosshair;
 @property (strong, nonatomic) Background* background;
+@property (nonatomic) Projectiles* projectiles;
 
 @property (nonatomic) OrderedScene *scene;
 @property (nonatomic) NSMutableArray *enemies;

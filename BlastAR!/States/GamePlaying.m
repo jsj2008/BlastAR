@@ -37,7 +37,7 @@
     
     [_model.scene addRenderGroup:_model.creeps withName:@"creeps"];
     [_model.scene addObject:_model.background = [[Background alloc] initWithGLKview:view andGLContext:view.context]];
-    
+    [_model.scene addObject:_model.projectiles = [[Projectiles alloc] init]];
     [_model.scene addObject:_model.camera];
     
     [ParticleFactory initWithScene:_model.scene andCapacities:100];
@@ -51,7 +51,7 @@
     
     [model.scene removeObjects:model.enemies];
     [model.enemies removeAllObjects];
-    [model.creeps addObject:model.crosshair];
+    [model.scene addObject:model.crosshair];
     model.nearestEnemy = nil;
     model.viewRedness = 0.0f;
     

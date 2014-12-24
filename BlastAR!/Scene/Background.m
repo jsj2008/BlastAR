@@ -122,6 +122,9 @@ struct QuadVertex{
 
 - (void) pixelBufferReadyForDisplay:(CVPixelBufferRef)pixelBuffer
 {
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    [((GLKView*)self.view.view) bindDrawable];
+    
     [self checkError];
     if(_videoTextureCache == NULL)
         return;
@@ -175,7 +178,15 @@ struct QuadVertex{
 - (void) drawWithViewProjection:(GLKMatrix4*)viewProjection{
     [self checkError];
     glDisable(GL_DEPTH_TEST);
-
+    
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    [((GLKView*)self.view.view) bindDrawable];
+    
+    if(!_texture) return;
+    
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(CVOpenGLESTextureGetTarget(_texture), CVOpenGLESTextureGetName(_texture));
+    
     [self checkError];
     
     Shader* shader = [self.shaders lastObject];
