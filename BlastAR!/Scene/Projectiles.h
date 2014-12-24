@@ -8,8 +8,6 @@
 
 #import "OPjective.h"
 
-const unsigned int PROJECTILES_MAX = 100;
-
 enum ProjectileType{
     ProjectileSemi,
     ProjectileAuto,
@@ -18,7 +16,8 @@ enum ProjectileType{
 };
 
 struct Projectile{
-    ray3 origin;
+    vec3 position;
+    vec3 velocity;
     float lived;
     enum ProjectileType type;
 };

@@ -8,6 +8,8 @@
 
 #import "Projectiles.h"
 
+const unsigned int PROJECTILES_MAX = 100;
+
 @interface Projectiles()
 
 @property (nonatomic) struct Projectile* projectiles;
@@ -36,10 +38,11 @@
 {
     assert(i >= 0 && i < _maxLiving);
     
-    if(_maxLiving >= 1){
-        _projectiles[i] = _projectiles[i - 1];
-        --_maxLiving;
+    if(_maxLiving > 0){
+        _projectiles[i] = _projectiles[_maxLiving - 1];
     }
+    
+    --_maxLiving;
 }
 
 - (int)updateRank
@@ -49,18 +52,39 @@
 
 - (int)drawRank
 {
-    return 0;
+    return 10;
+}
+
+- (void)fireWithRay:(ray3)originVelocity andType:(enum ProjectileType)type
+{
+    if(_maxLiving < PROJECTILES_MAX){
+        _projectiles[_maxLiving].lived = 0;
+        memcpy(_projectiles[_maxLiving].position, originVelocity.p, sizeof(vec3));
+        memcpy(_projectiles[_maxLiving].velocity, originVelocity.n, sizeof(vec3));
+        _projectiles[_maxLiving].type = type;
+        
+        ++_maxLiving;
+    }
 }
 
 - (void)updateWithTimeElapsed:(double)dt
 {
-    for(unsigned int i = _maxLiving; i--;){
+    if(isnan(dt)) return;
+    
+    for(unsigned int i = 0; i < _maxLiving; ++i){
         struct Projectile* p = _projectiles + i;
         vec3 dp;
+        float speed = 100;
+        
+        switch (p->type) {
+            case ProjectileSemi:
+            default:
+                break;
+        }
         
         // update the position with respect to time
-        vec3_scale(dp, p->origin.n, dt);
-        vec3_add(p->origin.p, p->origin.p, dp);
+        vec3_scale(dp, p->velocity, dt * speed);
+        vec3_add(p->position, p->position, dp);
         
         p->lived += dt;
         
@@ -81,7 +105,7 @@
     [shader usingArray:blue ofLength:1 andType:vec4Array withName:"uColor"];
     [shader usingMat4x4:viewProjection withName:"uVP"];
     
-    [self.mesh drawAs:GL_POINTS];
+    [self drawAs:GL_POINTS];
 }
 
 @end

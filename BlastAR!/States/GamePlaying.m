@@ -107,6 +107,12 @@
     projectile.n[1] *= -1;
     projectile.n[2] *= -1;
     
+    vec3 off;
+    vec3_rand_norm(off);
+    vec3_scale(off, off, RAND_F * 0.025);
+    vec3_add(projectile.n, projectile.n, off);
+    [model.projectiles fireWithRay:projectile andType:ProjectileSemi];
+    
     NSMutableArray* killedEnemies = [[NSMutableArray alloc] init];
     
     // check to see what enemies, if any were shot and or killed

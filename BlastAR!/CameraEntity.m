@@ -27,6 +27,7 @@
     [_motionManager startDeviceMotionUpdates];
     _motionManager.deviceMotionUpdateInterval = 0.01;
     _orientation = GLKQuaternionIdentity;
+    memcpy(_shootDir.v, VEC3_FORWARD, sizeof(vec3));
     
     return self;
 }
@@ -52,8 +53,10 @@
     static const GLKVector3 forward = { 0, 0, 1 };
     static const GLKVector3 up      = { 1, 0, 0 };
     
+    if(!self.motionManager.deviceMotion) return;
+    
     CMQuaternion q = self.motionManager.deviceMotion.attitude.quaternion;
-    _orientation = GLKQuaternionMake(q.x, q.y, q.z, q.w);
+    _orientation = GLKQuaternionMake(q.x * 2, q.y * 2, q.z * 2, q.w * 2);
     
     _shootDir = GLKQuaternionRotateVector3(_orientation, forward);
     GLKVector3 adjUp = GLKQuaternionRotateVector3(_orientation, up);
