@@ -91,9 +91,11 @@
         vec3_mul(_position.v, _position.v, spawnLimiter);
         vec3_scale(_position.v, _position.v, 60.0);
         
+        [_skeleton translate:_position.v];
+        
         vec3_rand_norm(_velocity.v);
         
-        _HP = 10;
+        _HP = 20;
     
         [_skeleton updateWithTimeElapsed:0];
     }
@@ -195,6 +197,58 @@
 //    glEnable(GL_DEPTH_TEST);
 }
 
+- (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint andSolutionLessThan:(float)t withDamage:(float)dmg
+{
+    // don't intersect things that are dead already.
+    if(!_HP) return NO;
+    
+    struct genBone* hitBone;
+    if([self.skeleton checkIntersection:hitPoint intersectedBone:&hitBone withProjectile:projectile withSolutionLessThan:t]){
+        int vertsPerBone = _vertexCount / CREEP_BONES;
+        int offset = vertsPerBone * (hitBone->index > 0 ? hitBone->index - 1 : 0);
+        NSMutableArray* intersectedVerts = [[NSMutableArray alloc] init];
+        
+        for(int i = offset; i < offset + (vertsPerBone << 1); ++i){
+            struct CreepVertex* v = _vertices + i;
+            
+            if(_vertices[i].color[3] > 0.001f){
+                vec3 pos;
+                GLfloat soln;
+                memcpy(pos, [self.skeleton transformVertex:v].position, sizeof(vec3));
+                
+                if(vec3_ray_sphere(hitPoint, projectile, pos, hitBone->radius / 4, &soln)){
+                    
+                    // color the hole's perimeter white
+                    for(int j = 3; j--;){
+                        _vertices[i].color[j] = 1;
+                    }
+                    
+                    _vertices[i].color[3] = 0;
+                    
+                    [intersectedVerts addObject:@(i)];
+                    
+                    _HP -= dmg;
+                }
+            }
+        }
+        
+        VerletParticle* p = [[VerletParticle alloc] initWithIndices:intersectedVerts
+                                                        andVertices:_vertices
+                                                         usingGraph:_meshGraph
+                                                        andSkeleton:_skeleton];
+        
+        [self.mesh updateData:_vertices
+                       ofSize:sizeof(struct CreepVertex) * _vertexCount
+                  andIndicies:_indices
+                       ofSize:sizeof(unsigned int) * _indexCount];
+        
+        
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint
 {
     // don't intersect things that are dead already.
@@ -211,9 +265,10 @@
             
             if(_vertices[i].color[3] > 0.001f){
                 vec3 pos;
+                GLfloat soln;
                 memcpy(pos, [self.skeleton transformVertex:v].position, sizeof(vec3));
                 
-                if(vec3_ray_sphere(hitPoint, projectile, pos, hitBone->radius / 4)){
+                if(vec3_ray_sphere(hitPoint, projectile, pos, hitBone->radius / 4, &soln)){
                     
                     // color the hole's perimeter white
                     for(int j = 3; j--;){

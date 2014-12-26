@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/Enemy/Creep.m"
-            timestampString = "440477689.260625"
+            timestampString = "441168016.870799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "-updateWithTimeElapsed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/Enemy/Creep.m"
-            timestampString = "440477689.260625"
+            timestampString = "441168016.870799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-updateWithTimeElapsed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "440896607.597048"
+            timestampString = "441160605.581301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142">
+            startingLineNumber = "149"
+            endingLineNumber = "149">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/ViewController.mm"
-            timestampString = "440896607.597048"
+            timestampString = "441160605.581301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138">
+            startingLineNumber = "145"
+            endingLineNumber = "145">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -198,11 +198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BlastAR!/Enemy/Creep.m"
-            timestampString = "440909921.333958"
+            timestampString = "441168016.870799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "-drawWithViewProjection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -219,7 +219,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
             endingLineNumber = "168"
-            landmarkName = "vec3_ray_sphere(vec3 itrsec, ray3 ray, vec3 spherePos, GLfloat r)"
+            landmarkName = "vec3_ray_sphere(vec3 itrsec, ray3 ray, vec3 spherePos, GLfloat r, GLfloat* t)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -470,11 +470,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../OPjective/OPjective/Space/OrderedScene.m"
-            timestampString = "439450429.037373"
+            timestampString = "441231897.447293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-removeObjects:"
             landmarkType = "5">
          </BreakpointContent>
@@ -486,11 +486,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../OPjective/OPjective/Space/OrderedScene.m"
-            timestampString = "439450429.037373"
+            timestampString = "441231897.447293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-removeObjects:"
             landmarkType = "5">
          </BreakpointContent>

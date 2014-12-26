@@ -23,6 +23,10 @@
 		0628187A19A95CB300703ACF /* CrossHair.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 0628187919A95CB300703ACF /* CrossHair.fsh */; };
 		0628187D19A95EDC00703ACF /* Singletons.c in Sources */ = {isa = PBXBuildFile; fileRef = 0628187C19A95EDC00703ACF /* Singletons.c */; };
 		0628188A19AA375300703ACF /* RosyWriterVideoProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0628188919AA375300703ACF /* RosyWriterVideoProcessor.m */; };
+		062FD0D01A4C7E4D00F9A61A /* Weapon.m in Sources */ = {isa = PBXBuildFile; fileRef = 062FD0CF1A4C7E4D00F9A61A /* Weapon.m */; };
+		062FD0D31A4C832E00F9A61A /* WeaponSemi.m in Sources */ = {isa = PBXBuildFile; fileRef = 062FD0D21A4C832E00F9A61A /* WeaponSemi.m */; };
+		062FD0D71A4CB1A800F9A61A /* WeaponAuto.m in Sources */ = {isa = PBXBuildFile; fileRef = 062FD0D61A4CB1A800F9A61A /* WeaponAuto.m */; };
+		062FD0DA1A4CB7EB00F9A61A /* WeaponScatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 062FD0D91A4CB7EB00F9A61A /* WeaponScatter.m */; };
 		064111C219AECBC000B7AF2A /* SpawnDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 064111C119AECBC000B7AF2A /* SpawnDelegate.m */; };
 		064111C519AECE5300B7AF2A /* ProximityDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 064111C419AECE5300B7AF2A /* ProximityDelegate.m */; };
 		0666B87519A828A400760006 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B87419A828A400760006 /* Foundation.framework */; };
@@ -114,6 +118,15 @@
 		0628187C19A95EDC00703ACF /* Singletons.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Singletons.c; sourceTree = "<group>"; };
 		0628188819AA375300703ACF /* RosyWriterVideoProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RosyWriterVideoProcessor.h; sourceTree = "<group>"; };
 		0628188919AA375300703ACF /* RosyWriterVideoProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RosyWriterVideoProcessor.m; sourceTree = "<group>"; };
+		062FD0CE1A4C7E4D00F9A61A /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Weapon.h; path = Weapons/Weapon.h; sourceTree = "<group>"; };
+		062FD0CF1A4C7E4D00F9A61A /* Weapon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Weapon.m; path = Weapons/Weapon.m; sourceTree = "<group>"; };
+		062FD0D11A4C832E00F9A61A /* WeaponSemi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeaponSemi.h; path = Weapons/WeaponSemi.h; sourceTree = "<group>"; };
+		062FD0D21A4C832E00F9A61A /* WeaponSemi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeaponSemi.m; path = Weapons/WeaponSemi.m; sourceTree = "<group>"; };
+		062FD0D41A4C8BF000F9A61A /* Weapons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Weapons.h; path = Weapons/Weapons.h; sourceTree = "<group>"; };
+		062FD0D51A4CB1A800F9A61A /* WeaponAuto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeaponAuto.h; path = Weapons/WeaponAuto.h; sourceTree = "<group>"; };
+		062FD0D61A4CB1A800F9A61A /* WeaponAuto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeaponAuto.m; path = Weapons/WeaponAuto.m; sourceTree = "<group>"; };
+		062FD0D81A4CB7EB00F9A61A /* WeaponScatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponScatter.h; sourceTree = "<group>"; };
+		062FD0D91A4CB7EB00F9A61A /* WeaponScatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeaponScatter.m; sourceTree = "<group>"; };
 		064111C019AECBC000B7AF2A /* SpawnDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpawnDelegate.h; path = Events/SpawnDelegate.h; sourceTree = "<group>"; };
 		064111C119AECBC000B7AF2A /* SpawnDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpawnDelegate.m; path = Events/SpawnDelegate.m; sourceTree = "<group>"; };
 		064111C319AECE5300B7AF2A /* ProximityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProximityDelegate.h; path = Events/ProximityDelegate.h; sourceTree = "<group>"; };
@@ -251,6 +264,22 @@
 			name = Video;
 			sourceTree = "<group>";
 		};
+		062FD0CB1A4C7DE800F9A61A /* Weapons */ = {
+			isa = PBXGroup;
+			children = (
+				062FD0CE1A4C7E4D00F9A61A /* Weapon.h */,
+				062FD0CF1A4C7E4D00F9A61A /* Weapon.m */,
+				062FD0D11A4C832E00F9A61A /* WeaponSemi.h */,
+				062FD0D21A4C832E00F9A61A /* WeaponSemi.m */,
+				062FD0D41A4C8BF000F9A61A /* Weapons.h */,
+				062FD0D51A4CB1A800F9A61A /* WeaponAuto.h */,
+				062FD0D61A4CB1A800F9A61A /* WeaponAuto.m */,
+				062FD0D81A4CB7EB00F9A61A /* WeaponScatter.h */,
+				062FD0D91A4CB7EB00F9A61A /* WeaponScatter.m */,
+			);
+			name = Weapons;
+			sourceTree = "<group>";
+		};
 		064111BD19AECB8C00B7AF2A /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +332,7 @@
 		0666B87E19A828A400760006 /* BlastAR! */ = {
 			isa = PBXGroup;
 			children = (
+				062FD0CB1A4C7DE800F9A61A /* Weapons */,
 				0668AB4B1A432618004EEF2C /* Models */,
 				0668AB451A432387004EEF2C /* States */,
 				0628185819A90F0500703ACF /* Shaders */,
@@ -563,6 +593,7 @@
 				0628188A19AA375300703ACF /* RosyWriterVideoProcessor.m in Sources */,
 				06E8877419AA6A050049C7E1 /* SoundFactory.m in Sources */,
 				064111C519AECE5300B7AF2A /* ProximityDelegate.m in Sources */,
+				062FD0DA1A4CB7EB00F9A61A /* WeaponScatter.m in Sources */,
 				067B1AD01A4A3EE20030302F /* Projectiles.m in Sources */,
 				0628185719A90ACB00703ACF /* Starfield.m in Sources */,
 				064111C219AECBC000B7AF2A /* SpawnDelegate.m in Sources */,
@@ -570,11 +601,14 @@
 				0628187419A95B0B00703ACF /* Crosshair.m in Sources */,
 				0668AB511A4369F7004EEF2C /* CameraEntity.m in Sources */,
 				0628187D19A95EDC00703ACF /* Singletons.c in Sources */,
+				062FD0D31A4C832E00F9A61A /* WeaponSemi.m in Sources */,
 				0668AB4A1A4323AD004EEF2C /* GamePlaying.m in Sources */,
 				0628186219A9150700703ACF /* Creep.m in Sources */,
 				0666B88519A828A400760006 /* main.m in Sources */,
 				0668A1501A2D26EA00E90D48 /* CreepSkeleton.m in Sources */,
+				062FD0D01A4C7E4D00F9A61A /* Weapon.m in Sources */,
 				0668AB4E1A43262E004EEF2C /* GameModel.m in Sources */,
+				062FD0D71A4CB1A800F9A61A /* WeaponAuto.m in Sources */,
 				06F97EA01A3917C8004BD05C /* VerletParticle.m in Sources */,
 				0676C5A519A8E090004DC90F /* Background.m in Sources */,
 			);

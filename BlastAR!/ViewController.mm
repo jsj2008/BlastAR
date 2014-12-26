@@ -129,8 +129,15 @@ static GLuint VIEW_FBO, VIEW_RBO;
     [GameState updateActive];
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     // TODO invoke shoot event on GamePlaying state
     [GameState sendTouches:touches];
 }
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [GameState sendTouchesEnded:touches];
+}
+
 @end

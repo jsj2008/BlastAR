@@ -18,6 +18,8 @@
 #import "./../Effects/ParticleFactory.h"
 #import "./../Enemy/Creep.h"
 #import "./../CreepRenderGroup.h"
+#import "./../Weapons/Weapons.h"
+//#import "./../Weapons/Weapons.h"
 
 @interface GameModel : NSObject
 
@@ -37,5 +39,8 @@
 @property (nonatomic) Sound* pewPew;
 @property (nonatomic) Sound* spawn;
 @property (nonatomic) Sound* proximityWarning;
+
+@property (nonatomic) NSMutableArray* allWeapons;
+@property (nonatomic) Weapon* selectedWeapon;
 
 @end

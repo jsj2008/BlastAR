@@ -70,11 +70,23 @@
 
 - (BOOL)checkIntersection:(vec3)intersection intersectedBone:(struct genBone **)hitBone withProjectile:(ray3)ray
 {
+    return [self checkIntersection:intersection intersectedBone:hitBone withProjectile:ray withSolutionLessThan:INFINITY];
+}
+
+- (BOOL)checkIntersection:(vec3)intersection
+          intersectedBone:(struct genBone **)hitBone
+           withProjectile:(ray3)ray
+     withSolutionLessThan:(float)t
+{
+    GLfloat solution = 0;
+    
     for(int i = CREEP_BONES; i--;){
         struct genBone* bone = _bones + i;
-        if(vec3_ray_sphere(intersection, ray, bone->position, bone->radius)){
-            *hitBone = bone;
-            return YES;
+        if(vec3_ray_sphere(intersection, ray, bone->position, bone->radius, &solution)){
+            if(solution <= t){
+                *hitBone = bone;
+                return YES;
+            }
         }
     }
     
@@ -90,6 +102,14 @@
     vec3_add(copy.position, rot.v, bone->position);
 
     return copy;
+}
+
+- (void)translate:(vec3)offset
+{
+    for(int i = CREEP_BONES; i--;){
+        struct genBone* bone = _bones + i;
+        vec3_add(bone->position, bone->position, offset);
+    }
 }
 
 - (void)dealloc

@@ -52,24 +52,32 @@
     // create and update the view projection matrix
     static const GLKVector3 forward = { 0, 0, 1 };
     static const GLKVector3 up      = { 1, 0, 0 };
+    static const GLKVector3 left    = { 0, 1, 0 };
     
     if(!self.motionManager.deviceMotion) return;
     
+    float s = 1;
     CMQuaternion q = self.motionManager.deviceMotion.attitude.quaternion;
-    _orientation = GLKQuaternionMake(q.x * 2, q.y * 2, q.z * 2, q.w * 2);
+    
+    float angle = acosf(q.w) * 2.0;
+    float scale = asinf(angle / 2.0);
+    
+    _orientation = GLKQuaternionMakeWithAngleAndAxis(angle, q.x / s, q.y / s, q.z / s);
     
     _shootDir = GLKQuaternionRotateVector3(_orientation, forward);
-    GLKVector3 adjUp = GLKQuaternionRotateVector3(_orientation, up);
+    _left = GLKQuaternionRotateVector3(_orientation, left);
+    _up = GLKQuaternionRotateVector3(_orientation, up);
     
     GLKVector3Normalize(_shootDir);
-    GLKVector3Normalize(adjUp);
+    GLKVector3Normalize(_left);
+    GLKVector3Normalize(_up);
     
     GLKMatrix4 viewMatrix = GLKMatrix4MakeLookAt(
                                                  _shootDir.x, _shootDir.y, _shootDir.z,
                                                  0, 0, 0,
-                                                 adjUp.x, adjUp.y, adjUp.z
+                                                 _up.x, _up.y, _up.z
                                                  );
-    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(54.0f), _aspect, 0.1f, 100.0f);
+    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(54.0f), _aspect, 0.1f, 1000.0f);
     _viewProjection = GLKMatrix4Multiply(projectionMatrix, viewMatrix);
 }
 

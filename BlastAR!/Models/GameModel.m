@@ -18,6 +18,11 @@
     return _enemies;
 }
 
+- (NSMutableArray*)allWeapons
+{
+    return _allWeapons ? _allWeapons : (_allWeapons = [[NSMutableArray alloc] init]);
+}
+
 - (OrderedScene*) scene{
     if(!_scene){
         _scene = [[OrderedScene alloc] init];
@@ -25,6 +30,5 @@
     
     return _scene;
 }
-
 
 @end

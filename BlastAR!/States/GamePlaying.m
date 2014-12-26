@@ -13,7 +13,8 @@
 @interface GamePlaying()
 
 @property (nonatomic) GameModel* model;
-@property ReoccuringEvent *spawnEvent, *proximityEvent;
+@property (nonatomic) ReoccuringEvent *spawnEvent, *proximityEvent;
+@property (nonatomic) BOOL firing;
 
 @end
 
@@ -39,6 +40,11 @@
     [_model.scene addObject:_model.background = [[Background alloc] initWithGLKview:view andGLContext:view.context]];
     [_model.scene addObject:_model.projectiles = [[Projectiles alloc] init]];
     [_model.scene addObject:_model.camera];
+
+    
+    [_model.allWeapons addObject:[[WeaponScatter alloc] initWithProjectiles:_model.projectiles andCamera:_model.camera]];
+    [_model.scene addObjects:_model.allWeapons];
+    _model.selectedWeapon = [_model.allWeapons firstObject];
     
     [ParticleFactory initWithScene:_model.scene andCapacities:100];
     
@@ -60,6 +66,78 @@
 
 }
 
+- (void)checkForKilledEnemies:(GameModel *)model withElapsedTime:(float)dt
+{
+    NSMutableArray* killedEnemies = [[NSMutableArray alloc] init];
+    
+    // check to see what enemies, if any were shot and or killed
+    for (int i = model.scene.updatableObjects.count; i--;) {
+        id object = model.scene.updatableObjects[i];
+        if([object conformsToProtocol:@protocol(Shootable)]){
+            vec3 hitPoint;
+            
+            for(unsigned int j = model.projectiles.maxLiving; j--;){
+                struct Projectile* p = model.projectiles.projectiles + j;
+                if([object fireAt:p->positionVelocity
+                 withIntersection:hitPoint
+              andSolutionLessThan:dt
+                       withDamage:model.selectedWeapon.damage]){
+                    Creep* creep = (Creep*)object;
+                    ray3 ray = p->positionVelocity;
+                    struct ParticleVertex smoke[10];
+                    
+                    p->lived = 100;
+                    
+                    vec3_scale(ray.n, ray.n, 0.1);
+                    
+                    for(int i = 10; i--;){
+                        struct ParticleVertex p = {
+                            .position = { hitPoint[0], hitPoint[1], hitPoint[2] },
+                            .velocity = {RAND_F_NORM * RAND_F + -ray.n[0], RAND_F_NORM * RAND_F + -ray.n[1], RAND_F_NORM * RAND_F + -ray.n[2]},
+                            .color = { 0.6f, 0.6f, 0.6f, RAND_F },
+                            .size = 200.0f * (RAND_F + 1.0f),
+                            .life = 2 * (RAND_F + 1.0f)
+                        };
+                        
+                        smoke[i] = p;
+                    }
+                    
+                    [ParticleFactory spawnParticleOfType:@"smoke" withParticles:smoke ofCount:10];
+                    
+                    if(creep.HP <= 0){
+                        struct ParticleVertex smoke[10];
+                        
+                        for(int i = 3; i--;){
+                            struct ParticleVertex p = {
+                                .position = { creep.position.x, creep.position.y, creep.position.z },
+                                .velocity = {RAND_F_NORM * RAND_F + -ray.p[0], RAND_F_NORM * RAND_F + -ray.p[1], RAND_F_NORM * RAND_F + -ray.p[2]},
+                                .color = { 1.0f, RAND_F, 0.0f, RAND_F },
+                                .size = 400.0f * (RAND_F + 1.0f),
+                                .life = 1 * (RAND_F + 1.0f)
+                            };
+                            
+                            smoke[i] = p;
+                        }
+                        [killedEnemies addObject:object];
+                    }
+                }
+            }
+        }
+    }
+    
+    // clean up
+    [model.enemies removeObjectsInArray:killedEnemies];
+    [model.creeps removeObjects:killedEnemies];
+    [model.scene removeObjects:killedEnemies];
+}
+
+- (void)updateWeapon:(float)dt
+{
+    GameModel* model = self.model;
+    
+    [model.selectedWeapon updateWithTimeElapsed:dt];
+}
+
 - (void)updateWithTimeElapsed:(double)dt
 {
     GameModel* model = self.model;
@@ -71,6 +149,8 @@
         float pitch = 10.0f - dist;
         [model.proximityWarning setPitch:pitch];
     }
+    
+    [self updateWeapon:dt];
     
     // update the enemies
     float closestDist = 1000;
@@ -86,6 +166,9 @@
         }
     }
     
+    [self checkForKilledEnemies:model withElapsedTime:dt];
+    
+    
     [model.scene updateWithTimeElapsed:dt];
     [ReoccuringEvent updateWithTimeElapsed:dt];
     
@@ -95,75 +178,12 @@
 
 - (void)receiveTouches:(NSSet*)touches
 {
-    GameModel* model = self.model;
-    
-    NSLog(@"Pew!");
-    
-    ray3 projectile;
-    memcpy(&projectile.p, VEC3_ZERO, sizeof(vec3));
-    memcpy(&projectile.n, model.camera.shootDir.v, sizeof(vec3));
-    
-    projectile.n[0] *= -1;
-    projectile.n[1] *= -1;
-    projectile.n[2] *= -1;
-    
-    vec3 off;
-    vec3_rand_norm(off);
-    vec3_scale(off, off, RAND_F * 0.025);
-    vec3_add(projectile.n, projectile.n, off);
-    [model.projectiles fireWithRay:projectile andType:ProjectileSemi];
-    
-    NSMutableArray* killedEnemies = [[NSMutableArray alloc] init];
-    
-    // check to see what enemies, if any were shot and or killed
-    for (int i = model.scene.updatableObjects.count; i--;) {
-        id object = model.scene.updatableObjects[i];
-        if([object conformsToProtocol:@protocol(Shootable)]){
-            vec3 hitPoint;
-            if([object fireAt:projectile withIntersection:hitPoint]){
-                Creep* creep = (Creep*)object;
-                
-                struct ParticleVertex smoke[10];
-                
-                for(int i = 10; i--;){
-                    struct ParticleVertex p = {
-                        .position = { hitPoint[0], hitPoint[1], hitPoint[2] },
-                        .velocity = {RAND_F_NORM * RAND_F, RAND_F_NORM  * RAND_F, RAND_F_NORM * RAND_F},
-                        .color = { 0.6f, 0.6f, 0.6f, RAND_F },
-                        .size = 200.0f * (RAND_F + 1.0f),
-                        .life = 2 * (RAND_F + 1.0f)
-                    };
-                    
-                    smoke[i] = p;
-                }
-                
-                [ParticleFactory spawnParticleOfType:@"smoke" withParticles:smoke ofCount:10];
-                
-                if(creep.HP <= 0){
-                    struct ParticleVertex smoke[10];
-                    
-                    for(int i = 3; i--;){
-                        struct ParticleVertex p = {
-                            .position = { creep.position.x, creep.position.y, creep.position.z },
-                            .velocity = {RAND_F_NORM * RAND_F, RAND_F_NORM  * RAND_F, RAND_F_NORM * RAND_F},
-                            .color = { 1.0f, RAND_F, 0.0f, RAND_F },
-                            .size = 400.0f * (RAND_F + 1.0f),
-                            .life = 1 * (RAND_F + 1.0f)
-                        };
-                        
-                        smoke[i] = p;
-                    }
-                    [killedEnemies addObject:object];
-                }
-            }
-        }
-    }
-    
-    // clean up
-    [model.enemies removeObjectsInArray:killedEnemies];
-    [model.scene removeObjects: killedEnemies];
-    
-    [model.pewPew play];
+    [self.model.selectedWeapon beginFiring];
+}
+
+- (void)receiveTouchesEnded:(NSSet *)touches
+{
+    [self.model.selectedWeapon endFiring];
 }
 
 - (void)drawWithViewProjection:(GLKMatrix4 *)viewProjection

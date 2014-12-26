@@ -11,5 +11,6 @@
 @protocol Shootable <NSObject>
 
 - (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint;
+- (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint andSolutionLessThan:(float)t withDamage:(float)dmg;
 
 @end

@@ -29,6 +29,8 @@ struct genBone{
 @property (nonatomic) struct genBone* head;
 
 - (BOOL)checkIntersection:(vec3)intersection intersectedBone:(struct genBone**)bone withProjectile:(ray3)ray;
+- (BOOL)checkIntersection:(vec3)intersection intersectedBone:(struct genBone**)bone withProjectile:(ray3)ray withSolutionLessThan:(float)t;
+- (void)translate:(vec3)offset;
 - (struct CreepVertex)transformVertex:(struct CreepVertex*)vertex;
 
 @end

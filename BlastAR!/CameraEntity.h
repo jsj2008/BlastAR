@@ -12,6 +12,7 @@
 @interface CameraEntity : NSObject <Updateable, Ranked>
 
 @property (nonatomic, readonly) GLKVector3 shootDir;
+@property (nonatomic, readonly) GLKVector3 left, up;
 @property (nonatomic, readonly) GLKMatrix4 viewProjection;
 @property (nonatomic, readonly) GLKQuaternion orientation;
 @property (nonatomic) float aspect;

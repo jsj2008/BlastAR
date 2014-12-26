@@ -12,9 +12,6 @@ const unsigned int PROJECTILES_MAX = 100;
 
 @interface Projectiles()
 
-@property (nonatomic) struct Projectile* projectiles;
-@property (nonatomic) unsigned int maxLiving;
-
 @end
 
 @implementation Projectiles
@@ -59,8 +56,7 @@ const unsigned int PROJECTILES_MAX = 100;
 {
     if(_maxLiving < PROJECTILES_MAX){
         _projectiles[_maxLiving].lived = 0;
-        memcpy(_projectiles[_maxLiving].position, originVelocity.p, sizeof(vec3));
-        memcpy(_projectiles[_maxLiving].velocity, originVelocity.n, sizeof(vec3));
+        _projectiles[_maxLiving].positionVelocity = originVelocity;
         _projectiles[_maxLiving].type = type;
         
         ++_maxLiving;
@@ -74,7 +70,6 @@ const unsigned int PROJECTILES_MAX = 100;
     for(unsigned int i = 0; i < _maxLiving; ++i){
         struct Projectile* p = _projectiles + i;
         vec3 dp;
-        float speed = 100;
         
         switch (p->type) {
             case ProjectileSemi:
@@ -83,12 +78,12 @@ const unsigned int PROJECTILES_MAX = 100;
         }
         
         // update the position with respect to time
-        vec3_scale(dp, p->velocity, dt * speed);
-        vec3_add(p->position, p->position, dp);
+        vec3_scale(dp, p->positionVelocity.n, dt);
+        vec3_add(p->positionVelocity.p, p->positionVelocity.p, dp);
         
         p->lived += dt;
         
-        if(p->lived > 1.0f){
+        if(p->lived > 2.0f){
             [self killIndex:i];
         }
     }
@@ -105,7 +100,9 @@ const unsigned int PROJECTILES_MAX = 100;
     [shader usingArray:blue ofLength:1 andType:vec4Array withName:"uColor"];
     [shader usingMat4x4:viewProjection withName:"uVP"];
     
+    glDepthMask(GL_FALSE);
     [self drawAs:GL_POINTS];
+    glDepthMask(GL_TRUE);
 }
 
 @end
