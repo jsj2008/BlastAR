@@ -28,6 +28,7 @@
 
 @property (nonatomic) GamePlaying* playing;
 @property (nonatomic) GameModel* game;
+@property (nonatomic) UIPinchGestureRecognizer* pinch;
 
 - (void)setupGL;
 - (void)tearDownGL;
@@ -71,8 +72,15 @@ static GLuint VIEW_FBO, VIEW_RBO;
     _playing = [[GamePlaying alloc] initWithGameModel:_game andViewController:self];
     
     _game.camera.aspect = AR_ASPECT_RATIO = AR_WIDTH / (float)AR_HEIGHT;
+    _pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [view addGestureRecognizer:_pinch];
     
     [GameState switchToState:_playing];
+}
+
+- (void)handleGesture:(UIGestureRecognizer*)gesture
+{
+    [[GameState getActive]receiveGesture:gesture];
 }
 
 - (void)dealloc

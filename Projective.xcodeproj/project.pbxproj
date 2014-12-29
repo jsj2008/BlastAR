@@ -27,6 +27,11 @@
 		062FD0D31A4C832E00F9A61A /* WeaponSemi.m in Sources */ = {isa = PBXBuildFile; fileRef = 062FD0D21A4C832E00F9A61A /* WeaponSemi.m */; };
 		062FD0D71A4CB1A800F9A61A /* WeaponAuto.m in Sources */ = {isa = PBXBuildFile; fileRef = 062FD0D61A4CB1A800F9A61A /* WeaponAuto.m */; };
 		062FD0DA1A4CB7EB00F9A61A /* WeaponScatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 062FD0D91A4CB7EB00F9A61A /* WeaponScatter.m */; };
+		062FD0DC1A4DD6F300F9A61A /* BlurV.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 062FD0DB1A4DD6F300F9A61A /* BlurV.fsh */; };
+		062FD0DE1A4DD70800F9A61A /* BlurH.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 062FD0DD1A4DD70800F9A61A /* BlurH.fsh */; };
+		062FD0E01A4DDD3700F9A61A /* TronifyV.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 062FD0DF1A4DDD3700F9A61A /* TronifyV.fsh */; };
+		062FD0E21A4DDD4300F9A61A /* TronifyH.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 062FD0E11A4DDD4300F9A61A /* TronifyH.fsh */; };
+		062FD0EA1A50D61B00F9A61A /* SpawnField.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 062FD0E91A50D61B00F9A61A /* SpawnField.fsh */; };
 		064111C219AECBC000B7AF2A /* SpawnDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 064111C119AECBC000B7AF2A /* SpawnDelegate.m */; };
 		064111C519AECE5300B7AF2A /* ProximityDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 064111C419AECE5300B7AF2A /* ProximityDelegate.m */; };
 		0666B87519A828A400760006 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0666B87419A828A400760006 /* Foundation.framework */; };
@@ -127,6 +132,11 @@
 		062FD0D61A4CB1A800F9A61A /* WeaponAuto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeaponAuto.m; path = Weapons/WeaponAuto.m; sourceTree = "<group>"; };
 		062FD0D81A4CB7EB00F9A61A /* WeaponScatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeaponScatter.h; sourceTree = "<group>"; };
 		062FD0D91A4CB7EB00F9A61A /* WeaponScatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeaponScatter.m; sourceTree = "<group>"; };
+		062FD0DB1A4DD6F300F9A61A /* BlurV.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = BlurV.fsh; path = Shaders/BlurV.fsh; sourceTree = "<group>"; };
+		062FD0DD1A4DD70800F9A61A /* BlurH.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BlurH.fsh; sourceTree = "<group>"; };
+		062FD0DF1A4DDD3700F9A61A /* TronifyV.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = TronifyV.fsh; path = Shaders/TronifyV.fsh; sourceTree = "<group>"; };
+		062FD0E11A4DDD4300F9A61A /* TronifyH.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = TronifyH.fsh; sourceTree = "<group>"; };
+		062FD0E91A50D61B00F9A61A /* SpawnField.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SpawnField.fsh; sourceTree = "<group>"; };
 		064111C019AECBC000B7AF2A /* SpawnDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpawnDelegate.h; path = Events/SpawnDelegate.h; sourceTree = "<group>"; };
 		064111C119AECBC000B7AF2A /* SpawnDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpawnDelegate.m; path = Events/SpawnDelegate.m; sourceTree = "<group>"; };
 		064111C319AECE5300B7AF2A /* ProximityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProximityDelegate.h; path = Events/ProximityDelegate.h; sourceTree = "<group>"; };
@@ -236,6 +246,11 @@
 				06B044201A45A12400C5604E /* Blur.fsh */,
 				067B1AD31A4A455B0030302F /* Projectiles.vsh */,
 				067B1AD51A4A45860030302F /* Projectiles.fsh */,
+				062FD0DB1A4DD6F300F9A61A /* BlurV.fsh */,
+				062FD0DD1A4DD70800F9A61A /* BlurH.fsh */,
+				062FD0DF1A4DDD3700F9A61A /* TronifyV.fsh */,
+				062FD0E11A4DDD4300F9A61A /* TronifyH.fsh */,
+				062FD0E91A50D61B00F9A61A /* SpawnField.fsh */,
 			);
 			name = Shaders;
 			sourceTree = "<group>";
@@ -332,10 +347,10 @@
 		0666B87E19A828A400760006 /* BlastAR! */ = {
 			isa = PBXGroup;
 			children = (
+				0628185819A90F0500703ACF /* Shaders */,
 				062FD0CB1A4C7DE800F9A61A /* Weapons */,
 				0668AB4B1A432618004EEF2C /* Models */,
 				0668AB451A432387004EEF2C /* States */,
-				0628185819A90F0500703ACF /* Shaders */,
 				06E8876E19AA696D0049C7E1 /* Effects */,
 				0628188719AA372500703ACF /* Video */,
 				0676C5A219A8E06F004DC90F /* Scene */,
@@ -547,6 +562,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				062FD0DC1A4DD6F300F9A61A /* BlurV.fsh in Resources */,
 				0666B89119A828A400760006 /* room.fsh in Resources */,
 				06E8876B19AA3C970049C7E1 /* FullscreenQuad.fsh in Resources */,
 				067B1AD61A4A45860030302F /* Projectiles.fsh in Resources */,
@@ -555,16 +571,20 @@
 				06E8877619AA88920049C7E1 /* Particles.vsh in Resources */,
 				0628185E19A90F4D00703ACF /* Starfield.fsh in Resources */,
 				0628186A19A92CA500703ACF /* Creep.vsh in Resources */,
+				062FD0DE1A4DD70800F9A61A /* BlurH.fsh in Resources */,
+				062FD0E01A4DDD3700F9A61A /* TronifyV.fsh in Resources */,
 				0666B88C19A828A400760006 /* Main_iPhone.storyboard in Resources */,
 				0628187819A95C6C00703ACF /* ScreenSpace.vsh in Resources */,
 				0628186719A91B5100703ACF /* Creep.fsh in Resources */,
 				06E8876719AA3C1F0049C7E1 /* FullscreenQuad.vsh in Resources */,
 				067B1AD41A4A455B0030302F /* Projectiles.vsh in Resources */,
+				062FD0E21A4DDD4300F9A61A /* TronifyH.fsh in Resources */,
 				0666B89819A828A400760006 /* Images.xcassets in Resources */,
 				0628185C19A90F3C00703ACF /* Starfield.vsh in Resources */,
 				0666B88319A828A400760006 /* InfoPlist.strings in Resources */,
 				06B044211A45A12400C5604E /* Blur.fsh in Resources */,
 				060070581A405F7A0003DC0D /* VerletParticle.vsh in Resources */,
+				062FD0EA1A50D61B00F9A61A /* SpawnField.fsh in Resources */,
 				0628187A19A95CB300703ACF /* CrossHair.fsh in Resources */,
 				0666B89319A828A400760006 /* room.vsh in Resources */,
 			);

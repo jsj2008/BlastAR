@@ -15,6 +15,19 @@
     self = [super initWithProjectiles:projectiles andCamera:cam];
     if(!self) return nil;
     
+    static vec3 iconVerts[] = {
+        { 0, 0.025, 0 },
+        { -0.025, 0.02, 0 },
+        { 0.025, 0.02, 0 },
+        { 0, 0, 0 },
+        { -0.0105, -0.005, 0 },
+        { 0.0105, -0.005, 0 },
+        { 0, -0.025, 0 },
+    };
+    
+    self.iconOffset = GLKVector3Make(0.5, -0.65, 0);
+    [self.mesh updateData:iconVerts ofSize:sizeof(iconVerts)];
+    
     return self;
 }
 
@@ -41,6 +54,17 @@
 - (int)damage
 {
     return 2;
+}
+
+- (void)drawWithViewProjection:(GLKMatrix4 *)viewProjection
+{
+    Shader* shader = [self.shaders firstObject];
+    
+    [shader bind];
+    [shader usingArray:self.iconOffset.v ofLength:1 andType:vec3Array withName:"uOffset"];
+    
+    glLineWidth(2.0);
+    [self drawAs:GL_POINTS];
 }
 
 @end

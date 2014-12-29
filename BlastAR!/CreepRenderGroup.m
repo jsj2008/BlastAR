@@ -12,7 +12,7 @@
 @interface CreepRenderGroup()
 
 @property (nonatomic) RenderTarget* renderTarget;
-@property (nonatomic) PostEffect* blur;
+@property (nonatomic) PostEffect *blurV, *blurH;
 @property (nonatomic) GLKView* view;
 
 @end
@@ -24,13 +24,14 @@
     self = [super init];
     
     if(self){
-        _renderTarget = [[RenderTarget alloc] initWithWidth:AR_WIDTH >> 1
-                                                  andHeight:AR_HEIGHT >> 1
+        _renderTarget = [[RenderTarget alloc] initWithWidth:512//AR_WIDTH >> 1
+                                                  andHeight:512//AR_HEIGHT >> 1
                                                    andFlags:RENDER_TARGET_COLOR
                          ];
         
-        _blur = [[PostEffect alloc] initWithShader:@"Blur"];
-    
+        _blurV = [[PostEffect alloc] initWithShader:@"BlurV"];
+        _blurH = [[PostEffect alloc] initWithShader:@"BlurH"];
+        
         _view = view;
     }
     
@@ -58,9 +59,13 @@
     
     glBlendFunc(GL_ONE, GL_ONE);
     glDisable(GL_DEPTH_TEST);
-    [self.blur bind];
-    [self.blur usingTexture:self.renderTarget.color withName:"uTexture"];
-    [self.blur drawWithViewProjection:viewProjection];
+    [self.blurV bind];
+    [self.blurV usingTexture:self.renderTarget.color withName:"uTexture"];
+    [self.blurV drawWithViewProjection:viewProjection];
+    
+    [self.blurH bind];
+    [self.blurH usingTexture:self.renderTarget.color withName:"uTexture"];
+    [self.blurH drawWithViewProjection:viewProjection];
 }
 
 @end

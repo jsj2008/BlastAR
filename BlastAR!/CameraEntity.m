@@ -28,6 +28,10 @@
     _motionManager.deviceMotionUpdateInterval = 0.01;
     _orientation = GLKQuaternionIdentity;
     memcpy(_shootDir.v, VEC3_FORWARD, sizeof(vec3));
+    memcpy(_left.v, VEC3_LEFT, sizeof(vec3));
+    memcpy(_up.v, VEC3_UP, sizeof(vec3));
+    
+    
     
     return self;
 }
@@ -77,7 +81,7 @@
                                                  0, 0, 0,
                                                  _up.x, _up.y, _up.z
                                                  );
-    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(54.0f), _aspect, 0.1f, 1000.0f);
+    GLKMatrix4 projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(34.0f), _aspect, 0.1f, 1000.0f);
     _viewProjection = GLKMatrix4Multiply(projectionMatrix, viewMatrix);
 }
 

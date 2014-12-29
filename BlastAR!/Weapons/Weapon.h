@@ -10,7 +10,7 @@
 #import "./../Scene/Projectiles.h"
 #import "CameraEntity.h"
 
-@interface Weapon : ShadedMesh <Drawable, Updateable, Ranked>
+@interface Weapon : ShadedMesh <Drawable, Updateable, Ranked, Touchable>
 
 @property (nonatomic) Projectiles* projectiles;
 @property (nonatomic) CameraEntity* cam;
@@ -18,6 +18,7 @@
 @property (nonatomic) enum ProjectileType type;
 @property (nonatomic) float coolDown;
 @property (nonatomic) float timeFiring;
+@property (nonatomic) GLKVector3 iconOffset;
 
 - (instancetype)initWithProjectiles:(Projectiles*)projectiles andCamera:(CameraEntity*)cam;
 - (void)beginFiring;

@@ -54,6 +54,7 @@
     
     [shader bind];
     [shader usingFloat:&AR_ASPECT_RATIO ofLength:1 withName:"uAspect"];
+    [shader usingArray:VEC3_ZERO ofLength:1 andType:vec3Array withName:"uOffset"];
     
     [shader usingArray:light ofLength:1 andType:vec4Array withName:"uColor"];
     [self drawAs:GL_TRIANGLE_FAN];

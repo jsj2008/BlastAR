@@ -82,4 +82,15 @@
     
 }
 
+- (BOOL)isTouchedBy:(UITouch *)touch
+{
+    GLKVector2 touchPos = [OPjective cannonicalFromTouch:touch];
+    
+    if(vec3_dist(touchPos.v, _iconOffset.v) < 0.1f){
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

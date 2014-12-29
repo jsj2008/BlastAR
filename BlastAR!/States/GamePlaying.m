@@ -40,9 +40,10 @@
     [_model.scene addObject:_model.background = [[Background alloc] initWithGLKview:view andGLContext:view.context]];
     [_model.scene addObject:_model.projectiles = [[Projectiles alloc] init]];
     [_model.scene addObject:_model.camera];
-
     
+    [_model.allWeapons addObject:[[WeaponAuto alloc] initWithProjectiles:_model.projectiles andCamera:_model.camera]];
     [_model.allWeapons addObject:[[WeaponScatter alloc] initWithProjectiles:_model.projectiles andCamera:_model.camera]];
+    [_model.allWeapons addObject:[[WeaponSemi alloc] initWithProjectiles:_model.projectiles andCamera:_model.camera]];
     [_model.scene addObjects:_model.allWeapons];
     _model.selectedWeapon = [_model.allWeapons firstObject];
     
@@ -63,7 +64,8 @@
     
     _spawnEvent = [ReoccuringEvent addWithCallback:[[SpawnDelegate alloc] initWithGame:_model] andInterval:5.0f];
     _proximityEvent = [ReoccuringEvent addWithCallback:[[ProximityDelegate alloc] initWithGame:_model] andInterval:1.5f];
-
+    
+    [_model.scene addObject:(SpawnDelegate*)self.spawnEvent.callback];
 }
 
 - (void)checkForKilledEnemies:(GameModel *)model withElapsedTime:(float)dt
@@ -78,46 +80,51 @@
             
             for(unsigned int j = model.projectiles.maxLiving; j--;){
                 struct Projectile* p = model.projectiles.projectiles + j;
+                
                 if([object fireAt:p->positionVelocity
                  withIntersection:hitPoint
               andSolutionLessThan:dt
                        withDamage:model.selectedWeapon.damage]){
+                    
                     Creep* creep = (Creep*)object;
                     ray3 ray = p->positionVelocity;
-                    struct ParticleVertex smoke[10];
+                    struct ParticleVertex smoke[3];
+                    vec4 red = { 1, 0, 0, 1 };
+                    vec4 green = { 0, 1, 0, 1 };
                     
                     p->lived = 100;
                     
                     vec3_scale(ray.n, ray.n, 0.1);
                     
-                    for(int i = 10; i--;){
+                    for(int i = 3; i--;){
                         struct ParticleVertex p = {
                             .position = { hitPoint[0], hitPoint[1], hitPoint[2] },
-                            .velocity = {RAND_F_NORM * RAND_F + -ray.n[0], RAND_F_NORM * RAND_F + -ray.n[1], RAND_F_NORM * RAND_F + -ray.n[2]},
-                            .color = { 0.6f, 0.6f, 0.6f, RAND_F },
-                            .size = 200.0f * (RAND_F + 1.0f),
-                            .life = 2 * (RAND_F + 1.0f)
+                            .velocity = {RAND_F_NORM * RAND_F * 4, RAND_F_NORM * RAND_F * 4, RAND_F_NORM * RAND_F * 4},
+                            .size = 100.0f * (RAND_F + 1.0f),
+                            .life = (RAND_F + 2.0f)
                         };
+                        
+                        vec4_lerp(p.color, red, green, RAND_F);
                         
                         smoke[i] = p;
                     }
-                    
-                    [ParticleFactory spawnParticleOfType:@"smoke" withParticles:smoke ofCount:10];
+                    [ParticleFactory spawnParticleOfType:@"smoke" withParticles:smoke ofCount:3];
                     
                     if(creep.HP <= 0){
-                        struct ParticleVertex smoke[10];
+                        struct ParticleVertex deathSmoke[10];
                         
-                        for(int i = 3; i--;){
+                        for(int i = 10; i--;){
                             struct ParticleVertex p = {
                                 .position = { creep.position.x, creep.position.y, creep.position.z },
-                                .velocity = {RAND_F_NORM * RAND_F + -ray.p[0], RAND_F_NORM * RAND_F + -ray.p[1], RAND_F_NORM * RAND_F + -ray.p[2]},
-                                .color = { 1.0f, RAND_F, 0.0f, RAND_F },
+                                .velocity = {RAND_F_NORM * RAND_F, RAND_F_NORM * RAND_F, RAND_F_NORM * RAND_F},
+                                .color = { RAND_F, 1.0, 1.0f, RAND_F },
                                 .size = 400.0f * (RAND_F + 1.0f),
-                                .life = 1 * (RAND_F + 1.0f)
+                                .life = 10 * (RAND_F + 1.0f)
                             };
                             
-                            smoke[i] = p;
+                            deathSmoke[i] = p;
                         }
+                        [ParticleFactory spawnParticleOfType:@"smoke" withParticles:deathSmoke ofCount:10];
                         [killedEnemies addObject:object];
                     }
                 }
@@ -174,16 +181,36 @@
     
     GLKMatrix4 VP = model.camera.viewProjection;
     [model.scene drawWithViewProjection:&VP];
+    [model.selectedWeapon drawWithViewProjection:&VP];
 }
 
 - (void)receiveTouches:(NSSet*)touches
 {
+    GLKVector2 screenPos = [OPjective cannonicalFromTouch:[touches anyObject]];
+    
+    for(Weapon* w in self.model.allWeapons){
+        if([w isTouchedBy:[touches anyObject]])
+        {
+            self.model.selectedWeapon = w;
+            break;
+        }
+    }
+    
     [self.model.selectedWeapon beginFiring];
 }
 
 - (void)receiveTouchesEnded:(NSSet *)touches
 {
     [self.model.selectedWeapon endFiring];
+}
+
+- (void)receiveGesture:(UIGestureRecognizer *)gesture
+{
+    if(![gesture isKindOfClass:[UIPinchGestureRecognizer class]]) return;
+    
+    UIPinchGestureRecognizer* pinch = gesture;
+    
+    NSLog(@"Pinch: %f", pinch.scale);
 }
 
 - (void)drawWithViewProjection:(GLKMatrix4 *)viewProjection

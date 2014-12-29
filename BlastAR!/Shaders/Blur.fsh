@@ -17,5 +17,5 @@ void main(void){
     
     gl_FragColor = avg / 9.0;
     
-//    gl_FragColor += vec4(vUV, 0.0, 0.25);
+    gl_FragColor += vec4(vUV, 0.0, 0.25);
 }

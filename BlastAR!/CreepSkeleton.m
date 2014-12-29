@@ -99,7 +99,7 @@
     struct genBone* bone = _bones + (unsigned int)(copy.bones[1]);
     
     GLKVector3 rot = GLKQuaternionRotateVector3(bone->rotation, GLKVector3MakeWithArray(copy.position));
-    vec3_add(copy.position, rot.v, bone->position);
+    vec3_sub(copy.position, bone->position, rot.v);
 
     return copy;
 }
