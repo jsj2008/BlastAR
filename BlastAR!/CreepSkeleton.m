@@ -16,7 +16,8 @@
     
     if(self){
         _bones = malloc(sizeof(struct genBone) * CREEP_BONES);
-        
+        bzero(_bones, sizeof(struct genBone) * CREEP_BONES);
+
         // connect the bones for the skeleton
         for(int i = CREEP_BONES; i--;){
             _bones[i].next = i + 1 <  CREEP_BONES ? _bones + i + 1 : NULL;
@@ -47,6 +48,12 @@
         // then calculate the length of that vector
         vec3_sub(dirFromLast, bone->position, last->position);
         distToLast = vec3_len(dirFromLast);
+
+        if(distToLast == 0){
+            bone = bone->next;
+            continue;
+        }
+
         GLKMatrix4 ori = GLKMatrix4MakeLookAt(
             bone->position[0], bone->position[1], bone->position[2],
             last->position[0], last->position[1], last->position[2],
