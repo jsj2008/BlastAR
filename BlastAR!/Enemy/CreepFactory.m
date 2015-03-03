@@ -34,10 +34,10 @@ void assignCreepBones(struct CreepVertex* v, CreepSkeleton* skel, int slice, int
 
 + (int)generateWithMesh:(struct CreepVertex *)mesh
                 ofCount:(unsigned int)size
+          vertsPerSlice:(unsigned int)vertsPerSlice
       resultingIndicies:(unsigned int **)indices
            withSkeleton:(CreepSkeleton *)skeleton
 {
-    const int vertsPerSlice = 10;
     const int slices = size / vertsPerSlice;
     
     // verts/slice = 5

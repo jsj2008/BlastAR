@@ -61,13 +61,14 @@
         [self withAttributeName:"aColor" andElements:4];
         [self withAttributeName:"aBones" andElements:3];
         
-        _vertexCount = 100;
+        _vertexCount = 50;
         _vertices = malloc(_vertexCount * sizeof(struct CreepVertex));
 
         _indexCount = [CreepFactory generateWithMesh:_vertices
-                                                ofCount:_vertexCount
-                                      resultingIndicies:&_indices
-                                           withSkeleton:_skeleton];
+                                             ofCount:_vertexCount
+                                       vertsPerSlice:5
+                                   resultingIndicies:&_indices
+                                        withSkeleton:_skeleton];
         _meshGraph = [CreepFactory generateMeshGraphFromIndices:_indices
                                                    withVertices:(struct CreepVertex*)_vertices
                                                         ofCount:_indexCount];
@@ -100,6 +101,17 @@
         [_skeleton updateWithTimeElapsed:0];
     }
     
+    return self;
+}
+
+- (instancetype)initWithPosition:(GLKVector3)position
+{
+    self = [self init];
+    if(!self) return nil;
+
+    _position = position;
+    [_skeleton translate:_position.v];
+
     return self;
 }
 
@@ -176,8 +188,8 @@
         memcpy(boneRotations + i, _skeleton.bones[i].rotation.q, sizeof(vec4));
     }
     
-    glLineWidth(2 * [UIScreen mainScreen].scale);
-    
+//    glLineWidth(2 * [UIScreen mainScreen].scale);
+
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     [shader bind];
@@ -186,10 +198,10 @@
     [shader usingArray:boneRotations ofLength:CREEP_BONES andType:vec4Array withName:"uBoneRotations"];
 
     // render the black fill
-    vec4 black = { 0, 0, 0, 1 };
-    [shader usingArray:black ofLength:1 andType:vec4Array withName:"uColor"];
-    [self drawAs:GL_TRIANGLES];
-    
+//    vec4 black = { 0, 0, 0, 1 };
+//    [shader usingArray:black ofLength:1 andType:vec4Array withName:"uColor"];
+//    [self drawAs:GL_TRIANGLES];
+//    
     // render the wire frame
     [shader usingArray:(GLfloat*)VEC4_ONE ofLength:1 andType:vec4Array withName:"uColor"];
     [self drawAs:GL_LINES];

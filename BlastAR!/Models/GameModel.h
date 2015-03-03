@@ -17,7 +17,7 @@
 #import "./../Effects/Particles.h"
 #import "./../Effects/ParticleFactory.h"
 #import "./../Enemy/Creep.h"
-#import "./../CreepRenderGroup.h"
+#import "./../CreepGroup.h"
 #import "./../Weapons/Weapons.h"
 //#import "./../Weapons/Weapons.h"
 
@@ -25,13 +25,12 @@
 
 @property (nonatomic) CameraEntity* camera;
 @property (strong, nonatomic) id <Drawable, Ranked> crosshair;
-@property (strong, nonatomic) Background* background;
+@property (strong, nonatomic) Starfield* background;
 @property (nonatomic) Projectiles* projectiles;
 
 @property (nonatomic) OrderedScene *scene;
-@property (nonatomic) NSMutableArray *enemies;
 @property (nonatomic) Creep* nearestEnemy;
-@property (nonatomic) CreepRenderGroup* creeps;
+@property (nonatomic) CreepGroup* creeps;
 
 @property (nonatomic) float viewRedness;
 

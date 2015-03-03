@@ -335,6 +335,7 @@
 	if ([captureSession canAddOutput:videoOut])
 		[captureSession addOutput:videoOut];
 	videoConnection = [videoOut connectionWithMediaType:AVMediaTypeVideo];
+    videoConnection.videoOrientation = AVCaptureVideoOrientationLandscapeRight;//AVCaptureVideoOrientationPortrait;
 	self.videoOrientation = [videoConnection videoOrientation];
 	//[videoOut release];
     

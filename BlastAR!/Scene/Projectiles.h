@@ -26,6 +26,9 @@ struct Projectile{
 @property (nonatomic, readonly) struct Projectile* projectiles;
 @property (nonatomic, readonly) unsigned int maxLiving;
 
+
+- (instancetype)initWithIntersectionSelector:(SEL)intersectionSelector;
+- (void)performIntersctionCheck:(NSArray*)targets withDamage:(float)damage andElapsed:(float)dt;
 - (void)fireWithRay:(ray3)originVelocity andType:(enum ProjectileType)type;
 
 @end

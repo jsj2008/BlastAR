@@ -8,7 +8,7 @@
 
 #import "OPjective.h"
 
-@interface CreepRenderGroup : RenderGroup
+@interface CreepGroup : ObjectGroup
 
 - (instancetype)initWithGLKView:(GLKView*)view;
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <GLKit/GLKit.h>
 #import "Enemy/Creep.h"
-#import "CreepRenderGroup.h"
+#import "CreepGroup.h"
 #import "OPjective.h"
 
 
@@ -20,7 +20,7 @@
 @property (nonatomic) OrderedScene *scene;
 @property (nonatomic) NSMutableArray *enemies;
 @property (nonatomic) Creep* nearestEnemy;
-@property (nonatomic) CreepRenderGroup* creeps;
+@property (nonatomic) CreepGroup* creeps;
 
 
 @property (nonatomic) float viewRedness;

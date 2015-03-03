@@ -38,6 +38,16 @@
     return self;
 }
 
+- (int) drawRank
+{
+    return -3;
+}
+
+- (int) updateRank
+{
+    return 0;
+}
+
 - (void) drawWithViewProjection:(GLKMatrix4 *)viewProjection
 {
     Shader* shader = (Shader*)[self.shaders lastObject];

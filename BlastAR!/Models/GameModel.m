@@ -10,14 +10,6 @@
 
 @implementation GameModel
 
-- (NSMutableArray*) enemies{
-    if(!_enemies){
-        _enemies = [[NSMutableArray alloc] init];
-    }
-    
-    return _enemies;
-}
-
 - (NSMutableArray*)allWeapons
 {
     return _allWeapons ? _allWeapons : (_allWeapons = [[NSMutableArray alloc] init]);

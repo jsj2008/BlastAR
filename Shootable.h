@@ -10,6 +10,8 @@
 
 @protocol Shootable <NSObject>
 
+@property GLKVector3 lastHitPoint;
+
 - (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint;
 - (BOOL) fireAt:(ray3)projectile withIntersection:(vec3)hitPoint andSolutionLessThan:(float)t withDamage:(float)dmg;
 

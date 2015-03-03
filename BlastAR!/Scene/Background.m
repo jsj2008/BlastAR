@@ -202,7 +202,7 @@ struct QuadVertex{
 
 - (int) drawRank
 {
-    return -2;
+    return -3;
 }
 
 - (int) updateRank

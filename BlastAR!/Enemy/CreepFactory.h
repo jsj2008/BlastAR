@@ -23,6 +23,7 @@ struct CreepVertex{
 + (void)seed:(unsigned int)seed;
 + (int)generateWithMesh:(struct CreepVertex *)mesh
                 ofCount:(unsigned int)size
+          vertsPerSlice:(unsigned int)vertsPerSlice
       resultingIndicies:(unsigned int **)indices
            withSkeleton:(CreepSkeleton*)skeleton;
 + (Graph*)generateMeshGraphFromIndices:(unsigned int*)indices

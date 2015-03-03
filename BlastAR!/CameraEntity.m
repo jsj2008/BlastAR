@@ -60,14 +60,9 @@
     
     if(!self.motionManager.deviceMotion) return;
     
-    float s = 1;
     CMQuaternion q = self.motionManager.deviceMotion.attitude.quaternion;
     
-    float angle = acosf(q.w) * 2.0;
-    float scale = asinf(angle / 2.0);
-    
-    _orientation = GLKQuaternionMakeWithAngleAndAxis(angle, q.x / s, q.y / s, q.z / s);
-    
+    _orientation = GLKQuaternionMake(q.x, q.y, q.z, q.w);
     _shootDir = GLKQuaternionRotateVector3(_orientation, forward);
     _left = GLKQuaternionRotateVector3(_orientation, left);
     _up = GLKQuaternionRotateVector3(_orientation, up);

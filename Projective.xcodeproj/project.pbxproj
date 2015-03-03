@@ -64,7 +64,7 @@
 		067B1AD41A4A455B0030302F /* Projectiles.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 067B1AD31A4A455B0030302F /* Projectiles.vsh */; };
 		067B1AD61A4A45860030302F /* Projectiles.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 067B1AD51A4A45860030302F /* Projectiles.fsh */; };
 		06B044211A45A12400C5604E /* Blur.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 06B044201A45A12400C5604E /* Blur.fsh */; };
-		06C5C08E1A317688007ADE08 /* CreepRenderGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C5C08D1A317688007ADE08 /* CreepRenderGroup.m */; };
+		06C5C08E1A317688007ADE08 /* CreepGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C5C08D1A317688007ADE08 /* CreepGroup.m */; };
 		06E8876719AA3C1F0049C7E1 /* FullscreenQuad.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8876619AA3C1F0049C7E1 /* FullscreenQuad.vsh */; };
 		06E8876B19AA3C970049C7E1 /* FullscreenQuad.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */; };
 		06E8876D19AA416E0049C7E1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E8876C19AA416E0049C7E1 /* QuartzCore.framework */; };
@@ -183,8 +183,8 @@
 		067B1AD31A4A455B0030302F /* Projectiles.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Projectiles.vsh; path = Shaders/Projectiles.vsh; sourceTree = "<group>"; };
 		067B1AD51A4A45860030302F /* Projectiles.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Projectiles.fsh; path = Shaders/Projectiles.fsh; sourceTree = "<group>"; };
 		06B044201A45A12400C5604E /* Blur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Blur.fsh; path = Shaders/Blur.fsh; sourceTree = "<group>"; };
-		06C5C08C1A317688007ADE08 /* CreepRenderGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreepRenderGroup.h; sourceTree = "<group>"; };
-		06C5C08D1A317688007ADE08 /* CreepRenderGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreepRenderGroup.m; sourceTree = "<group>"; };
+		06C5C08C1A317688007ADE08 /* CreepGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreepGroup.h; sourceTree = "<group>"; };
+		06C5C08D1A317688007ADE08 /* CreepGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreepGroup.m; sourceTree = "<group>"; };
 		06E8876619AA3C1F0049C7E1 /* FullscreenQuad.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = FullscreenQuad.vsh; path = Shaders/FullscreenQuad.vsh; sourceTree = "<group>"; };
 		06E8876A19AA3C960049C7E1 /* FullscreenQuad.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = FullscreenQuad.fsh; path = Shaders/FullscreenQuad.fsh; sourceTree = "<group>"; };
 		06E8876C19AA416E0049C7E1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -264,8 +264,8 @@
 				0668A14A1A2D25CC00E90D48 /* CreepFactory.m */,
 				0668A14E1A2D26EA00E90D48 /* CreepSkeleton.h */,
 				0668A14F1A2D26EA00E90D48 /* CreepSkeleton.m */,
-				06C5C08C1A317688007ADE08 /* CreepRenderGroup.h */,
-				06C5C08D1A317688007ADE08 /* CreepRenderGroup.m */,
+				06C5C08C1A317688007ADE08 /* CreepGroup.h */,
+				06C5C08D1A317688007ADE08 /* CreepGroup.m */,
 			);
 			name = Enemy;
 			sourceTree = "<group>";
@@ -617,7 +617,7 @@
 				067B1AD01A4A3EE20030302F /* Projectiles.m in Sources */,
 				0628185719A90ACB00703ACF /* Starfield.m in Sources */,
 				064111C219AECBC000B7AF2A /* SpawnDelegate.m in Sources */,
-				06C5C08E1A317688007ADE08 /* CreepRenderGroup.m in Sources */,
+				06C5C08E1A317688007ADE08 /* CreepGroup.m in Sources */,
 				0628187419A95B0B00703ACF /* Crosshair.m in Sources */,
 				0668AB511A4369F7004EEF2C /* CameraEntity.m in Sources */,
 				0628187D19A95EDC00703ACF /* Singletons.c in Sources */,

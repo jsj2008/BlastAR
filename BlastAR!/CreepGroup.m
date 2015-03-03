@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 OPifex. All rights reserved.
 //
 
-#import "CreepRenderGroup.h"
+#import "CreepGroup.h"
 #import "Creep.h"
 
-@interface CreepRenderGroup()
+@interface CreepGroup()
 
 @property (nonatomic) RenderTarget* renderTarget;
 @property (nonatomic) PostEffect *blurV, *blurH;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation CreepRenderGroup
+@implementation CreepGroup
 
 - (instancetype)initWithGLKView:(GLKView*)view
 {
@@ -36,6 +36,11 @@
     }
     
     return self;
+}
+
+- (int)drawRank
+{
+    return 1;
 }
 
 - (void)drawWithViewProjection:(GLKMatrix4 *)viewProjection

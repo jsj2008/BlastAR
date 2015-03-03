@@ -10,13 +10,12 @@
 #import "GameModel.h"
 #import "OPjective.h"
 
-@interface SpawnDelegate : NSObject <Drawable, Ranked>
+@interface SpawnDelegate : NSObject <Drawable, Updateable, Ranked>
 
 @property (nonatomic) GLKVector3 spawnDirection;
+@property (nonatomic) float spawnField;
 
-- (id) initWithGame:(GameModel*)model;
-- (void) tick:(float*)interval;
-
-- (void)setSpawnFeild:(float)spawnFeild;
+- (id)initWithGame:(GameModel*)model;
+- (void)tick:(float*)interval;
 
 @end

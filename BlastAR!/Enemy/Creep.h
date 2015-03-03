@@ -16,6 +16,8 @@
 @property (nonatomic) GLKVector3 velocity;
 @property (nonatomic, readonly) int HP;
 
+- (instancetype)initWithPosition:(GLKVector3)position;
+
 + (Sound*) soundHit;
 
 @end

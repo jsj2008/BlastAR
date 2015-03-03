@@ -7,10 +7,13 @@
 //
 
 #import "Projectiles.h"
+#import "Shootable.h"
 
 const unsigned int PROJECTILES_MAX = 100;
 
 @interface Projectiles()
+
+@property SEL intersectionSelector;
 
 @end
 
@@ -27,6 +30,16 @@ const unsigned int PROJECTILES_MAX = 100;
     [self withExplicitStride:sizeof(struct Projectile)];
     
     [self buildWithVertexProg:@"Projectiles" andFragmentProg:@"Projectiles"];
+    
+    return self;
+}
+
+- (instancetype)initWithIntersectionSelector:(SEL)intersectionCallback
+{
+    self = [self init];
+    if(!self) return nil;
+    
+    _intersectionSelector = intersectionCallback;
     
     return self;
 }
@@ -92,6 +105,25 @@ const unsigned int PROJECTILES_MAX = 100;
     [self.mesh updateData:_projectiles ofSize:sizeof(struct Projectile) * _maxLiving];
 }
 
+- (void)performIntersctionCheck:(NSArray*)targets withDamage:(float)damage andElapsed:(float)dt
+{
+    vec3 hitPoint;
+    
+    for(id<Shootable> target in targets){
+        for(unsigned int i = 0; i < _maxLiving; ++i){
+            struct Projectile* p = _projectiles + i;
+            
+            if([target fireAt:p->positionVelocity
+            withIntersection:hitPoint
+         andSolutionLessThan:dt
+                  withDamage:damage]){
+                target.lastHitPoint = GLKVector3MakeWithArray(hitPoint);
+                [self performSelector:self.intersectionSelector withObject:target];
+            }
+        }
+    }
+}
+
 - (void)drawWithViewProjection:(GLKMatrix4 *)viewProjection
 {
     Shader* shader = [self.shaders firstObject];
@@ -100,9 +132,9 @@ const unsigned int PROJECTILES_MAX = 100;
     [shader usingArray:blue ofLength:1 andType:vec4Array withName:"uColor"];
     [shader usingMat4x4:viewProjection withName:"uVP"];
     
-    glDepthMask(GL_FALSE);
+    glDisable(GL_DEPTH_TEST);
     [self drawAs:GL_POINTS];
-    glDepthMask(GL_TRUE);
+    glEnable(GL_DEPTH_TEST);
 }
 
 @end

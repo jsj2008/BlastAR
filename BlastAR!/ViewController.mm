@@ -71,7 +71,14 @@ static GLuint VIEW_FBO, VIEW_RBO;
     _game.camera = [[CameraEntity alloc] init];
     _playing = [[GamePlaying alloc] initWithGameModel:_game andViewController:self];
     
-    _game.camera.aspect = AR_ASPECT_RATIO = AR_WIDTH / (float)AR_HEIGHT;
+    if(AR_WIDTH > AR_HEIGHT){
+        _game.camera.aspect = AR_ASPECT_RATIO = AR_WIDTH / (float)AR_HEIGHT;
+    }
+    else{
+        _game.camera.aspect = AR_ASPECT_RATIO = AR_HEIGHT / (float)AR_WIDTH;
+    }
+    
+
     _pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [view addGestureRecognizer:_pinch];
     
